@@ -2,5 +2,6 @@
 {
     public class ProfesorDTO : UsuarioDTO
     {
+        public int Cedula { get; set; }
     }
 }

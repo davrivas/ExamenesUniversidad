@@ -6,8 +6,8 @@ namespace ExamenesUniversidad.Datos.Conexiones
 {
     public class Conexion
     {
-        private const string conexionString = "";
-        public static SqlConnection ConexionObj { get; private set; } = new SqlConnection(conexionString);
+        private const string CONEXION_STRING = "";
+        public static SqlConnection ConexionObj { get; private set; } = new SqlConnection(CONEXION_STRING);
 
         public static void Abrir()
         {
