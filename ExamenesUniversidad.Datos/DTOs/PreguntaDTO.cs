@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ExamenesUniversidad.Datos.DTOs
+﻿namespace ExamenesUniversidad.Datos.DTOs
 {
     public class PreguntaDTO : DTOBase
     {
