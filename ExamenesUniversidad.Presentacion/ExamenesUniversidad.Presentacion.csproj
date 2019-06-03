@@ -76,5 +76,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExamenesUniversidad.Logica\ExamenesUniversidad.Logica.csproj">
+      <Project>{46919bd3-b83b-4603-9d7c-bee40bab7c89}</Project>
+      <Name>ExamenesUniversidad.Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
