@@ -6,7 +6,8 @@ namespace ExamenesUniversidad.Datos.Conexiones
 {
     public static class Conexion
     {
-        private const string CONEXION_STRING = ""; // esto puede cambiar
+        // Esto puede cambiar
+        private const string CONEXION_STRING = @"Data Source=DESKTOP-0S26F42\SQLEXPRESS;Initial Catalog=ExamenesUniversidad;Integrated Security=True";
         public static SqlConnection ConexionObj { get; private set; } = new SqlConnection(CONEXION_STRING);
 
         public static void Abrir()
