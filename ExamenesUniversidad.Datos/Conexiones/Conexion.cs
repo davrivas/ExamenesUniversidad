@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Datos.Conexiones
 {
-    public class Conexion
+    public static class Conexion
     {
-        private const string CONEXION_STRING = "";
+        private const string CONEXION_STRING = ""; // esto puede cambiar
         public static SqlConnection ConexionObj { get; private set; } = new SqlConnection(CONEXION_STRING);
 
         public static void Abrir()
@@ -20,7 +20,8 @@ namespace ExamenesUniversidad.Datos.Conexiones
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                MessageBox.Show("ERROR: no se pudo conectar a la base de datos.\nMensaje: " + ex.Message);
+                MessageBox.Show("ERROR: no se pudo conectar a la base de datos.\n"
+                    + "Mensaje: " + ex.Message);
             }
         }
 
@@ -33,7 +34,8 @@ namespace ExamenesUniversidad.Datos.Conexiones
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
-                MessageBox.Show("ERROR: no se pudo cerrar la conexión a la base de datos.\nMensaje: " + ex.Message);
+                MessageBox.Show("ERROR: no se pudo cerrar la conexión a la base de datos.\n"
+                    + "Mensaje: " + ex.Message);
             }
         }
     }
