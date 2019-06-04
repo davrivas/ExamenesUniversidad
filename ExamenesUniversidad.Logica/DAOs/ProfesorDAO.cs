@@ -1,29 +1,51 @@
-﻿using ExamenesUniversidad.Datos.DTOs;
+﻿using ExamenesUniversidad.Datos.Conexiones;
+using ExamenesUniversidad.Datos.DTOs;
 using ExamenesUniversidad.Logica.DAOs.InterfacesDAO;
+using ExamenesUniversidad.Logica.Utilidades;
 using System;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Logica.DAOs
 {
-    public class ProfesorDAO : IProfesorDAO
+    public class ProfesorDAO : DAO<ProfesorDTO>, IProfesorDAO
     {
-        public ProfesorDTO BuscarPorId(int id)
+        public ProfesorDAO() : base("Profesores")
         {
-            throw new NotImplementedException();
         }
 
-        public void Editar(ProfesorDTO obj)
+        public bool ExisteProfesor(string usuario, string clave)
         {
-            throw new NotImplementedException();
-        }
+            _existe = false;
 
-        public void Eliminar(ProfesorDTO obj)
-        {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                Conexion.Abrir();
+                _sql = $"SELECT TOP(1) * " +
+                    $"FROM {_nombreTabla} " +
+                    $"WHERE Usuario = '{usuario}' " +
+                    $"AND Clave = '{clave}'";
+                _comando = new SqlCommand(_sql, Conexion.ConexionObj);
+                _lector = _comando.ExecuteReader();
 
-        public void Ingresar(ProfesorDTO obj)
-        {
-            throw new NotImplementedException();
+                if (_lector.Read())
+                {
+                    _existe = true;
+                    Sesion.ProfesorId = (int)_lector["Id"];
+                }
+
+                Conexion.Cerrar();
+
+                return _existe;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Conexion.Cerrar();
+                MessageBox.Show("No se pudo conseguir información del profesor\n"
+                    + "Mensaje: " + ex.Message, "Error");
+                return _existe;
+            }
         }
     }
 }

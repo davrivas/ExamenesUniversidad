@@ -2,7 +2,7 @@
 {
     public static class Sesion
     {
-        public static int? EstudianteId { get; set; }
-        public static int? ProfesorId { get; set; }
+        public static int EstudianteId { get; set; }
+        public static int ProfesorId { get; set; }
     }
 }

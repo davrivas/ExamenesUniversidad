@@ -4,7 +4,7 @@
     {
         void Ingresar(T obj);
         void Editar(T obj);
-        void Eliminar(T obj);
+        void Eliminar(int id);
         T BuscarPorId(int id);
     }
 }

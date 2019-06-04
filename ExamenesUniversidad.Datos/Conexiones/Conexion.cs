@@ -16,13 +16,13 @@ namespace ExamenesUniversidad.Datos.Conexiones
             {
                 Cerrar();
                 ConexionObj.Open();
-                MessageBox.Show("¡Conexión exitosa!");
+                //MessageBox.Show("¡Conexión exitosa!");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
                 MessageBox.Show("ERROR: no se pudo conectar a la base de datos.\n"
-                    + "Mensaje: " + ex.Message);
+                    + "Mensaje: " + ex.Message, "Error");
             }
         }
 
@@ -36,7 +36,7 @@ namespace ExamenesUniversidad.Datos.Conexiones
             {
                 Console.WriteLine(ex.StackTrace);
                 MessageBox.Show("ERROR: no se pudo cerrar la conexión a la base de datos.\n"
-                    + "Mensaje: " + ex.Message);
+                    + "Mensaje: " + ex.Message, "Error");
             }
         }
     }
