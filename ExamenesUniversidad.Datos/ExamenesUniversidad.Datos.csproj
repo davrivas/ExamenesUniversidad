@@ -44,14 +44,15 @@
   <ItemGroup>
     <Compile Include="Conexiones\Conexion.cs" />
     <Compile Include="DTOs\CursoDTO.cs" />
-    <Compile Include="DTOs\DTOBase.cs" />
+    <Compile Include="DTOs\DTOBases\DTOBase.cs" />
     <Compile Include="DTOs\EstudianteDTO.cs" />
-    <Compile Include="DTOs\EstudianteRespuestaDTO.cs" />
+    <Compile Include="DTOs\EstudianteExamenDTO.cs" />
+    <Compile Include="DTOs\EstudiantePreguntaExamenDTO.cs" />
     <Compile Include="DTOs\ExamenDTO.cs" />
+    <Compile Include="DTOs\PreguntaExamenDTO.cs" />
     <Compile Include="DTOs\PreguntaDTO.cs" />
     <Compile Include="DTOs\ProfesorDTO.cs" />
-    <Compile Include="DTOs\RespuestaDTO.cs" />
-    <Compile Include="DTOs\UsuarioDTO.cs" />
+    <Compile Include="DTOs\DTOBases\UsuarioDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

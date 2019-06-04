@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExamenesUniversidad.Datos.DTOs.DTOBases;
+using System;
 
 namespace ExamenesUniversidad.Datos.DTOs
 {
@@ -6,6 +7,7 @@ namespace ExamenesUniversidad.Datos.DTOs
     {
         public string Codigo { get; set; }
         public short Abierto { get; set; }
+        public int? NumeroPreguntas { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
 

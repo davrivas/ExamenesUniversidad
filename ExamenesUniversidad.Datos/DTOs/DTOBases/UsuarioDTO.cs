@@ -1,4 +1,4 @@
-﻿namespace ExamenesUniversidad.Datos.DTOs
+﻿namespace ExamenesUniversidad.Datos.DTOs.DTOBases
 {
     public abstract class UsuarioDTO : DTOBase
     {

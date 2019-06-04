@@ -41,22 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAOs\CursoDAO.cs" />
     <Compile Include="DAOs\EstudianteDAO.cs" />
-    <Compile Include="DAOs\EstudianteRespuestaDAO.cs" />
-    <Compile Include="DAOs\ExamenDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\ICursoDAO.cs" />
     <Compile Include="DAOs\InterfacesDAO\IDAO.cs" />
     <Compile Include="DAOs\InterfacesDAO\IEstudianteDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\IEstudianteRespuestaDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\IExamenDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\IPreguntaDAO.cs" />
     <Compile Include="DAOs\InterfacesDAO\IProfesorDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\IRespuestaDAO.cs" />
-    <Compile Include="DAOs\PreguntaDAO.cs" />
     <Compile Include="DAOs\ProfesorDAO.cs" />
-    <Compile Include="DAOs\RespuestaDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilidades\Sesion.cs" />
     <Compile Include="Utilidades\StringUtilidades.cs" />
   </ItemGroup>
   <ItemGroup>

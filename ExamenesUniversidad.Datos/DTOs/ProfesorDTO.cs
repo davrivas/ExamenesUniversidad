@@ -1,4 +1,6 @@
-﻿namespace ExamenesUniversidad.Datos.DTOs
+﻿using ExamenesUniversidad.Datos.DTOs.DTOBases;
+
+namespace ExamenesUniversidad.Datos.DTOs
 {
     public class ProfesorDTO : UsuarioDTO
     {
