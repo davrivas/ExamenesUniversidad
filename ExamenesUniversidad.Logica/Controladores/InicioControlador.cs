@@ -1,5 +1,6 @@
 ﻿using ExamenesUniversidad.Logica.DAOs;
 using ExamenesUniversidad.Logica.DAOs.InterfacesDAO;
+using ExamenesUniversidad.Logica.Extensiones;
 
 namespace ExamenesUniversidad.Logica.Controladores
 {
@@ -7,6 +8,7 @@ namespace ExamenesUniversidad.Logica.Controladores
     {
         private readonly IEstudianteDAO eDAO;
         private readonly IProfesorDAO pDAO;
+        private string _claveEncriptada;
 
         public string EstudianteUsuario { get; set; }
         public string EstudianteClave { get; set; }
@@ -21,13 +23,15 @@ namespace ExamenesUniversidad.Logica.Controladores
 
         public bool IniciarEstudiante()
         {
-            bool existeEstudiante = eDAO.ExisteEstudiante(EstudianteUsuario, EstudianteClave);
+            _claveEncriptada = ProfesorClave.GenerarMD5();
+            bool existeEstudiante = eDAO.ExisteEstudiante(EstudianteUsuario, _claveEncriptada);
             return existeEstudiante;
         }
 
         public bool IniciarProfesor()
         {
-            bool existeProfesor = pDAO.ExisteProfesor(ProfesorUsuario, ProfesorClave);
+            _claveEncriptada = ProfesorClave.GenerarMD5();
+            bool existeProfesor = pDAO.ExisteProfesor(ProfesorUsuario, _claveEncriptada);
             return existeProfesor;
         }
     }

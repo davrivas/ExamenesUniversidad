@@ -8,11 +8,11 @@ namespace ExamenesUniversidad.Logica.Utilidades
         private static readonly int _cantidadCaracteres = CARACTERES.Length;
         private static readonly Random _random = new Random();
 
-        public static string GenerarCodigo(int cantidadCaracteres = 5)
+        public static string GenerarCodigo()
         {
             string codigo = "";
 
-            for (int i = 0; i < cantidadCaracteres; i++)
+            for (int i = 0; i < 5; i++)
             {
                 codigo += CARACTERES[_random.Next(_cantidadCaracteres)];
             }
