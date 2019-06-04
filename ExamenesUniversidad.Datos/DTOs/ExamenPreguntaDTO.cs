@@ -2,7 +2,7 @@
 
 namespace ExamenesUniversidad.Datos.DTOs
 {
-    public class PreguntaExamenDTO : DTOBase
+    public class ExamenPreguntaDTO : DTOBase
     {
         public int NumeroPregunta { get; set; }
 
