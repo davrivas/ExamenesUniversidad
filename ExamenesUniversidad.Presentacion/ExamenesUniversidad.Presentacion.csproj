@@ -114,6 +114,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExamenesUniversidad.Datos\ExamenesUniversidad.Datos.csproj">
+      <Project>{2ee06f1d-3d56-44d6-86d6-00e15986d82c}</Project>
+      <Name>ExamenesUniversidad.Datos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExamenesUniversidad.Logica\ExamenesUniversidad.Logica.csproj">
       <Project>{46919bd3-b83b-4603-9d7c-bee40bab7c89}</Project>
       <Name>ExamenesUniversidad.Logica</Name>
