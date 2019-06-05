@@ -41,7 +41,7 @@
             this.tabControlProfesor.Location = new System.Drawing.Point(13, 13);
             this.tabControlProfesor.Name = "tabControlProfesor";
             this.tabControlProfesor.SelectedIndex = 0;
-            this.tabControlProfesor.Size = new System.Drawing.Size(561, 100);
+            this.tabControlProfesor.Size = new System.Drawing.Size(561, 266);
             this.tabControlProfesor.TabIndex = 0;
             // 
             // tabPageCursos
@@ -49,7 +49,7 @@
             this.tabPageCursos.Location = new System.Drawing.Point(4, 22);
             this.tabPageCursos.Name = "tabPageCursos";
             this.tabPageCursos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCursos.Size = new System.Drawing.Size(553, 74);
+            this.tabPageCursos.Size = new System.Drawing.Size(553, 240);
             this.tabPageCursos.TabIndex = 0;
             this.tabPageCursos.Text = "Cursos";
             this.tabPageCursos.UseVisualStyleBackColor = true;
