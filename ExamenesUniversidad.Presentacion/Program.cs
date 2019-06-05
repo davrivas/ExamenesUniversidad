@@ -5,12 +5,15 @@ namespace ExamenesUniversidad.Presentacion
 {
     static class Program
     {
+        public static Inicio InicioForm { get; private set; }
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Inicio());
+            InicioForm = new Inicio();
+            Application.Run(InicioForm);
         }
     }
 }

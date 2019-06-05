@@ -29,14 +29,20 @@ namespace ExamenesUniversidad.Presentacion
                         if (_controlador.IniciarProfesor())
                         {
                             MessageBox.Show("Bienvenido profesor");
+                            textBoxUsuario.Text = "";
+                            textBoxClave.Text = "";
                             new InicioProfesor().Show();
+                            Program.InicioForm.Hide();
                         }                            
                         break;
                     case "Estudiante":
                         if (_controlador.IniciarEstudiante())
                         {
                             MessageBox.Show("Bienvenido estudiante");
+                            textBoxUsuario.Text = "";
+                            textBoxClave.Text = "";
                             new InicioEstudiante().Show();
+                            Program.InicioForm.Hide();
                         }
                         break;
                 }
