@@ -1,8 +1,8 @@
-﻿using ExamenesUniversidad.Datos.DTOs.DTOBases;
+﻿using System.Collections.Generic;
 
-namespace ExamenesUniversidad.Datos.DTOs
+namespace ExamenesUniversidad.Datos.Entidades
 {
-    public class PreguntaDTO : DTOBase
+    public class Pregunta : EntidadBase
     {
         public string Consecutivo { get; set; }
         public string Enunciado { get; set; }
@@ -14,6 +14,8 @@ namespace ExamenesUniversidad.Datos.DTOs
         public int RespuestaCorrecta { get; set; }
 
         public int CursoId { get; set; }
-        public CursoDTO Curso { get; set; }
+        public Curso Curso { get; set; }
+
+        public ICollection<ExamenPregunta> ExamenPreguntas { get; set; }
     }
 }

@@ -1,9 +1,9 @@
-﻿using ExamenesUniversidad.Datos.DTOs.DTOBases;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
-namespace ExamenesUniversidad.Datos.DTOs
+namespace ExamenesUniversidad.Datos.Entidades
 {
-    public class ExamenDTO : DTOBase
+    public class Examen : EntidadBase
     {
         public string Codigo { get; set; }
         public short Abierto { get; set; }
@@ -12,8 +12,10 @@ namespace ExamenesUniversidad.Datos.DTOs
         public DateTime FechaFin { get; set; }
 
         public int CursoId { get; set; }
-        public CursoDTO Curso { get; set; }
+        public Curso Curso { get; set; }
         public int ProfesorId { get; set; }
-        public ProfesorDTO Profesor { get; set; }
+        public Profesor Profesor { get; set; }
+
+        public ICollection<ExamenPregunta> ExamenPreguntas { get; set; }
     }
 }

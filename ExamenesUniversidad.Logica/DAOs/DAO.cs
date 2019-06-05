@@ -1,12 +1,11 @@
-﻿using ExamenesUniversidad.Datos.Conexiones;
-using ExamenesUniversidad.Datos.DTOs.DTOBases;
+﻿using ExamenesUniversidad.Datos.Entidades;
 using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Logica.DAOs
 {
-    public class DAO<T> where T : DTOBase
+    public class DAO<T> where T : EntidadBase
     {
         protected string _nombreTabla;
         protected string _sql;
@@ -29,31 +28,8 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
         }
 
-        public void Eliminar(int id)
+        public virtual void Eliminar(int id)
         {
-            try
-            {
-                Conexion.Abrir();
-                _sql = $"DELETE FROM {_nombreTabla} " +
-                    $"WHERE Id = {id.ToString()}";
-                _comando = new SqlCommand(_sql, Conexion.ConexionObj);
-                _cont = _comando.ExecuteNonQuery();
-
-                if (_cont == 1)
-                    MessageBox.Show("Se eliminó el registro", "Exito");
-                else
-                    MessageBox.Show("No se pudo eliminar el registro", "Error");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show("No se pudo eliminar el registro\n"
-                    + "Mensaje: " + ex.Message, "Error");
-            }
-            finally
-            {
-                Conexion.Cerrar();
-            }
         }
 
         public virtual void Ingresar(T obj)

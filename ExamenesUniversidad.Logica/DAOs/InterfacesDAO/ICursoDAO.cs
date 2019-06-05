@@ -1,8 +1,8 @@
-﻿using ExamenesUniversidad.Datos.DTOs;
+﻿using ExamenesUniversidad.Datos.Entidades;
 
 namespace ExamenesUniversidad.Logica.DAOs.InterfacesDAO
 {
-    public interface ICursoDAO : IDAO<CursoDTO>
+    public interface ICursoDAO : IDAO<Curso>
     {
         bool ExisteCursoCodigo(string codigo);
     }

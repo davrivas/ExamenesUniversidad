@@ -1,10 +1,10 @@
-﻿namespace ExamenesUniversidad.Datos.DTOs.DTOBases
+﻿namespace ExamenesUniversidad.Datos.Entidades
 {
-    public abstract class UsuarioDTO : DTOBase
+    public abstract class Usuario : EntidadBase
     {
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
-        public string Usuario { get; set; }
+        public string NombreUsuario { get; set; }
         public string Clave { get; set; }
     }
 }
