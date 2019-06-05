@@ -10,10 +10,8 @@ namespace ExamenesUniversidad.Logica.Controladores
         private readonly IProfesorDAO pDAO;
         private string _claveEncriptada;
 
-        public string EstudianteUsuario { get; set; }
-        public string EstudianteClave { get; set; }
-        public string ProfesorUsuario { get; set; }
-        public string ProfesorClave { get; set; }
+        public string Usuario { get; set; }
+        public string Clave { get; set; }
 
         public InicioControlador()
         {
@@ -23,15 +21,15 @@ namespace ExamenesUniversidad.Logica.Controladores
 
         public bool IniciarEstudiante()
         {
-            _claveEncriptada = ProfesorClave.GenerarMD5();
-            bool existeEstudiante = eDAO.ExisteEstudiante(EstudianteUsuario, _claveEncriptada);
+            _claveEncriptada = Clave.GenerarMD5();
+            bool existeEstudiante = eDAO.ExisteEstudiante(Usuario, _claveEncriptada);
             return existeEstudiante;
         }
 
         public bool IniciarProfesor()
         {
-            _claveEncriptada = ProfesorClave.GenerarMD5();
-            bool existeProfesor = pDAO.ExisteProfesor(ProfesorUsuario, _claveEncriptada);
+            _claveEncriptada = Clave.GenerarMD5();
+            bool existeProfesor = pDAO.ExisteProfesor(Usuario, _claveEncriptada);
             return existeProfesor;
         }
     }

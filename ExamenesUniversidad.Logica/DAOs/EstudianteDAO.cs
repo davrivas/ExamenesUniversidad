@@ -33,9 +33,12 @@ namespace ExamenesUniversidad.Logica.DAOs
                     _existe = true;
                     Sesion.EstudianteId = (int)_lector["Id"];
                 }
+                else
+                {
+                    MessageBox.Show("No se pudo conseguir información del estudiante", "Error");
+                }
 
-                Conexion.Cerrar();
-
+                Conexion.Cerrar();                
                 return _existe;
             }
             catch (Exception ex)
