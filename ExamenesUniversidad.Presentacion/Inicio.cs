@@ -1,4 +1,5 @@
 ﻿using ExamenesUniversidad.Logica.Controladores;
+using ExamenesUniversidad.Logica.Extensiones;
 using ExamenesUniversidad.Presentacion.Estudiante;
 using ExamenesUniversidad.Presentacion.Profesor;
 using System;
@@ -21,7 +22,7 @@ namespace ExamenesUniversidad.Presentacion
             if (!string.IsNullOrWhiteSpace(textBoxUsuario.Text) && !string.IsNullOrWhiteSpace(textBoxClave.Text) && comboBoxRol.Text != "Seleccione rol")
             {
                 _controlador.Usuario = textBoxUsuario.Text;
-                _controlador.Clave = textBoxClave.Text;
+                _controlador.Clave = textBoxClave.Text.GenerarMD5();
 
                 switch (comboBoxRol.Text)
                 {

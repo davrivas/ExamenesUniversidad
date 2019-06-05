@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controladores\InicioControlador.cs" />
+    <Compile Include="DAOs\CursoDAO.cs" />
     <Compile Include="DAOs\DAO.cs" />
     <Compile Include="DAOs\EstudianteDAO.cs" />
+    <Compile Include="DAOs\InterfacesDAO\ICursoDAO.cs" />
     <Compile Include="DAOs\InterfacesDAO\IDAO.cs" />
     <Compile Include="DAOs\InterfacesDAO\IEstudianteDAO.cs" />
     <Compile Include="DAOs\InterfacesDAO\IProfesorDAO.cs" />

@@ -37,18 +37,16 @@ namespace ExamenesUniversidad.Logica.DAOs
                 {
                     MessageBox.Show("No se pudo conseguir información del estudiante", "Error");
                 }
-
-                Conexion.Cerrar();                
-                return _existe;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Conexion.Cerrar();
                 MessageBox.Show("No se pudo conseguir información del estudiante\n"
                     + "Mensaje: " + ex.Message, "Error");
-                return _existe;
             }
+
+            Conexion.Cerrar();
+            return _existe;
         }
     }
 }
