@@ -46,8 +46,7 @@
     <Compile Include="DTOs\CursoDTO.cs" />
     <Compile Include="DTOs\DTOBases\DTOBase.cs" />
     <Compile Include="DTOs\EstudianteDTO.cs" />
-    <Compile Include="DTOs\EstudianteExamenDTO.cs" />
-    <Compile Include="DTOs\EstudianteExamenPreguntaDTO.cs" />
+    <Compile Include="DTOs\EstudianteRespuestaDTO.cs" />
     <Compile Include="DTOs\ExamenDTO.cs" />
     <Compile Include="DTOs\ExamenPreguntaDTO.cs" />
     <Compile Include="DTOs\PreguntaDTO.cs" />
