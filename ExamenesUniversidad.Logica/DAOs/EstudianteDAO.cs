@@ -1,6 +1,6 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
+using ExamenesUniversidad.Logica.Utilidades;
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -27,8 +27,7 @@ namespace ExamenesUniversidad.Logica.DAOs
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.StackTrace);
-                MessageBox.Show($"Ocurrio un error: " + ex.Message, "Error");
+                ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
                 return false;
             }
         }

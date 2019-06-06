@@ -1,4 +1,5 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
+using ExamenesUniversidad.Logica.Utilidades;
 using System;
 using System.Linq;
 
@@ -13,9 +14,18 @@ namespace ExamenesUniversidad.Logica.DAOs
     {
         public bool ExisteCursoCodigo(string codigo)
         {
-            var curso = Listar().Where(x => x.Codigo == codigo).AsQueryable().FirstOrDefault();
-            bool validacion = curso != null;
-            return validacion;
+            try
+            {
+                var curso = Listar().Where(x => x.Codigo == codigo).AsQueryable().FirstOrDefault();
+                bool validacion = curso != null;
+
+                return validacion;
+            }
+            catch (Exception ex)
+            {
+                ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
+                return false;
+            }
         }
     }
 }
