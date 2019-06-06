@@ -30,16 +30,13 @@
         {
             this.tabControlProfesor = new System.Windows.Forms.TabControl();
             this.tabPageCursos = new System.Windows.Forms.TabPage();
-            this.tabPageExamenes = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
-            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.tabPageExamenes = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControlProfesor.SuspendLayout();
             this.tabPageCursos.SuspendLayout();
-            this.tabPageExamenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.fillByToolStrip.SuspendLayout();
+            this.tabPageExamenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,17 +61,6 @@
             this.tabPageCursos.Text = "Cursos";
             this.tabPageCursos.UseVisualStyleBackColor = true;
             // 
-            // tabPageExamenes
-            // 
-            this.tabPageExamenes.Controls.Add(this.dataGridView2);
-            this.tabPageExamenes.Location = new System.Drawing.Point(4, 22);
-            this.tabPageExamenes.Name = "tabPageExamenes";
-            this.tabPageExamenes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageExamenes.Size = new System.Drawing.Size(553, 240);
-            this.tabPageExamenes.TabIndex = 1;
-            this.tabPageExamenes.Text = "Examenes";
-            this.tabPageExamenes.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -86,23 +72,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(553, 240);
             this.dataGridView1.TabIndex = 0;
             // 
-            // fillByToolStrip
+            // tabPageExamenes
             // 
-            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fillByToolStripButton});
-            this.fillByToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.fillByToolStrip.Name = "fillByToolStrip";
-            this.fillByToolStrip.Size = new System.Drawing.Size(800, 25);
-            this.fillByToolStrip.TabIndex = 1;
-            this.fillByToolStrip.Text = "fillByToolStrip";
-            this.fillByToolStrip.Visible = false;
-            // 
-            // fillByToolStripButton
-            // 
-            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
-            this.fillByToolStripButton.Text = "FillBy";
+            this.tabPageExamenes.Controls.Add(this.dataGridView2);
+            this.tabPageExamenes.Location = new System.Drawing.Point(4, 22);
+            this.tabPageExamenes.Name = "tabPageExamenes";
+            this.tabPageExamenes.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageExamenes.Size = new System.Drawing.Size(553, 240);
+            this.tabPageExamenes.TabIndex = 1;
+            this.tabPageExamenes.Text = "Examenes";
+            this.tabPageExamenes.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
@@ -120,19 +99,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.tabControlProfesor);
             this.Name = "InicioProfesor";
             this.Text = "Profesor inicio";
             this.tabControlProfesor.ResumeLayout(false);
             this.tabPageCursos.ResumeLayout(false);
-            this.tabPageExamenes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.fillByToolStrip.ResumeLayout(false);
-            this.fillByToolStrip.PerformLayout();
+            this.tabPageExamenes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -142,8 +117,6 @@
         private System.Windows.Forms.TabPage tabPageCursos;
         private System.Windows.Forms.TabPage tabPageExamenes;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ToolStrip fillByToolStrip;
-        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

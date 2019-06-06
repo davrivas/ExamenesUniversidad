@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSets\CustomDataSet.cs" />
     <Compile Include="DataSets\TablasDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +109,13 @@
       <DependentUpon>TablasDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ExamenesUniversidad.Logica.DAOs.CursoDAO.datasource" />
+    <None Include="Properties\DataSources\ExamenesUniversidad.Logica.DAOs.EstudianteDAO.datasource" />
+    <None Include="Properties\DataSources\ExamenesUniversidad.Logica.DAOs.ICursoDAO.datasource" />
+    <None Include="Properties\DataSources\ExamenesUniversidad.Logica.DAOs.IEstudianteDAO.datasource" />
+    <None Include="Properties\DataSources\ExamenesUniversidad.Logica.DAOs.IProfesorDAO.datasource" />
+    <None Include="Properties\DataSources\ExamenesUniversidad.Logica.DAOs.ProfesorDAO.datasource" />
+    <None Include="Properties\DataSources\ExamenesUniversidad.Presentacion.DataSets.CustomDataSet.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -13,7 +13,8 @@ namespace ExamenesUniversidad.Presentacion
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             InicioForm = new Inicio();
-            Application.Run(InicioForm);
+            //Application.Run(InicioForm);
+            Application.Run(new Profesor.InicioProfesor());
         }
     }
 }
