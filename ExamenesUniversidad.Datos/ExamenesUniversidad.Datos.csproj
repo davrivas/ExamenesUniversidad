@@ -59,6 +59,7 @@
     <Compile Include="Entidades\Pregunta.cs" />
     <Compile Include="Entidades\Profesor.cs" />
     <Compile Include="Entidades\Usuario.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
