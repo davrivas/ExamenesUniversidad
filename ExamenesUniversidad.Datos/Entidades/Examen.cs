@@ -7,7 +7,7 @@ namespace ExamenesUniversidad.Datos.Entidades
     {
         public string Codigo { get; set; }
         public bool Abierto { get; set; }
-        public int? NumeroPreguntas { get; set; }
+        public int NumeroPreguntas { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
 
