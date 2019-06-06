@@ -6,7 +6,7 @@ namespace ExamenesUniversidad.Datos.Entidades
     public class Examen : EntidadBase
     {
         public string Codigo { get; set; }
-        public short Abierto { get; set; }
+        public bool Abierto { get; set; }
         public int? NumeroPreguntas { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
