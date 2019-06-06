@@ -1,5 +1,4 @@
 ﻿using ExamenesUniversidad.Logica.DAOs;
-using ExamenesUniversidad.Logica.DAOs.InterfacesDAO;
 
 namespace ExamenesUniversidad.Logica.Controladores
 {

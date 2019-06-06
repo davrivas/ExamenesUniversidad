@@ -53,10 +53,6 @@
     <Compile Include="DAOs\CursoDAO.cs" />
     <Compile Include="DAOs\DAO.cs" />
     <Compile Include="DAOs\EstudianteDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\ICursoDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\IDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\IEstudianteDAO.cs" />
-    <Compile Include="DAOs\InterfacesDAO\IProfesorDAO.cs" />
     <Compile Include="DAOs\ProfesorDAO.cs" />
     <Compile Include="Extensiones\StringExtensiones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
