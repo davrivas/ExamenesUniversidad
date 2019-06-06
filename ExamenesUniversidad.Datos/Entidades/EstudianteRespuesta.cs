@@ -1,5 +1,8 @@
-﻿namespace ExamenesUniversidad.Datos.Entidades
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ExamenesUniversidad.Datos.Entidades
 {
+    [Table("EstudianteRespuestas")]
     public class EstudianteRespuesta : EntidadBase
     {
         public int Respuesta { get; set; }

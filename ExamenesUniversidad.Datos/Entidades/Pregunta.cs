@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExamenesUniversidad.Datos.Entidades
 {
+    [Table("Preguntas")]
     public class Pregunta : EntidadBase
     {
         public string Consecutivo { get; set; }

@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ExamenesUniversidad.Datos.Entidades
 {
+    [Table("Cursos")]
     public class Curso : EntidadBase
     {
         public string Codigo { get; set; }
