@@ -20,35 +20,41 @@ namespace ExamenesUniversidad.Presentacion
         private void ButtonIniciar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(textBoxUsuario.Text)
-                && !string.IsNullOrWhiteSpace(textBoxClave.Text)
-                && comboBoxRol.Text != "Seleccione rol")
+                && !string.IsNullOrWhiteSpace(textBoxClave.Text))
             {
-                _controlador.Usuario = textBoxUsuario.Text;
-                _controlador.Clave = textBoxClave.Text.GenerarMD5();
-
-                switch (comboBoxRol.Text)
+                if (comboBoxRol.Text != "Seleccione rol")
                 {
-                    case "Profesor":
-                        if (_controlador.IniciarProfesor())
-                        {
-                            MessageBox.Show("Bienvenido profesor");
-                            BorrarCamposIngresar();
-                            new InicioProfesor().Show();
-                            Program.InicioForm.Hide();
-                        }
-                        break;
-                    case "Estudiante":
-                        if (_controlador.IniciarEstudiante())
-                        {
-                            MessageBox.Show("Bienvenido estudiante");
-                            BorrarCamposIngresar();
-                            new InicioEstudiante().Show();
-                            Program.InicioForm.Hide();
-                        }
-                        break;
-                    default:
-                        MessageBox.Show("Opción inválida");
-                        break;
+                    _controlador.Usuario = textBoxUsuario.Text;
+                    _controlador.Clave = textBoxClave.Text.GenerarMD5();
+
+                    switch (comboBoxRol.Text)
+                    {
+                        case "Profesor":
+                            if (_controlador.IniciarProfesor())
+                            {
+                                MessageBox.Show("Bienvenido profesor");
+                                BorrarTodosLosCampos();
+                                new InicioProfesor().Show();
+                                Program.InicioForm.Hide();
+                            }
+                            break;
+                        case "Estudiante":
+                            if (_controlador.IniciarEstudiante())
+                            {
+                                MessageBox.Show("Bienvenido estudiante");
+                                BorrarTodosLosCampos();
+                                new InicioEstudiante().Show();
+                                Program.InicioForm.Hide();
+                            }
+                            break;
+                        default:
+                            MessageBox.Show("Opción inválida");
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un rol", "Error");
                 }
             }
             else
@@ -64,64 +70,70 @@ namespace ExamenesUniversidad.Presentacion
                 && !string.IsNullOrWhiteSpace(textBoxApellidos.Text)
                 && !string.IsNullOrWhiteSpace(textBoxUsuarioReg.Text)
                 && !string.IsNullOrWhiteSpace(textBoxClaveReg.Text)
-                && !string.IsNullOrWhiteSpace(textBoxConfirmar.Text)
-                && comboBoxRegistro.Text != "Seleccione rol")
+                && !string.IsNullOrWhiteSpace(textBoxConfirmar.Text))
             {
-                if (int.TryParse(textBoxIdentificacion.Text, out int identificacion))
+                if (comboBoxRegistro.Text != "Seleccione rol")
                 {
-                    if (textBoxClaveReg.Text == textBoxConfirmar.Text)
+                    if (int.TryParse(textBoxIdentificacion.Text, out int identificacion))
                     {
-                        _controlador.Usuario = textBoxUsuarioReg.Text;
-
-                        switch (comboBoxRegistro.Text)
+                        if (textBoxClaveReg.Text == textBoxConfirmar.Text)
                         {
-                            case "Profesor":
-                                if (!_controlador.ExisteProfesor())
-                                {
-                                    _controlador.ProfesorNuevo.Cedula = identificacion;
-                                    _controlador.ProfesorNuevo.Nombres = textBoxNombres.Text;
-                                    _controlador.ProfesorNuevo.Apellidos = textBoxApellidos.Text;
-                                    _controlador.ProfesorNuevo.NombreUsuario = textBoxUsuarioReg.Text;
-                                    _controlador.ProfesorNuevo.Clave = textBoxClaveReg.Text.GenerarMD5();
+                            _controlador.Usuario = textBoxUsuarioReg.Text;
 
-                                    _controlador.RegistrarProfesor();
-                                    BorrarCamposRegistrar();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Ya existe un profesor con ese nombre de usuario", "Error");
-                                }
-                                break;
-                            case "Estudiante":
-                                if (!_controlador.ExisteEstudiante())
-                                {
-                                    _controlador.EstudianteNuevo.NumeroCarnet = identificacion;
-                                    _controlador.EstudianteNuevo.Nombres = textBoxNombres.Text;
-                                    _controlador.EstudianteNuevo.Apellidos = textBoxApellidos.Text;
-                                    _controlador.EstudianteNuevo.NombreUsuario = textBoxUsuarioReg.Text;
-                                    _controlador.EstudianteNuevo.Clave = textBoxClaveReg.Text.GenerarMD5();
+                            switch (comboBoxRegistro.Text)
+                            {
+                                case "Profesor":
+                                    if (!_controlador.ExisteProfesor())
+                                    {
+                                        _controlador.ProfesorNuevo.Cedula = identificacion;
+                                        _controlador.ProfesorNuevo.Nombres = textBoxNombres.Text;
+                                        _controlador.ProfesorNuevo.Apellidos = textBoxApellidos.Text;
+                                        _controlador.ProfesorNuevo.NombreUsuario = textBoxUsuarioReg.Text;
+                                        _controlador.ProfesorNuevo.Clave = textBoxClaveReg.Text.GenerarMD5();
 
-                                    _controlador.RegistrarEstudiante();
-                                    BorrarCamposRegistrar();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Ya existe un estudiante con ese nombre de usuario", "Error");
-                                }
-                                break;
-                            default:
-                                MessageBox.Show("Opción inválida", "Error");
-                                break;
+                                        _controlador.RegistrarProfesor();
+                                        BorrarCamposRegistrar();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Ya existe un profesor con ese nombre de usuario", "Error");
+                                    }
+                                    break;
+                                case "Estudiante":
+                                    if (!_controlador.ExisteEstudiante())
+                                    {
+                                        _controlador.EstudianteNuevo.NumeroCarnet = identificacion;
+                                        _controlador.EstudianteNuevo.Nombres = textBoxNombres.Text;
+                                        _controlador.EstudianteNuevo.Apellidos = textBoxApellidos.Text;
+                                        _controlador.EstudianteNuevo.NombreUsuario = textBoxUsuarioReg.Text;
+                                        _controlador.EstudianteNuevo.Clave = textBoxClaveReg.Text.GenerarMD5();
+
+                                        _controlador.RegistrarEstudiante();
+                                        BorrarCamposRegistrar();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Ya existe un estudiante con ese nombre de usuario", "Error");
+                                    }
+                                    break;
+                                default:
+                                    MessageBox.Show("Opción inválida", "Error");
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Las claves deben de coincidir", "Error");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Las claves deben de coincidir", "Error");
+                        MessageBox.Show("Identificación inválida", "Error");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Identificación inválida", "Error");
+                    MessageBox.Show("Debe seleccionar un rol", "Error");
                 }
             }
             else
