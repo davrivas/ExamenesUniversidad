@@ -1,4 +1,4 @@
-﻿namespace ExamenesUniversidad.Presentacion.Profesor
+﻿namespace ExamenesUniversidad.Presentacion.ProfesorVista
 {
     partial class InicioProfesor
     {

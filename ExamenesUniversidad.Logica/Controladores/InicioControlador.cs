@@ -17,6 +17,8 @@ namespace ExamenesUniversidad.Logica.Controladores
         {
             _estudianteDAO = new EstudianteDAO();
             _profesorDAO = new ProfesorDAO();
+            EstudianteNuevo = new Estudiante();
+            ProfesorNuevo = new Profesor();
         }
 
         public bool IniciarEstudiante()
@@ -31,14 +33,15 @@ namespace ExamenesUniversidad.Logica.Controladores
             return existeProfesor;
         }
 
-        public void RegistrarProfesor()
-        {
-            
-        }
-
         public bool ExisteProfesor()
         {
             return _profesorDAO.ExisteProfesor(Usuario);
+        }
+
+        public void RegistrarProfesor()
+        {
+            _profesorDAO.Ingresar(ProfesorNuevo);
+            ProfesorNuevo = new Profesor();
         }
 
         public bool ExisteEstudiante()
@@ -48,7 +51,8 @@ namespace ExamenesUniversidad.Logica.Controladores
 
         public void RegistrarEstudiante()
         {
-
+            _estudianteDAO.Ingresar(EstudianteNuevo);
+            EstudianteNuevo = new Estudiante();
         }
     }
 }

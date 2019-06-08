@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExamenesUniversidad.Presentacion.Estudiante
+namespace ExamenesUniversidad.Presentacion.ProfesorVista
 {
-    public partial class InicioEstudiante : Form
+    public partial class InicioProfesor : Form
     {
-        public InicioEstudiante()
+        public InicioProfesor()
         {
             InitializeComponent();
         }
