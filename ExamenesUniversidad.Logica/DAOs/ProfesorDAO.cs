@@ -23,6 +23,8 @@ namespace ExamenesUniversidad.Logica.DAOs
 
                 if (!validacion)
                     MessageBox.Show($"No se encontró al profesor '{usuario}'", "Error");
+                else
+                    Sesion.ProfesorId = profesor.Id;
 
                 return validacion;
             }

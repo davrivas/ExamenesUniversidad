@@ -93,6 +93,7 @@ namespace ExamenesUniversidad.Presentacion
 
                                         _controlador.RegistrarProfesor();
                                         BorrarCamposRegistrar();
+                                        MessageBox.Show("Profesor registrado");
                                     }
                                     else
                                     {
@@ -110,6 +111,7 @@ namespace ExamenesUniversidad.Presentacion
 
                                         _controlador.RegistrarEstudiante();
                                         BorrarCamposRegistrar();
+                                        MessageBox.Show("Estudiante registrado");
                                     }
                                     else
                                     {
