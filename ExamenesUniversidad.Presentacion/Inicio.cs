@@ -69,7 +69,7 @@ namespace ExamenesUniversidad.Presentacion
             {
                 if (int.TryParse(textBoxIdentificacion.Text, out int identificacion))
                 {
-                    if (textBoxClaveReg.Text == textBoxClaveReg.Text)
+                    if (textBoxClaveReg.Text == textBoxConfirmar.Text)
                     {
                         _controlador.Usuario = textBoxUsuarioReg.Text;
 
@@ -123,6 +123,10 @@ namespace ExamenesUniversidad.Presentacion
                 {
                     MessageBox.Show("Identificación inválida", "Error");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Digite todos los campos", "Error");
             }
         }
 

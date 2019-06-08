@@ -1,4 +1,6 @@
-﻿namespace ExamenesUniversidad.Logica.Utilidades
+﻿using ExamenesUniversidad.Datos.DbContexts;
+
+namespace ExamenesUniversidad.Logica.Utilidades
 {
     public static class Sesion
     {
