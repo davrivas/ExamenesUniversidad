@@ -7,6 +7,7 @@ namespace ExamenesUniversidad.Logica.DAOs
 {
     public interface ICursoDAO : IDAO<Curso>
     {
+        Curso ObtenerPorCodigo(string codigo);
         bool ExisteCurso(string codigo);
     }
 
@@ -30,6 +31,20 @@ namespace ExamenesUniversidad.Logica.DAOs
             {
                 ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
                 return false;
+            }
+        }
+
+        public Curso ObtenerPorCodigo(string codigo)
+        {
+            try
+            {
+                var curso = Listar().Where(x => x.Codigo == codigo).AsQueryable().FirstOrDefault();
+                return curso;
+            }
+            catch (Exception ex)
+            {
+                ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
+                return null;
             }
         }
     }

@@ -72,11 +72,23 @@
     <Compile Include="ProfesorVista\CursosVista\AgregarCurso.Designer.cs">
       <DependentUpon>AgregarCurso.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfesorVista\CursosVista\AgregarPreguntaCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfesorVista\CursosVista\AgregarPreguntaCurso.Designer.cs">
+      <DependentUpon>AgregarPreguntaCurso.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProfesorVista\InicioProfesor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProfesorVista\InicioProfesor.Designer.cs">
       <DependentUpon>InicioProfesor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfesorVista\CursosVista\VerPreguntasCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfesorVista\CursosVista\VerPreguntasCurso.Designer.cs">
+      <DependentUpon>VerPreguntasCurso.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,8 +101,14 @@
     <EmbeddedResource Include="ProfesorVista\CursosVista\AgregarCurso.resx">
       <DependentUpon>AgregarCurso.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProfesorVista\CursosVista\AgregarPreguntaCurso.resx">
+      <DependentUpon>AgregarPreguntaCurso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProfesorVista\InicioProfesor.resx">
       <DependentUpon>InicioProfesor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfesorVista\CursosVista\VerPreguntasCurso.resx">
+      <DependentUpon>VerPreguntasCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -25,7 +25,31 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 CantidadExamenes = x.Examenes.Count
             }).ToList();
 
-            return lista;
+            return lista ?? new List<CursoProfesorDTO>();
+        }
+
+        public static IList<PreguntaCursoDTO> ListarPreguntasCurso(string codigo)
+        {
+            var preguntaDAO = new PreguntaDAO();
+            var query = preguntaDAO.Listar()
+                .Include(x => x.Curso)
+                .Where(x => x.Curso.Codigo == codigo)
+                .AsQueryable();
+
+            var lista = query.Select(x => new PreguntaCursoDTO
+            {
+                NombreCurso = x.Curso.Nombre,
+                Consecutivo = x.Consecutivo,
+                Enunciado = x.Enunciado,
+                Respuesta1 = x.Respuesta1,
+                Respuesta2 = x.Respuesta2,
+                Respuesta3 = x.Respuesta3,
+                Respuesta4 = x.Respuesta4,
+                Respuesta5 = x.Respuesta5,
+                RespuestaCorrecta = x.RespuestaCorrecta
+            }).ToList();
+
+            return lista ?? new List<PreguntaCursoDTO>();
         }
     }
 }

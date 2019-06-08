@@ -1,14 +1,6 @@
-﻿using ExamenesUniversidad.Logica.Utilidades;
-using ExamenesUniversidad.Presentacion.DataSets;
+﻿using ExamenesUniversidad.Presentacion.DataSets;
 using ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Presentacion.ProfesorVista
@@ -35,6 +27,16 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             Program.InicioForm.Show();
             this.Close();
+        }
+
+        private void ButtonRefrescar_Click(object sender, EventArgs e)
+        {
+            ActualizarCursos();
+        }
+
+        private void ButtonPreguntas_Click(object sender, EventArgs e)
+        {
+            new VerPreguntasCurso().Show();
         }
     }
 }

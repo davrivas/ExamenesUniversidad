@@ -94,6 +94,7 @@
             this.buttonPreguntas.TabIndex = 3;
             this.buttonPreguntas.Text = "Ver preguntas";
             this.buttonPreguntas.UseVisualStyleBackColor = true;
+            this.buttonPreguntas.Click += new System.EventHandler(this.ButtonPreguntas_Click);
             // 
             // buttonRefrescar
             // 
@@ -103,6 +104,7 @@
             this.buttonRefrescar.TabIndex = 2;
             this.buttonRefrescar.Text = "Refrescar";
             this.buttonRefrescar.UseVisualStyleBackColor = true;
+            this.buttonRefrescar.Click += new System.EventHandler(this.ButtonRefrescar_Click);
             // 
             // buttonAgregarCurso
             // 

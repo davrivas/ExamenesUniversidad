@@ -37,8 +37,8 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista
                 _controlador.CursoNuevo.Nombre = textBoxNombre.Text;
 
                 _controlador.AgregarCursoNuevo();
-                MessageBox.Show("Se registró un nuevo curso satisfactoria");
-                // actualizar tabla
+                MessageBox.Show($"Se registró el curso {textBoxNombre.Text} con el código {codigo} satisfactoriamente");
+                Program.InicioProfesor.ActualizarCursos();
                 this.Close();
             }
             else
