@@ -1,4 +1,5 @@
 ﻿using ExamenesUniversidad.Logica.Utilidades;
+using ExamenesUniversidad.Presentacion.DataSets;
 using ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,12 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         public InicioProfesor()
         {
             InitializeComponent();
+            ActualizarCursos();
+        }
+
+        public void ActualizarCursos()
+        {
+            dataGridViewCursos.DataSource = ProfesorDataSet.ListarCursos();
         }
 
         private void ButtonAgregarCurso_Click(object sender, EventArgs e)

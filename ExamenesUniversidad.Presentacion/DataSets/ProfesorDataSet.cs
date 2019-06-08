@@ -16,6 +16,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 .Include(x => x.Examenes)
                 .Include(x => x.Preguntas)
                 .AsQueryable();
+
             var lista = query.Select(x => new CursoProfesorDTO
             {
                 Codigo = x.Codigo,

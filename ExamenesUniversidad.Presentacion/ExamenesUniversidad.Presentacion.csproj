@@ -53,7 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSets\CursoDataSet.cs" />
+    <Compile Include="DataSets\ProfesorDataSet.cs" />
     <Compile Include="EstudianteVista\InicioEstudiante.cs">
       <SubType>Form</SubType>
     </Compile>
