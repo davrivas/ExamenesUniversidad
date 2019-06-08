@@ -7,12 +7,17 @@ namespace ExamenesUniversidad.Logica.DAOs
 {
     public interface ICursoDAO : IDAO<Curso>
     {
-        bool ExisteCursoCodigo(string codigo);
+        bool ExisteCurso(string codigo);
     }
 
     public class CursoDAO : DAO<Curso>, ICursoDAO
     {
-        public bool ExisteCursoCodigo(string codigo)
+        public override IQueryable<Curso> Listar()
+        {
+            return base.Listar().OrderBy(x => x.Nombre).AsQueryable();
+        }
+
+        public bool ExisteCurso(string codigo)
         {
             try
             {

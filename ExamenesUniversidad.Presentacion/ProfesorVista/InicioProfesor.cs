@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ExamenesUniversidad.Logica.Utilidades;
+using ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,17 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         public InicioProfesor()
         {
             InitializeComponent();
+        }
+
+        private void ButtonAgregarCurso_Click(object sender, EventArgs e)
+        {
+            new AgregarCurso().Show();
+        }
+
+        private void ButtonCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Program.InicioForm.Show();
+            this.Close();
         }
     }
 }

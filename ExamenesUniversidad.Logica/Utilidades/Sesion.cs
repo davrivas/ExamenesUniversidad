@@ -6,5 +6,6 @@ namespace ExamenesUniversidad.Logica.Utilidades
     {
         public static int EstudianteId { get; set; }
         public static int ProfesorId { get; set; }
+        public static int CursoCodigo { get; set; }
     }
 }

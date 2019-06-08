@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSets\CursoDataSet.cs" />
     <Compile Include="EstudianteVista\InicioEstudiante.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +65,12 @@
     </Compile>
     <Compile Include="Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfesorVista\CursosVista\AgregarCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfesorVista\CursosVista\AgregarCurso.Designer.cs">
+      <DependentUpon>AgregarCurso.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfesorVista\InicioProfesor.cs">
       <SubType>Form</SubType>
@@ -78,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfesorVista\CursosVista\AgregarCurso.resx">
+      <DependentUpon>AgregarCurso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfesorVista\InicioProfesor.resx">
       <DependentUpon>InicioProfesor.cs</DependentUpon>
@@ -115,8 +125,6 @@
       <Name>ExamenesUniversidad.Logica</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataSets\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

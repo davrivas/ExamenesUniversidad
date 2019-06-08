@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContexts\ExamenesUniversidadContext.cs" />
+    <Compile Include="DTOs\CursoProfesor.cs" />
     <Compile Include="Entidades\Curso.cs" />
     <Compile Include="Entidades\EntidadBase.cs" />
     <Compile Include="Entidades\Estudiante.cs" />

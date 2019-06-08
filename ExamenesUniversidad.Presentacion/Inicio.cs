@@ -32,17 +32,18 @@ namespace ExamenesUniversidad.Presentacion
                         case "Profesor":
                             if (_controlador.IniciarProfesor())
                             {
-                                MessageBox.Show("Bienvenido profesor");
                                 BorrarTodosLosCampos();
-                                new InicioProfesor().Show();
+                                MessageBox.Show("Bienvenido profesor");
+                                Program.InicioProfesor = new InicioProfesor();
+                                Program.InicioProfesor.Show();
                                 Program.InicioForm.Hide();
                             }
                             break;
                         case "Estudiante":
                             if (_controlador.IniciarEstudiante())
                             {
-                                MessageBox.Show("Bienvenido estudiante");
                                 BorrarTodosLosCampos();
+                                MessageBox.Show("Bienvenido estudiante");
                                 new InicioEstudiante().Show();
                                 Program.InicioForm.Hide();
                             }
@@ -163,6 +164,11 @@ namespace ExamenesUniversidad.Presentacion
         {
             BorrarCamposIngresar();
             BorrarCamposRegistrar();
+        }
+
+        private void Inicio_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
