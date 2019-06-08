@@ -19,18 +19,18 @@ namespace ExamenesUniversidad.Logica.DAOs
 
     public abstract class DAO<T> : IDAO<T> where T : EntidadBase
     {
-        protected readonly ExamenesUniversidadContext _context;
+        protected readonly ExamenesUniversidadContext Context;
 
         public DAO()
         {
-            _context = new ExamenesUniversidadContext();
+            Context = new ExamenesUniversidadContext();
         }
 
         public virtual T BuscarPorId(int id)
         {
             try
             {
-                var objeto = _context.Set<T>().Find(id);
+                var objeto = Context.Set<T>().Find(id);
                 return objeto;
             }
             catch (Exception ex)
@@ -44,9 +44,9 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
             try
             {
-                _context.Entry(obj).State = EntityState.Modified;
-                _context.Set<T>().Add(obj);
-                _context.SaveChanges();
+                Context.Entry(obj).State = EntityState.Modified;
+                Context.Set<T>().Add(obj);
+                Context.SaveChanges();
 
                 MessageBox.Show("El registro fue actualizado satisfactoriamente");
             }
@@ -62,8 +62,8 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
             try
             {
-                _context.Set<T>().Remove(obj);
-                _context.SaveChanges();
+                Context.Set<T>().Remove(obj);
+                Context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -75,8 +75,8 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
             try
             {
-                _context.Set<T>().Add(obj);
-                _context.SaveChanges();
+                Context.Set<T>().Add(obj);
+                Context.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
             try
             {
-                var lista = _context.Set<T>().AsQueryable();
+                var lista = Context.Set<T>().AsQueryable();
                 return lista;
             }
             catch (Exception ex)

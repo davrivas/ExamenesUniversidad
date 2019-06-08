@@ -9,6 +9,7 @@ namespace ExamenesUniversidad.Logica.DAOs
     public interface IProfesorDAO : IDAO<Profesor>
     {
         bool ExisteProfesor(string usuario, string clave);
+        bool ExisteProfesor(string usuario);
     }
 
     public class ProfesorDAO : DAO<Profesor>, IProfesorDAO
@@ -22,6 +23,22 @@ namespace ExamenesUniversidad.Logica.DAOs
 
                 if (!validacion)
                     MessageBox.Show($"No se encontró al profesor '{usuario}'", "Error");
+
+                return validacion;
+            }
+            catch (Exception ex)
+            {
+                ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
+                return false;
+            }
+        }
+
+        public bool ExisteProfesor(string usuario)
+        {
+            try
+            {
+                var profesor = Listar().Where(x => x.NombreUsuario == usuario).AsQueryable().FirstOrDefault();
+                bool validacion = profesor != null;
 
                 return validacion;
             }
