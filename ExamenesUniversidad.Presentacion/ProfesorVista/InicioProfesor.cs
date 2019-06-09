@@ -12,11 +12,17 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             InitializeComponent();
             ActualizarCursos();
+            ActualizarExamenes();
         }
 
         public void ActualizarCursos()
         {
             dataGridViewCursos.DataSource = ProfesorDataSet.ListarCursos();
+        }
+
+        public void ActualizarExamenes()
+        {
+            dataGridViewExamenes.DataSource = ProfesorDataSet.ListarExamenes();
         }
 
         private void ButtonAgregarCurso_Click(object sender, EventArgs e)
@@ -30,7 +36,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
             Close();
         }
 
-        private void ButtonRefrescar_Click(object sender, EventArgs e)
+        private void ButtonRefrescarCursos_Click(object sender, EventArgs e)
         {
             ActualizarCursos();
         }
@@ -43,6 +49,11 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         private void ButtonAgregarExamen_Click(object sender, EventArgs e)
         {
             new AgregarExamen().Show();
+        }
+
+        private void ButtonRefrescarExamenes_Click(object sender, EventArgs e)
+        {
+            ActualizarExamenes();
         }
     }
 }

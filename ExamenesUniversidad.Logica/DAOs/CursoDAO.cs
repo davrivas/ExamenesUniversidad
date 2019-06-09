@@ -17,7 +17,9 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
             try
             {
-                var curso = Listar().Where(x => x.Codigo == codigo).AsQueryable().FirstOrDefault();
+                var curso = Listar()
+                    .Where(x => x.Codigo == codigo)
+                    .FirstOrDefault();
                 bool validacion = curso != null;
 
                 return validacion;

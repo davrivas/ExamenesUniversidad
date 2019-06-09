@@ -24,6 +24,10 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista
             {
                 dataGridViewPreguntas.DataSource = ProfesorDataSet.ListarPreguntasCurso(textBoxCodigo.Text);
             }
+            else
+            {
+                MessageBox.Show("Digite el codigo del curso", "Error");
+            }
         }
 
         private void ButtonAgregarPregunta_Click(object sender, EventArgs e)

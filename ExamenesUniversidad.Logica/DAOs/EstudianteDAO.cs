@@ -18,7 +18,9 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
             try
             {
-                var estudiante = Listar().Where(x => x.NombreUsuario == usuario && x.Clave == clave).AsQueryable().FirstOrDefault();
+                var estudiante = Listar()
+                    .Where(x => x.NombreUsuario == usuario && x.Clave == clave)
+                    .FirstOrDefault();
                 bool validacion = estudiante != null;
 
                 if (!validacion)
@@ -39,7 +41,9 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
             try
             {
-                var estudiante = Listar().Where(x => x.NombreUsuario == usuario).AsQueryable().FirstOrDefault();
+                var estudiante = Listar()
+                    .Where(x => x.NombreUsuario == usuario)
+                    .FirstOrDefault();
                 bool validacion = estudiante != null;
 
                 return validacion;

@@ -19,7 +19,9 @@ namespace ExamenesUniversidad.Logica.DAOs
         {
             try
             {
-                var pregunta = Listar().Where(x => x.Consecutivo == codigo).AsQueryable().FirstOrDefault();
+                var pregunta = Listar()
+                    .Where(x => x.Consecutivo == codigo)
+                    .FirstOrDefault();
                 bool validacion = pregunta != null;
 
                 return validacion;
