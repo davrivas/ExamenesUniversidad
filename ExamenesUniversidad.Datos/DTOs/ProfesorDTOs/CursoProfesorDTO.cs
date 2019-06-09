@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamenesUniversidad.Datos.DTOs
+namespace ExamenesUniversidad.Datos.DTOs.ProfesorDTOs
 {
     public class CursoProfesorDTO
     {

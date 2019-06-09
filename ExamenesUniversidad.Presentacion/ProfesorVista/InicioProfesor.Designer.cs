@@ -32,16 +32,22 @@
             this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPageExamenes = new System.Windows.Forms.TabPage();
             this.tabPageCursos = new System.Windows.Forms.TabPage();
-            this.buttonPreguntas = new System.Windows.Forms.Button();
-            this.buttonRefrescar = new System.Windows.Forms.Button();
+            this.buttonPreguntasCurso = new System.Windows.Forms.Button();
+            this.buttonRefrescarCursos = new System.Windows.Forms.Button();
             this.buttonAgregarCurso = new System.Windows.Forms.Button();
             this.dataGridViewCursos = new System.Windows.Forms.DataGridView();
             this.tabControlProfesor = new System.Windows.Forms.TabControl();
             this.buttonCerrarSesion = new System.Windows.Forms.Button();
+            this.buttonAgregarExamen = new System.Windows.Forms.Button();
+            this.dataGridViewExamenes = new System.Windows.Forms.DataGridView();
+            this.buttonPreguntasExamen = new System.Windows.Forms.Button();
+            this.buttonRefrescarExamenes = new System.Windows.Forms.Button();
             this.fillByToolStrip.SuspendLayout();
+            this.tabPageExamenes.SuspendLayout();
             this.tabPageCursos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCursos)).BeginInit();
             this.tabControlProfesor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamenes)).BeginInit();
             this.SuspendLayout();
             // 
             // fillByToolStrip
@@ -64,6 +70,10 @@
             // 
             // tabPageExamenes
             // 
+            this.tabPageExamenes.Controls.Add(this.buttonRefrescarExamenes);
+            this.tabPageExamenes.Controls.Add(this.buttonPreguntasExamen);
+            this.tabPageExamenes.Controls.Add(this.dataGridViewExamenes);
+            this.tabPageExamenes.Controls.Add(this.buttonAgregarExamen);
             this.tabPageExamenes.Location = new System.Drawing.Point(4, 22);
             this.tabPageExamenes.Name = "tabPageExamenes";
             this.tabPageExamenes.Padding = new System.Windows.Forms.Padding(3);
@@ -74,8 +84,8 @@
             // 
             // tabPageCursos
             // 
-            this.tabPageCursos.Controls.Add(this.buttonPreguntas);
-            this.tabPageCursos.Controls.Add(this.buttonRefrescar);
+            this.tabPageCursos.Controls.Add(this.buttonPreguntasCurso);
+            this.tabPageCursos.Controls.Add(this.buttonRefrescarCursos);
             this.tabPageCursos.Controls.Add(this.buttonAgregarCurso);
             this.tabPageCursos.Controls.Add(this.dataGridViewCursos);
             this.tabPageCursos.Location = new System.Drawing.Point(4, 22);
@@ -86,25 +96,25 @@
             this.tabPageCursos.Text = "Cursos";
             this.tabPageCursos.UseVisualStyleBackColor = true;
             // 
-            // buttonPreguntas
+            // buttonPreguntasCurso
             // 
-            this.buttonPreguntas.Location = new System.Drawing.Point(86, 8);
-            this.buttonPreguntas.Name = "buttonPreguntas";
-            this.buttonPreguntas.Size = new System.Drawing.Size(88, 23);
-            this.buttonPreguntas.TabIndex = 3;
-            this.buttonPreguntas.Text = "Ver preguntas";
-            this.buttonPreguntas.UseVisualStyleBackColor = true;
-            this.buttonPreguntas.Click += new System.EventHandler(this.ButtonPreguntas_Click);
+            this.buttonPreguntasCurso.Location = new System.Drawing.Point(86, 8);
+            this.buttonPreguntasCurso.Name = "buttonPreguntasCurso";
+            this.buttonPreguntasCurso.Size = new System.Drawing.Size(88, 23);
+            this.buttonPreguntasCurso.TabIndex = 3;
+            this.buttonPreguntasCurso.Text = "Ver preguntas";
+            this.buttonPreguntasCurso.UseVisualStyleBackColor = true;
+            this.buttonPreguntasCurso.Click += new System.EventHandler(this.ButtonPreguntas_Click);
             // 
-            // buttonRefrescar
+            // buttonRefrescarCursos
             // 
-            this.buttonRefrescar.Location = new System.Drawing.Point(180, 8);
-            this.buttonRefrescar.Name = "buttonRefrescar";
-            this.buttonRefrescar.Size = new System.Drawing.Size(75, 23);
-            this.buttonRefrescar.TabIndex = 2;
-            this.buttonRefrescar.Text = "Refrescar";
-            this.buttonRefrescar.UseVisualStyleBackColor = true;
-            this.buttonRefrescar.Click += new System.EventHandler(this.ButtonRefrescar_Click);
+            this.buttonRefrescarCursos.Location = new System.Drawing.Point(180, 8);
+            this.buttonRefrescarCursos.Name = "buttonRefrescarCursos";
+            this.buttonRefrescarCursos.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefrescarCursos.TabIndex = 2;
+            this.buttonRefrescarCursos.Text = "Refrescar";
+            this.buttonRefrescarCursos.UseVisualStyleBackColor = true;
+            this.buttonRefrescarCursos.Click += new System.EventHandler(this.ButtonRefrescar_Click);
             // 
             // buttonAgregarCurso
             // 
@@ -147,21 +157,62 @@
             this.buttonCerrarSesion.UseVisualStyleBackColor = true;
             this.buttonCerrarSesion.Click += new System.EventHandler(this.ButtonCerrarSesion_Click);
             // 
+            // buttonAgregarExamen
+            // 
+            this.buttonAgregarExamen.Location = new System.Drawing.Point(6, 6);
+            this.buttonAgregarExamen.Name = "buttonAgregarExamen";
+            this.buttonAgregarExamen.Size = new System.Drawing.Size(75, 23);
+            this.buttonAgregarExamen.TabIndex = 2;
+            this.buttonAgregarExamen.Text = "Agregar";
+            this.buttonAgregarExamen.UseVisualStyleBackColor = true;
+            this.buttonAgregarExamen.Click += new System.EventHandler(this.ButtonAgregarExamen_Click);
+            // 
+            // dataGridViewExamenes
+            // 
+            this.dataGridViewExamenes.AllowUserToAddRows = false;
+            this.dataGridViewExamenes.AllowUserToDeleteRows = false;
+            this.dataGridViewExamenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewExamenes.Location = new System.Drawing.Point(0, 35);
+            this.dataGridViewExamenes.Name = "dataGridViewExamenes";
+            this.dataGridViewExamenes.ReadOnly = true;
+            this.dataGridViewExamenes.Size = new System.Drawing.Size(553, 205);
+            this.dataGridViewExamenes.TabIndex = 3;
+            // 
+            // buttonPreguntasExamen
+            // 
+            this.buttonPreguntasExamen.Location = new System.Drawing.Point(87, 6);
+            this.buttonPreguntasExamen.Name = "buttonPreguntasExamen";
+            this.buttonPreguntasExamen.Size = new System.Drawing.Size(88, 23);
+            this.buttonPreguntasExamen.TabIndex = 4;
+            this.buttonPreguntasExamen.Text = "Ver preguntas";
+            this.buttonPreguntasExamen.UseVisualStyleBackColor = true;
+            // 
+            // buttonRefrescarExamenes
+            // 
+            this.buttonRefrescarExamenes.Location = new System.Drawing.Point(181, 6);
+            this.buttonRefrescarExamenes.Name = "buttonRefrescarExamenes";
+            this.buttonRefrescarExamenes.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefrescarExamenes.TabIndex = 5;
+            this.buttonRefrescarExamenes.Text = "Refrescar";
+            this.buttonRefrescarExamenes.UseVisualStyleBackColor = true;
+            // 
             // InicioProfesor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(592, 317);
             this.Controls.Add(this.buttonCerrarSesion);
-            this.Controls.Add(this.fillByToolStrip);
             this.Controls.Add(this.tabControlProfesor);
+            this.Controls.Add(this.fillByToolStrip);
             this.Name = "InicioProfesor";
             this.Text = "Profesor inicio";
             this.fillByToolStrip.ResumeLayout(false);
             this.fillByToolStrip.PerformLayout();
+            this.tabPageExamenes.ResumeLayout(false);
             this.tabPageCursos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCursos)).EndInit();
             this.tabControlProfesor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamenes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,11 +223,15 @@
         private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.TabPage tabPageExamenes;
         private System.Windows.Forms.TabPage tabPageCursos;
-        private System.Windows.Forms.Button buttonPreguntas;
-        private System.Windows.Forms.Button buttonRefrescar;
+        private System.Windows.Forms.Button buttonPreguntasCurso;
+        private System.Windows.Forms.Button buttonRefrescarCursos;
         private System.Windows.Forms.Button buttonAgregarCurso;
         private System.Windows.Forms.DataGridView dataGridViewCursos;
         private System.Windows.Forms.TabControl tabControlProfesor;
         private System.Windows.Forms.Button buttonCerrarSesion;
+        private System.Windows.Forms.Button buttonAgregarExamen;
+        private System.Windows.Forms.DataGridView dataGridViewExamenes;
+        private System.Windows.Forms.Button buttonPreguntasExamen;
+        private System.Windows.Forms.Button buttonRefrescarExamenes;
     }
 }

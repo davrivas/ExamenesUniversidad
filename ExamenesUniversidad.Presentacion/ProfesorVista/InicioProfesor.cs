@@ -1,5 +1,6 @@
 ﻿using ExamenesUniversidad.Presentacion.DataSets;
 using ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista;
+using ExamenesUniversidad.Presentacion.ProfesorVista.ExamenesProfesorVista;
 using System;
 using System.Windows.Forms;
 
@@ -37,6 +38,11 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         private void ButtonPreguntas_Click(object sender, EventArgs e)
         {
             new VerPreguntasCurso().Show();
+        }
+
+        private void ButtonAgregarExamen_Click(object sender, EventArgs e)
+        {
+            new AgregarExamen().Show();
         }
     }
 }

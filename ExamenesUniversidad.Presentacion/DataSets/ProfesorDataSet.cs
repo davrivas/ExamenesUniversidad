@@ -1,6 +1,5 @@
-﻿using ExamenesUniversidad.Datos.DTOs;
+﻿using ExamenesUniversidad.Datos.DTOs.ProfesorDTOs;
 using ExamenesUniversidad.Logica.DAOs;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -13,6 +12,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
         {
             var cursoDAO = new CursoDAO();
             var query = cursoDAO.Listar()
+                .OrderBy(x => x.Nombre)
                 .Include(x => x.Examenes)
                 .Include(x => x.Preguntas)
                 .AsQueryable();
