@@ -25,7 +25,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 CantidadExamenes = x.Examenes.Count
             }).ToList();
 
-            return lista ?? new List<CursoProfesorDTO>();
+            return lista;
         }
 
         public static IList<PreguntaCursoDTO> ListarPreguntasCurso(string codigo)
@@ -49,7 +49,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 RespuestaCorrecta = x.RespuestaCorrecta
             }).ToList();
 
-            return lista ?? new List<PreguntaCursoDTO>();
+            return lista;
         }
     }
 }

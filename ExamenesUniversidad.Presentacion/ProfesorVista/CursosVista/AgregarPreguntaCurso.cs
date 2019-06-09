@@ -44,8 +44,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista
                         } while (_controlador.ExistePregunta(consecutivo));
 
                         _controlador.PreguntaNueva.Consecutivo = consecutivo;
-                        _controlador.PreguntaNueva.Curso = _controlador.ObtenerCurso(textBoxCodigoCurso.Text);
-                        _controlador.PreguntaNueva.CursoId = _controlador.PreguntaNueva.Curso.Id;
+                        _controlador.PreguntaNueva.CursoId = _controlador.ObtenerCurso(textBoxCodigoCurso.Text);
                         _controlador.PreguntaNueva.Enunciado = textBoxEnunciado.Text;
                         _controlador.PreguntaNueva.Respuesta1 = textBoxR1.Text;
                         _controlador.PreguntaNueva.Respuesta2 = textBoxR2.Text;

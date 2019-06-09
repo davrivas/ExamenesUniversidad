@@ -54,6 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSets\ProfesorDataSet.cs" />
+    <Compile Include="DataSets\TablasDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TablasDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="EstudianteVista\InicioEstudiante.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +124,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="DataSets\TablasDataSet.xsc">
+      <DependentUpon>TablasDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\TablasDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TablasDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSets\TablasDataSet.xss">
+      <DependentUpon>TablasDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

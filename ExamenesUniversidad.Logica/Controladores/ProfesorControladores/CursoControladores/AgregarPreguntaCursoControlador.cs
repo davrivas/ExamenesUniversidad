@@ -27,9 +27,9 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores.CursoCo
             return _cursoDAO.ExisteCurso(codigo);
         }
 
-        public Curso ObtenerCurso(string codigo)
+        public int ObtenerCurso(string codigo)
         {
-            return _cursoDAO.ObtenerPorCodigo(codigo);
+            return _cursoDAO.ObtenerIdPorCodigo(codigo);
         }
 
         public bool ExistePregunta(string codigo)
