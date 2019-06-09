@@ -13,11 +13,6 @@ namespace ExamenesUniversidad.Logica.DAOs
 
     public class CursoDAO : DAO<Curso>, ICursoDAO
     {
-        public override IQueryable<Curso> Listar()
-        {
-            return base.Listar().OrderBy(x => x.Nombre).AsQueryable();
-        }
-
         public bool ExisteCurso(string codigo)
         {
             try

@@ -26,7 +26,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         private void ButtonCerrarSesion_Click(object sender, EventArgs e)
         {
             Program.InicioForm.Show();
-            this.Close();
+            Close();
         }
 
         private void ButtonRefrescar_Click(object sender, EventArgs e)

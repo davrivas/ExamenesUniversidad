@@ -28,7 +28,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista
 
         private void ButtonAgregarPregunta_Click(object sender, EventArgs e)
         {
-
+            new AgregarPreguntaCurso().Show();
         }
     }
 }

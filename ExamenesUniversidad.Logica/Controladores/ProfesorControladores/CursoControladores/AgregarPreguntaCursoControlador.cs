@@ -13,13 +13,13 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores.CursoCo
         private readonly IPreguntaDAO _preguntaDAO;
         private readonly ICursoDAO _cursoDAO;
 
-        public Curso CursoNuevo { get; set; }
+        public Pregunta PreguntaNueva { get; set; }
 
         public AgregarPreguntaCursoControlador()
         {
             _preguntaDAO = new PreguntaDAO();
             _cursoDAO = new CursoDAO();
-            CursoNuevo = new Curso();
+            PreguntaNueva = new Pregunta();
         }
 
         public bool ExisteCurso(string codigo)
@@ -27,10 +27,20 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores.CursoCo
             return _cursoDAO.ExisteCurso(codigo);
         }
 
+        public Curso ObtenerCurso(string codigo)
+        {
+            return _cursoDAO.ObtenerPorCodigo(codigo);
+        }
+
+        public bool ExistePregunta(string codigo)
+        {
+            return _preguntaDAO.ExistePregunta(codigo);
+        }
+
         public void AgregarPregunta()
         {
-            _cursoDAO.Ingresar(CursoNuevo);
-            CursoNuevo = new Curso();
+            _preguntaDAO.Ingresar(PreguntaNueva);
+            PreguntaNueva = new Pregunta();
         }
     }
 }

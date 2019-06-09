@@ -41,7 +41,7 @@
             this.dataGridViewPreguntas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPreguntas.Location = new System.Drawing.Point(12, 51);
             this.dataGridViewPreguntas.Name = "dataGridViewPreguntas";
-            this.dataGridViewPreguntas.Size = new System.Drawing.Size(553, 220);
+            this.dataGridViewPreguntas.Size = new System.Drawing.Size(720, 278);
             this.dataGridViewPreguntas.TabIndex = 0;
             // 
             // label1
@@ -72,7 +72,7 @@
             // 
             // buttonAgregarPregunta
             // 
-            this.buttonAgregarPregunta.Location = new System.Drawing.Point(490, 13);
+            this.buttonAgregarPregunta.Location = new System.Drawing.Point(656, 13);
             this.buttonAgregarPregunta.Name = "buttonAgregarPregunta";
             this.buttonAgregarPregunta.Size = new System.Drawing.Size(75, 23);
             this.buttonAgregarPregunta.TabIndex = 4;
@@ -84,7 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(743, 343);
             this.Controls.Add(this.buttonAgregarPregunta);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.textBoxCodigo);

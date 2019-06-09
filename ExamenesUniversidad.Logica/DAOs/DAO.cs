@@ -56,8 +56,6 @@ namespace ExamenesUniversidad.Logica.DAOs
             }
         }
 
-
-
         public virtual void Eliminar(T obj)
         {
             try
