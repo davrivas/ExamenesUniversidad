@@ -108,6 +108,9 @@
     <EmbeddedResource Include="EstudianteVista\InicioEstudiante.resx">
       <DependentUpon>InicioEstudiante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EstudianteVista\RealizarExamen.resx">
+      <DependentUpon>RealizarExamen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>

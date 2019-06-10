@@ -19,6 +19,7 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
         {
             InitializeComponent();
             _controlador = controlador;
+            labelPreguntas.Text = _controlador.TextoPregunta;
         }
     }
 }

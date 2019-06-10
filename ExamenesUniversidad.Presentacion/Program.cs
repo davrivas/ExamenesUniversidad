@@ -17,11 +17,7 @@ namespace ExamenesUniversidad.Presentacion
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             InicioForm = new Inicio();
-            //Application.Run(InicioForm);
-            // temp
-            Logica.Utilidades.Sesion.EstudianteId = 2;
-            InicioEstudiante = new InicioEstudiante();
-            Application.Run(InicioEstudiante);
+            Application.Run(InicioForm);
         }
     }
 }
