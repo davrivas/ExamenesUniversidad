@@ -43,11 +43,20 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
         {
             if (!string.IsNullOrWhiteSpace(textBoxCodigoExamen.Text))
             {
-                if (_controlador.ExisteExamen(textBoxCodigoExamen.Text))
+                _controlador.BuscarExamen(textBoxCodigoExamen.Text);
+
+                if (_controlador.ExamenBuscado != null)
                 {
-                    var controlador = new RealizarExamenControlador(textBoxCodigoExamen.Text);
-                    var formulario = new RealizarExamen(controlador);
-                    formulario.Show();
+                    if (_controlador.ExamenBuscado.Abierto)
+                    {
+                        var controlador = new RealizarExamenControlador(textBoxCodigoExamen.Text);
+                        var formulario = new RealizarExamen(controlador);
+                        formulario.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"El examen está {textBoxCodigoExamen.Text} cerrado", "Error");
+                    }
                 }
                 else
                 {

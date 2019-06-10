@@ -1,4 +1,5 @@
-﻿using ExamenesUniversidad.Logica.DAOs;
+﻿using ExamenesUniversidad.Datos.Entidades;
+using ExamenesUniversidad.Logica.DAOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,14 +12,16 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
     {
         private readonly IExamenDAO _examenDAO;
 
+        public Examen ExamenBuscado { get; protected set; }
+
         public InicioEstudianteControlador()
         {
             _examenDAO = new ExamenDAO();
         }
 
-        public bool ExisteExamen(string codigo)
+        public void BuscarExamen(string codigo)
         {
-            return _examenDAO.ExisteExamen(codigo);
+            ExamenBuscado = _examenDAO.ObtenerPorCodigo(codigo);
         }
     }
 }

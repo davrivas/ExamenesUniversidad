@@ -2,6 +2,7 @@
 using ExamenesUniversidad.Logica.Utilidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,7 @@ namespace ExamenesUniversidad.Logica.DAOs
             {
                 var examen = Listar()
                     .Where(x => x.Codigo == codigo)
+                    .Include(x => x.ExamenPreguntas)
                     .FirstOrDefault();
 
                 return examen;
