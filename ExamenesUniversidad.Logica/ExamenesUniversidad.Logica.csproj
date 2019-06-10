@@ -56,7 +56,9 @@
     <Compile Include="DAOs\CursoDAO.cs" />
     <Compile Include="DAOs\DAO.cs" />
     <Compile Include="DAOs\EstudianteDAO.cs" />
+    <Compile Include="DAOs\EstudianteRespuestaDAO.cs" />
     <Compile Include="DAOs\ExamenDAO.cs" />
+    <Compile Include="DAOs\ExamenPreguntaDAO.cs" />
     <Compile Include="DAOs\PreguntaDAO.cs" />
     <Compile Include="DAOs\ProfesorDAO.cs" />
     <Compile Include="Extensiones\StringExtensiones.cs" />

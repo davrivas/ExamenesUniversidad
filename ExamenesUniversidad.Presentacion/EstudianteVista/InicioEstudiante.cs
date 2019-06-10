@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExamenesUniversidad.Presentacion.DataSets;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,23 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
         public InicioEstudiante()
         {
             InitializeComponent();
+            ActualizarExamenes();
+        }
+
+        private void ActualizarExamenes()
+        {
+            dataGridViewExamenes.DataSource = EstudianteDataSet.GetExamenes();
+        }
+
+        private void ButtonCerrarSesion_Click(object sender, EventArgs e)
+        {
+            Program.InicioForm.Show();
+            Close();
+        }
+
+        private void ButtonRefrescar_Click(object sender, EventArgs e)
+        {
+            ActualizarExamenes();
         }
     }
 }

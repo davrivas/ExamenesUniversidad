@@ -44,7 +44,8 @@ namespace ExamenesUniversidad.Presentacion
                             {
                                 BorrarTodosLosCampos();
                                 MessageBox.Show("Bienvenido estudiante");
-                                new InicioEstudiante().Show();
+                                Program.InicioEstudiante = new InicioEstudiante();
+                                Program.InicioEstudiante.Show();
                                 Program.InicioForm.Hide();
                             }
                             break;
