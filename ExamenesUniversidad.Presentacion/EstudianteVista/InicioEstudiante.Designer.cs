@@ -32,6 +32,8 @@
             this.dataGridViewExamenes = new System.Windows.Forms.DataGridView();
             this.buttonRealizarExamen = new System.Windows.Forms.Button();
             this.buttonRefrescar = new System.Windows.Forms.Button();
+            this.labelCodigoExamen = new System.Windows.Forms.Label();
+            this.textBoxCodigoExamen = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamenes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,28 +57,47 @@
             // 
             // buttonRealizarExamen
             // 
-            this.buttonRealizarExamen.Location = new System.Drawing.Point(12, 13);
+            this.buttonRealizarExamen.Location = new System.Drawing.Point(204, 11);
             this.buttonRealizarExamen.Name = "buttonRealizarExamen";
-            this.buttonRealizarExamen.Size = new System.Drawing.Size(75, 23);
+            this.buttonRealizarExamen.Size = new System.Drawing.Size(104, 23);
             this.buttonRealizarExamen.TabIndex = 2;
             this.buttonRealizarExamen.Text = "Realizar examen";
             this.buttonRealizarExamen.UseVisualStyleBackColor = true;
+            this.buttonRealizarExamen.Click += new System.EventHandler(this.ButtonRealizarExamen_Click);
             // 
             // buttonRefrescar
             // 
-            this.buttonRefrescar.Location = new System.Drawing.Point(93, 12);
+            this.buttonRefrescar.Location = new System.Drawing.Point(314, 11);
             this.buttonRefrescar.Name = "buttonRefrescar";
-            this.buttonRefrescar.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefrescar.Size = new System.Drawing.Size(98, 23);
             this.buttonRefrescar.TabIndex = 3;
-            this.buttonRefrescar.Text = "Refrescar";
+            this.buttonRefrescar.Text = "Refrescar lista";
             this.buttonRefrescar.UseVisualStyleBackColor = true;
             this.buttonRefrescar.Click += new System.EventHandler(this.ButtonRefrescar_Click);
+            // 
+            // labelCodigoExamen
+            // 
+            this.labelCodigoExamen.AutoSize = true;
+            this.labelCodigoExamen.Location = new System.Drawing.Point(12, 17);
+            this.labelCodigoExamen.Name = "labelCodigoExamen";
+            this.labelCodigoExamen.Size = new System.Drawing.Size(80, 13);
+            this.labelCodigoExamen.TabIndex = 4;
+            this.labelCodigoExamen.Text = "Código examen";
+            // 
+            // textBoxCodigoExamen
+            // 
+            this.textBoxCodigoExamen.Location = new System.Drawing.Point(98, 14);
+            this.textBoxCodigoExamen.Name = "textBoxCodigoExamen";
+            this.textBoxCodigoExamen.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCodigoExamen.TabIndex = 5;
             // 
             // InicioEstudiante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(695, 450);
+            this.Controls.Add(this.textBoxCodigoExamen);
+            this.Controls.Add(this.labelCodigoExamen);
             this.Controls.Add(this.buttonRefrescar);
             this.Controls.Add(this.buttonRealizarExamen);
             this.Controls.Add(this.dataGridViewExamenes);
@@ -85,6 +106,7 @@
             this.Text = "Estudiante inicio";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamenes)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -94,5 +116,7 @@
         private System.Windows.Forms.DataGridView dataGridViewExamenes;
         private System.Windows.Forms.Button buttonRealizarExamen;
         private System.Windows.Forms.Button buttonRefrescar;
+        private System.Windows.Forms.Label labelCodigoExamen;
+        private System.Windows.Forms.TextBox textBoxCodigoExamen;
     }
 }

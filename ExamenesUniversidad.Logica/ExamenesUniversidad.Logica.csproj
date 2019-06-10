@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controladores\EstudianteControladores\InicioEstudianteControlador.cs" />
+    <Compile Include="Controladores\EstudianteControladores\RealizarExamenControlador.cs" />
     <Compile Include="Controladores\InicioControlador.cs" />
     <Compile Include="Controladores\ProfesorControladores\CursoControladores\AgregarCursoControlador.cs" />
     <Compile Include="Controladores\ProfesorControladores\CursoControladores\AgregarPreguntaCursoControlador.cs" />

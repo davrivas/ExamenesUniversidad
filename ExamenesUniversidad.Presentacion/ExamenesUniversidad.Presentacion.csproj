@@ -61,6 +61,12 @@
     <Compile Include="EstudianteVista\InicioEstudiante.Designer.cs">
       <DependentUpon>InicioEstudiante.cs</DependentUpon>
     </Compile>
+    <Compile Include="EstudianteVista\RealizarExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EstudianteVista\RealizarExamen.Designer.cs">
+      <DependentUpon>RealizarExamen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
