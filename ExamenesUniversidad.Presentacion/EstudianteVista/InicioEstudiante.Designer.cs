@@ -52,7 +52,7 @@
             this.dataGridViewExamenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewExamenes.Location = new System.Drawing.Point(12, 42);
             this.dataGridViewExamenes.Name = "dataGridViewExamenes";
-            this.dataGridViewExamenes.Size = new System.Drawing.Size(671, 150);
+            this.dataGridViewExamenes.Size = new System.Drawing.Size(671, 258);
             this.dataGridViewExamenes.TabIndex = 1;
             // 
             // buttonRealizarExamen

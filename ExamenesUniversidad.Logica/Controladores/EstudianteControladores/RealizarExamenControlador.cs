@@ -18,7 +18,6 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
         {
             _examenDAO = new ExamenDAO();
             ExamenSeleccionado = _examenDAO.ObtenerPorCodigo(codigo);
-
         }
     }
 }
