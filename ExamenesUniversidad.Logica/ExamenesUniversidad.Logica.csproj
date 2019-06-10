@@ -52,6 +52,7 @@
     <Compile Include="Controladores\InicioControlador.cs" />
     <Compile Include="Controladores\ProfesorControladores\CursoControladores\AgregarCursoControlador.cs" />
     <Compile Include="Controladores\ProfesorControladores\CursoControladores\AgregarPreguntaCursoControlador.cs" />
+    <Compile Include="Controladores\ProfesorControladores\ExamenesProfesorControladores\AgregarExamenControlador.cs" />
     <Compile Include="DAOs\CursoDAO.cs" />
     <Compile Include="DAOs\DAO.cs" />
     <Compile Include="DAOs\EstudianteDAO.cs" />

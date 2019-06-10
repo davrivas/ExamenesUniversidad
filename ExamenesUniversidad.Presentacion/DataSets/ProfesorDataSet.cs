@@ -1,5 +1,7 @@
 ﻿using ExamenesUniversidad.Datos.DTOs.ProfesorDTOs;
 using ExamenesUniversidad.Logica.DAOs;
+using ExamenesUniversidad.Logica.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -53,25 +55,27 @@ namespace ExamenesUniversidad.Presentacion.DataSets
 
         public static IList<ExamenProfesorDTO> ListarExamenes()
         {
-            var query = new ExamenDAO()
+            var lista = new ExamenDAO()
                 .Listar()
+                .Where(x => x.ProfesorId == Sesion.ProfesorId)
                 .OrderBy(x => x.Abierto)
                 .ThenByDescending(x => x.FechaInicio)
                 .ThenByDescending(x => x.FechaFin)
                 .Include(x => x.Profesor)
                 .Include(x => x.Curso)
-                .Include(x => x.ExamenPreguntas);
-
-            var lista = query.Select(x => new ExamenProfesorDTO
-            {
-                Codigo = x.Codigo,
-                NumeroPreguntas = x.ExamenPreguntas.Count,
-                Abierto = x.Abierto ? "Sí" : "No",
-                FechaInicio = x.FechaInicio.ToString("yyyy/MM/dd HH:mm"),
-                FechaFin = x.FechaFin.ToString("yyyy/MM/dd HH:mm"),
-                NombreCurso = x.Curso.Nombre,
-                NombreProfesor = $"{x.Profesor.Nombres} {x.Profesor.Apellidos}"
-            }).ToList();
+                .Include(x => x.ExamenPreguntas)
+                .ToList()
+                .Select(x => new ExamenProfesorDTO
+                {
+                    Codigo = x.Codigo,
+                    NumeroPreguntas = x.ExamenPreguntas.Count,
+                    Abierto = x.Abierto ? "Sí" : "No",
+                    FechaInicio = x.FechaInicio.ToString("yyyy/MM/dd HH:mm"),
+                    FechaFin = x.FechaFin.ToString("yyyy/MM/dd HH:mm"),
+                    CodigoCurso = x.Curso.Codigo,
+                    NombreCurso = x.Curso.Nombre,
+                    NombreProfesor = $"{x.Profesor.Nombres} {x.Profesor.Apellidos}"
+                }).ToList();
 
             return lista;
         }
