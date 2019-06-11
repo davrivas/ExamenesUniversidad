@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores.CursoControladores
+namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
 {
     public class AgregarCursoControlador
     {

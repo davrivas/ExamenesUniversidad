@@ -1,7 +1,7 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
 using ExamenesUniversidad.Logica.DAOs;
 
-namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores.CursoControladores
+namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
 {
     public class AgregarPreguntaCursoControlador
     {

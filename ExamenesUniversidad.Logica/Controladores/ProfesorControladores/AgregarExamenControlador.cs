@@ -3,7 +3,7 @@ using ExamenesUniversidad.Datos.Entidades;
 using ExamenesUniversidad.Logica.DAOs;
 using System.Collections.Generic;
 
-namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores.ExamenesProfesorControladores
+namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
 {
     public class AgregarExamenControlador
     {

@@ -1,4 +1,4 @@
-﻿using ExamenesUniversidad.Logica.Controladores.ProfesorControladores.ExamenesProfesorControladores;
+﻿using ExamenesUniversidad.Logica.Controladores.ProfesorControladores;
 using ExamenesUniversidad.Presentacion.DataSets;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExamenesUniversidad.Presentacion.ProfesorVista.ExamenesProfesorVista
+namespace ExamenesUniversidad.Presentacion.ProfesorVista
 {
     public partial class AgregarExamen : Form
     {

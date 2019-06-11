@@ -1,4 +1,4 @@
-﻿using ExamenesUniversidad.Logica.Controladores.ProfesorControladores.CursoControladores;
+﻿using ExamenesUniversidad.Logica.Controladores.ProfesorControladores;
 using ExamenesUniversidad.Logica.Utilidades;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista
+namespace ExamenesUniversidad.Presentacion.ProfesorVista
 {
     public partial class AgregarCurso : Form
     {

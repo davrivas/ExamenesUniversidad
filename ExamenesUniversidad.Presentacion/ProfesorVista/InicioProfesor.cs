@@ -1,6 +1,4 @@
 ﻿using ExamenesUniversidad.Presentacion.DataSets;
-using ExamenesUniversidad.Presentacion.ProfesorVista.CursosVista;
-using ExamenesUniversidad.Presentacion.ProfesorVista.ExamenesProfesorVista;
 using System;
 using System.Windows.Forms;
 
