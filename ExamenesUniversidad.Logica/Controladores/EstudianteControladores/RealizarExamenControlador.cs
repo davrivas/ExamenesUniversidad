@@ -31,8 +31,6 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
             foreach (var pregunta in ExamenSeleccionado.ExamenPreguntas.OrderBy(x => x.NumeroPregunta))
             {
                 textoPregunta += $"Pregunta {pregunta.NumeroPregunta.ToString()}\n";
-
-                pregunta.Pregunta = _preguntaDAO.BuscarPorId(pregunta.PreguntaId);
                 textoPregunta += $"{pregunta.Pregunta.Enunciado}\n";
                 textoPregunta += $"1. {pregunta.Pregunta.Respuesta1}\n";
                 textoPregunta += $"2. {pregunta.Pregunta.Respuesta2}\n";

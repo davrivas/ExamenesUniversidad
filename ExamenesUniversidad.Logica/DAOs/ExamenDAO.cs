@@ -1,11 +1,8 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
 using ExamenesUniversidad.Logica.Utilidades;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExamenesUniversidad.Logica.DAOs
 {
@@ -18,6 +15,13 @@ namespace ExamenesUniversidad.Logica.DAOs
 
     public class ExamenDAO : DAO<Examen>, IExamenDAO
     {
+        private IPreguntaDAO _preguntaDAO;
+
+        public ExamenDAO() : base()
+        {
+            _preguntaDAO = new PreguntaDAO();
+        }
+
         public bool ExisteExamen(string codigo)
         {
             try
@@ -62,6 +66,7 @@ namespace ExamenesUniversidad.Logica.DAOs
                     .Where(x => x.Codigo == codigo)
                     .Include(x => x.ExamenPreguntas)
                     .FirstOrDefault();
+                examen.ExamenPreguntas.ToList().ForEach(x => x.Pregunta = _preguntaDAO.BuscarPorId(x.PreguntaId));
 
                 return examen;
             }
