@@ -22,7 +22,7 @@ namespace ExamenesUniversidad.Presentacion
             if (!string.IsNullOrWhiteSpace(textBoxUsuario.Text)
                 && !string.IsNullOrWhiteSpace(textBoxClave.Text))
             {
-                if (comboBoxRol.Text != "Seleccione rol")
+                if (comboBoxRol.Text == "Profesor" || comboBoxRol.Text == "Estudiante")
                 {
                     _controlador.Usuario = textBoxUsuario.Text;
                     _controlador.Clave = textBoxClave.Text.GenerarMD5();

@@ -25,7 +25,11 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
                 && !string.IsNullOrWhiteSpace(textBoxR4.Text)
                 && !string.IsNullOrWhiteSpace(textBoxR5.Text))
             {
-                if (comboBoxRespuestaCorrecta.Text != "Seleccione respuesta correcta")
+                if (comboBoxRespuestaCorrecta.Text == "1"
+                    || comboBoxRespuestaCorrecta.Text == "2"
+                    || comboBoxRespuestaCorrecta.Text == "3"
+                    || comboBoxRespuestaCorrecta.Text == "4"
+                    || comboBoxRespuestaCorrecta.Text == "5")
                 {
                     if (_controlador.ExisteCurso(textBoxCodigoCurso.Text))
                     {

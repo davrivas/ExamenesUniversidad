@@ -21,17 +21,18 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             InitializeComponent();
             _controlador = new AgregarExamenControlador();
+            dateTimePicker1.MinDate = DateTime.Now;
         }
 
         private void ButtonBuscar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(textBoxCodigoCurso.Text))
-            {
-                _controlador.EncontrarCurso(textBoxCodigoCurso.Text);
-                _cantidadPreguntas = _controlador.CursoAsociado.Preguntas.Count;
-                _controlador.PreguntasCurso = ProfesorDataSet.ListarPreguntasCurso(textBoxCodigoCurso.Text);
-                dataGridViewCursoPreguntas.DataSource = _controlador.PreguntasCurso;
-            }
+            //if (!string.IsNullOrWhiteSpace(textBoxCodigoCurso.Text))
+            //{
+            //    _controlador.EncontrarCurso(textBoxCodigoCurso.Text);
+            //    _cantidadPreguntas = _controlador.CursoAsociado.Preguntas.Count;
+            //    _controlador.PreguntasCurso = ProfesorDataSet.ListarPreguntasCurso(textBoxCodigoCurso.Text);
+            //    dataGridViewCursoPreguntas.DataSource = _controlador.PreguntasCurso;
+            //}
         }
     }
 }
