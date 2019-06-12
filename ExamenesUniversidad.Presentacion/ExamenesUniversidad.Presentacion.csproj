@@ -85,23 +85,23 @@
     <Compile Include="ProfesorVista\AgregarPreguntaCurso.Designer.cs">
       <DependentUpon>AgregarPreguntaCurso.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProfesorVista\AgregarExamen.cs">
+    <Compile Include="ProfesorVista\CrearExamenVacio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProfesorVista\AgregarExamen.Designer.cs">
-      <DependentUpon>AgregarExamen.cs</DependentUpon>
+    <Compile Include="ProfesorVista\CrearExamenVacio.Designer.cs">
+      <DependentUpon>CrearExamenVacio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProfesorVista\GenerarExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfesorVista\GenerarExamen.Designer.cs">
+      <DependentUpon>GenerarExamen.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfesorVista\InicioProfesor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProfesorVista\InicioProfesor.Designer.cs">
       <DependentUpon>InicioProfesor.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProfesorVista\VerPreguntasExamen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProfesorVista\VerPreguntasExamen.Designer.cs">
-      <DependentUpon>VerPreguntasExamen.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfesorVista\VerPreguntasCurso.cs">
       <SubType>Form</SubType>
@@ -126,14 +126,14 @@
     <EmbeddedResource Include="ProfesorVista\AgregarPreguntaCurso.resx">
       <DependentUpon>AgregarPreguntaCurso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProfesorVista\AgregarExamen.resx">
-      <DependentUpon>AgregarExamen.cs</DependentUpon>
+    <EmbeddedResource Include="ProfesorVista\CrearExamenVacio.resx">
+      <DependentUpon>CrearExamenVacio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfesorVista\GenerarExamen.resx">
+      <DependentUpon>GenerarExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfesorVista\InicioProfesor.resx">
       <DependentUpon>InicioProfesor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProfesorVista\VerPreguntasExamen.resx">
-      <DependentUpon>VerPreguntasExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfesorVista\VerPreguntasCurso.resx">
       <DependentUpon>VerPreguntasCurso.cs</DependentUpon>

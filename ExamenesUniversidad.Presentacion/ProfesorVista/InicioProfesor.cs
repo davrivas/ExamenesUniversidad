@@ -46,7 +46,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
         private void ButtonAgregarExamen_Click(object sender, EventArgs e)
         {
-            new AgregarExamen().Show();
+            new CrearExamenVacio().Show();
         }
 
         private void ButtonRefrescarExamenes_Click(object sender, EventArgs e)
@@ -54,9 +54,19 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
             ActualizarExamenes();
         }
 
-        private void ButtonPreguntasExamen_Click(object sender, EventArgs e)
+        private void ButtonCalificaciones_Click(object sender, EventArgs e)
         {
-            new VerPreguntasExamen().Show();
+            // formulario calificaciones
+        }
+
+        private void ButtonGenerarExamen_Click(object sender, EventArgs e)
+        {
+            new GenerarExamen().Show();
+        }
+
+        private void ButtonAgregarPregunta_Click(object sender, EventArgs e)
+        {
+            // agregar pregunta
         }
     }
 }

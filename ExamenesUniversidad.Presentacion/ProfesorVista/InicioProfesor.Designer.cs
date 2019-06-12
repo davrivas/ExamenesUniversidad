@@ -31,9 +31,8 @@
             this.tabPageExamenes = new System.Windows.Forms.TabPage();
             this.buttonCalificaciones = new System.Windows.Forms.Button();
             this.buttonRefrescarExamenes = new System.Windows.Forms.Button();
-            this.buttonPreguntasExamen = new System.Windows.Forms.Button();
             this.dataGridViewExamenes = new System.Windows.Forms.DataGridView();
-            this.buttonAgregarExamen = new System.Windows.Forms.Button();
+            this.buttonCrearExamenVacio = new System.Windows.Forms.Button();
             this.tabPageCursos = new System.Windows.Forms.TabPage();
             this.buttonPreguntasCurso = new System.Windows.Forms.Button();
             this.buttonRefrescarCursos = new System.Windows.Forms.Button();
@@ -41,6 +40,8 @@
             this.dataGridViewCursos = new System.Windows.Forms.DataGridView();
             this.tabControlProfesor = new System.Windows.Forms.TabControl();
             this.buttonCerrarSesion = new System.Windows.Forms.Button();
+            this.buttonAgregarPregunta = new System.Windows.Forms.Button();
+            this.buttonGenerarExamen = new System.Windows.Forms.Button();
             this.tabPageExamenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamenes)).BeginInit();
             this.tabPageCursos.SuspendLayout();
@@ -50,11 +51,12 @@
             // 
             // tabPageExamenes
             // 
+            this.tabPageExamenes.Controls.Add(this.buttonGenerarExamen);
+            this.tabPageExamenes.Controls.Add(this.buttonAgregarPregunta);
             this.tabPageExamenes.Controls.Add(this.buttonCalificaciones);
             this.tabPageExamenes.Controls.Add(this.buttonRefrescarExamenes);
-            this.tabPageExamenes.Controls.Add(this.buttonPreguntasExamen);
             this.tabPageExamenes.Controls.Add(this.dataGridViewExamenes);
-            this.tabPageExamenes.Controls.Add(this.buttonAgregarExamen);
+            this.tabPageExamenes.Controls.Add(this.buttonCrearExamenVacio);
             this.tabPageExamenes.Location = new System.Drawing.Point(4, 22);
             this.tabPageExamenes.Name = "tabPageExamenes";
             this.tabPageExamenes.Padding = new System.Windows.Forms.Padding(3);
@@ -65,32 +67,23 @@
             // 
             // buttonCalificaciones
             // 
-            this.buttonCalificaciones.Location = new System.Drawing.Point(181, 6);
+            this.buttonCalificaciones.Location = new System.Drawing.Point(367, 6);
             this.buttonCalificaciones.Name = "buttonCalificaciones";
             this.buttonCalificaciones.Size = new System.Drawing.Size(99, 23);
             this.buttonCalificaciones.TabIndex = 6;
             this.buttonCalificaciones.Text = "Ver calificaciones";
             this.buttonCalificaciones.UseVisualStyleBackColor = true;
+            this.buttonCalificaciones.Click += new System.EventHandler(this.ButtonCalificaciones_Click);
             // 
             // buttonRefrescarExamenes
             // 
-            this.buttonRefrescarExamenes.Location = new System.Drawing.Point(286, 6);
+            this.buttonRefrescarExamenes.Location = new System.Drawing.Point(472, 6);
             this.buttonRefrescarExamenes.Name = "buttonRefrescarExamenes";
             this.buttonRefrescarExamenes.Size = new System.Drawing.Size(75, 23);
             this.buttonRefrescarExamenes.TabIndex = 5;
             this.buttonRefrescarExamenes.Text = "Refrescar";
             this.buttonRefrescarExamenes.UseVisualStyleBackColor = true;
             this.buttonRefrescarExamenes.Click += new System.EventHandler(this.ButtonRefrescarExamenes_Click);
-            // 
-            // buttonPreguntasExamen
-            // 
-            this.buttonPreguntasExamen.Location = new System.Drawing.Point(87, 6);
-            this.buttonPreguntasExamen.Name = "buttonPreguntasExamen";
-            this.buttonPreguntasExamen.Size = new System.Drawing.Size(88, 23);
-            this.buttonPreguntasExamen.TabIndex = 4;
-            this.buttonPreguntasExamen.Text = "Ver preguntas";
-            this.buttonPreguntasExamen.UseVisualStyleBackColor = true;
-            this.buttonPreguntasExamen.Click += new System.EventHandler(this.ButtonPreguntasExamen_Click);
             // 
             // dataGridViewExamenes
             // 
@@ -103,15 +96,15 @@
             this.dataGridViewExamenes.Size = new System.Drawing.Size(553, 205);
             this.dataGridViewExamenes.TabIndex = 3;
             // 
-            // buttonAgregarExamen
+            // buttonCrearExamenVacio
             // 
-            this.buttonAgregarExamen.Location = new System.Drawing.Point(6, 6);
-            this.buttonAgregarExamen.Name = "buttonAgregarExamen";
-            this.buttonAgregarExamen.Size = new System.Drawing.Size(75, 23);
-            this.buttonAgregarExamen.TabIndex = 2;
-            this.buttonAgregarExamen.Text = "Agregar";
-            this.buttonAgregarExamen.UseVisualStyleBackColor = true;
-            this.buttonAgregarExamen.Click += new System.EventHandler(this.ButtonAgregarExamen_Click);
+            this.buttonCrearExamenVacio.Location = new System.Drawing.Point(6, 6);
+            this.buttonCrearExamenVacio.Name = "buttonCrearExamenVacio";
+            this.buttonCrearExamenVacio.Size = new System.Drawing.Size(117, 23);
+            this.buttonCrearExamenVacio.TabIndex = 2;
+            this.buttonCrearExamenVacio.Text = "Crear examen vacio";
+            this.buttonCrearExamenVacio.UseVisualStyleBackColor = true;
+            this.buttonCrearExamenVacio.Click += new System.EventHandler(this.ButtonAgregarExamen_Click);
             // 
             // tabPageCursos
             // 
@@ -188,6 +181,26 @@
             this.buttonCerrarSesion.UseVisualStyleBackColor = true;
             this.buttonCerrarSesion.Click += new System.EventHandler(this.ButtonCerrarSesion_Click);
             // 
+            // buttonAgregarPregunta
+            // 
+            this.buttonAgregarPregunta.Location = new System.Drawing.Point(129, 6);
+            this.buttonAgregarPregunta.Name = "buttonAgregarPregunta";
+            this.buttonAgregarPregunta.Size = new System.Drawing.Size(108, 23);
+            this.buttonAgregarPregunta.TabIndex = 7;
+            this.buttonAgregarPregunta.Text = "Agregar pregunta";
+            this.buttonAgregarPregunta.UseVisualStyleBackColor = true;
+            this.buttonAgregarPregunta.Click += new System.EventHandler(this.ButtonAgregarPregunta_Click);
+            // 
+            // buttonGenerarExamen
+            // 
+            this.buttonGenerarExamen.Location = new System.Drawing.Point(243, 6);
+            this.buttonGenerarExamen.Name = "buttonGenerarExamen";
+            this.buttonGenerarExamen.Size = new System.Drawing.Size(118, 23);
+            this.buttonGenerarExamen.TabIndex = 8;
+            this.buttonGenerarExamen.Text = "Generar examen";
+            this.buttonGenerarExamen.UseVisualStyleBackColor = true;
+            this.buttonGenerarExamen.Click += new System.EventHandler(this.ButtonGenerarExamen_Click);
+            // 
             // InicioProfesor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,10 +228,11 @@
         private System.Windows.Forms.DataGridView dataGridViewCursos;
         private System.Windows.Forms.TabControl tabControlProfesor;
         private System.Windows.Forms.Button buttonCerrarSesion;
-        private System.Windows.Forms.Button buttonAgregarExamen;
+        private System.Windows.Forms.Button buttonCrearExamenVacio;
         private System.Windows.Forms.DataGridView dataGridViewExamenes;
-        private System.Windows.Forms.Button buttonPreguntasExamen;
         private System.Windows.Forms.Button buttonRefrescarExamenes;
         private System.Windows.Forms.Button buttonCalificaciones;
+        private System.Windows.Forms.Button buttonGenerarExamen;
+        private System.Windows.Forms.Button buttonAgregarPregunta;
     }
 }
