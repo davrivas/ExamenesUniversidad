@@ -21,18 +21,59 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             InitializeComponent();
             _controlador = new AgregarExamenControlador();
-            dateTimePicker1.MinDate = DateTime.Now;
+            _cantidadPreguntas = 0;
+            labelCantidadPreguntas.Text = "";
+            dateTimePickerInicio.MinDate = DateTime.Now;
+            dateTimePickerFin.MinDate = DateTime.Now;
         }
 
         private void ButtonBuscar_Click(object sender, EventArgs e)
         {
-            //if (!string.IsNullOrWhiteSpace(textBoxCodigoCurso.Text))
-            //{
-            //    _controlador.EncontrarCurso(textBoxCodigoCurso.Text);
-            //    _cantidadPreguntas = _controlador.CursoAsociado.Preguntas.Count;
-            //    _controlador.PreguntasCurso = ProfesorDataSet.ListarPreguntasCurso(textBoxCodigoCurso.Text);
-            //    dataGridViewCursoPreguntas.DataSource = _controlador.PreguntasCurso;
-            //}
+            if (!string.IsNullOrWhiteSpace(textBoxCodigoCurso.Text))
+            {
+                _controlador.EncontrarCurso(textBoxCodigoCurso.Text);
+
+                if (_controlador.CursoAsociado != null)
+                {
+                    if (!buttonGenerarEscoger.Enabled && !buttonGenerarAlAzar.Enabled)
+                    {
+                        buttonGenerarEscoger.Enabled = true;
+                        buttonGenerarAlAzar.Enabled = true;
+                    }
+
+                    _cantidadPreguntas = _controlador.CursoAsociado.Preguntas.Count;
+                    labelCantidadPreguntas.Text = $"Cantidad máxima de preguntas ({_cantidadPreguntas.ToString()})";
+                    _controlador.PreguntasCurso = ProfesorDataSet.ListarPreguntasCurso(textBoxCodigoCurso.Text);
+                    dataGridViewCursoPreguntas.DataSource = _controlador.PreguntasCurso;
+                    ((ListBox)checkedListBoxPreguntas).DataSource = _controlador.PreguntasCurso;
+                    ((ListBox)checkedListBoxPreguntas).ValueMember = "Consecutivo";
+                    ((ListBox)checkedListBoxPreguntas).DisplayMember = "Enunciado";
+                }
+                else
+                {
+                    MessageBox.Show($"El curso {textBoxCodigoCurso.Text} no existe", "Error");
+                    ReiniciarCampos();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe digitar el código del curso", "Error");
+                ReiniciarCampos();
+            }
+        }
+
+        private void ReiniciarCampos()
+        {
+            if (buttonGenerarEscoger.Enabled && buttonGenerarAlAzar.Enabled)
+            {
+                buttonGenerarEscoger.Enabled = false;
+                buttonGenerarAlAzar.Enabled = false;
+                labelCantidadPreguntas.Text = "";
+                dataGridViewCursoPreguntas.DataSource = new object[0];
+                ((ListBox)checkedListBoxPreguntas).DataSource = new object[0];
+                ((ListBox)checkedListBoxPreguntas).ValueMember = "";
+                ((ListBox)checkedListBoxPreguntas).DisplayMember = "";
+            }
         }
     }
 }

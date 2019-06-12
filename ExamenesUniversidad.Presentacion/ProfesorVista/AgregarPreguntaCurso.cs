@@ -51,7 +51,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
                         _controlador.PreguntaNueva.RespuestaCorrecta = Convert.ToInt32(comboBoxRespuestaCorrecta.Text);
 
                         _controlador.AgregarPregunta();
-                        MessageBox.Show($"Pregunta agregada con éxito");
+                        MessageBox.Show($"Pregunta \"{textBoxEnunciado.Text}\" agregada con éxito");
                         Close();
                     }
                     else
