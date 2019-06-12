@@ -97,6 +97,12 @@
     <Compile Include="ProfesorVista\InicioProfesor.Designer.cs">
       <DependentUpon>InicioProfesor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfesorVista\VerPreguntasExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfesorVista\VerPreguntasExamen.Designer.cs">
+      <DependentUpon>VerPreguntasExamen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProfesorVista\VerPreguntasCurso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProfesorVista\InicioProfesor.resx">
       <DependentUpon>InicioProfesor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfesorVista\VerPreguntasExamen.resx">
+      <DependentUpon>VerPreguntasExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfesorVista\VerPreguntasCurso.resx">
       <DependentUpon>VerPreguntasCurso.cs</DependentUpon>

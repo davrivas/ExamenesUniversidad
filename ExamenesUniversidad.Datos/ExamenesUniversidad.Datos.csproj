@@ -55,6 +55,7 @@
     <Compile Include="DTOs\ProfesorDTOs\CursoProfesorDTO.cs" />
     <Compile Include="DTOs\ProfesorDTOs\ExamenProfesorDTO.cs" />
     <Compile Include="DTOs\ProfesorDTOs\PreguntaCursoDTO.cs" />
+    <Compile Include="DTOs\ProfesorDTOs\PreguntaExamenDTO.cs" />
     <Compile Include="Entidades\Curso.cs" />
     <Compile Include="Entidades\EntidadBase.cs" />
     <Compile Include="Entidades\Estudiante.cs" />

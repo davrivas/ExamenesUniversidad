@@ -53,5 +53,10 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             ActualizarExamenes();
         }
+
+        private void ButtonPreguntasExamen_Click(object sender, EventArgs e)
+        {
+            new VerPreguntasExamen().Show();
+        }
     }
 }

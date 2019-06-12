@@ -53,6 +53,35 @@ namespace ExamenesUniversidad.Presentacion.DataSets
             return lista;
         }
 
+        public static IList<PreguntaExamenDTO> ListarPreguntasExamen(string codigo)
+        {
+            var examenId = new ExamenDAO().ObtenerIdPorCodigo(codigo);
+
+            var query = new ExamenPreguntaDAO()
+                .Listar()
+                .Include(x => x.Pregunta)
+                .Include(x => x.Examen)
+                .Include(x => x.Examen.Curso)
+                .Where(x => x.ExamenId == examenId)
+                .OrderBy(x => x.NumeroPregunta);
+
+            var lista = query.Select(x => new PreguntaExamenDTO
+            {
+                NombreCurso = x.Examen.Curso.Nombre,
+                NumeroPregunta = x.NumeroPregunta,
+                Consecutivo = x.Pregunta.Consecutivo,
+                Enunciado = x.Pregunta.Enunciado,
+                Respuesta1 = x.Pregunta.Respuesta1,
+                Respuesta2 = x.Pregunta.Respuesta2,
+                Respuesta3 = x.Pregunta.Respuesta3,
+                Respuesta4 = x.Pregunta.Respuesta4,
+                Respuesta5 = x.Pregunta.Respuesta5,
+                RespuestaCorrecta = x.Pregunta.RespuestaCorrecta
+            }).ToList();
+
+            return lista;
+        }
+
         public static IList<ExamenProfesorDTO> ListarExamenes()
         {
             var lista = new ExamenDAO()

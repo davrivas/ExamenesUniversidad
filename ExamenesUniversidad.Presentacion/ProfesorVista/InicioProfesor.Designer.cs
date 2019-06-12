@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.fillByToolStrip = new System.Windows.Forms.ToolStrip();
-            this.fillByToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.tabPageExamenes = new System.Windows.Forms.TabPage();
+            this.buttonCalificaciones = new System.Windows.Forms.Button();
             this.buttonRefrescarExamenes = new System.Windows.Forms.Button();
             this.buttonPreguntasExamen = new System.Windows.Forms.Button();
             this.dataGridViewExamenes = new System.Windows.Forms.DataGridView();
@@ -42,32 +41,12 @@
             this.dataGridViewCursos = new System.Windows.Forms.DataGridView();
             this.tabControlProfesor = new System.Windows.Forms.TabControl();
             this.buttonCerrarSesion = new System.Windows.Forms.Button();
-            this.buttonCalificaciones = new System.Windows.Forms.Button();
-            this.fillByToolStrip.SuspendLayout();
             this.tabPageExamenes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamenes)).BeginInit();
             this.tabPageCursos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCursos)).BeginInit();
             this.tabControlProfesor.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // fillByToolStrip
-            // 
-            this.fillByToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fillByToolStripButton});
-            this.fillByToolStrip.Location = new System.Drawing.Point(0, 0);
-            this.fillByToolStrip.Name = "fillByToolStrip";
-            this.fillByToolStrip.Size = new System.Drawing.Size(800, 25);
-            this.fillByToolStrip.TabIndex = 1;
-            this.fillByToolStrip.Text = "fillByToolStrip";
-            this.fillByToolStrip.Visible = false;
-            // 
-            // fillByToolStripButton
-            // 
-            this.fillByToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByToolStripButton.Name = "fillByToolStripButton";
-            this.fillByToolStripButton.Size = new System.Drawing.Size(39, 22);
-            this.fillByToolStripButton.Text = "FillBy";
             // 
             // tabPageExamenes
             // 
@@ -83,6 +62,15 @@
             this.tabPageExamenes.TabIndex = 3;
             this.tabPageExamenes.Text = "Examenes";
             this.tabPageExamenes.UseVisualStyleBackColor = true;
+            // 
+            // buttonCalificaciones
+            // 
+            this.buttonCalificaciones.Location = new System.Drawing.Point(181, 6);
+            this.buttonCalificaciones.Name = "buttonCalificaciones";
+            this.buttonCalificaciones.Size = new System.Drawing.Size(99, 23);
+            this.buttonCalificaciones.TabIndex = 6;
+            this.buttonCalificaciones.Text = "Ver calificaciones";
+            this.buttonCalificaciones.UseVisualStyleBackColor = true;
             // 
             // buttonRefrescarExamenes
             // 
@@ -102,6 +90,7 @@
             this.buttonPreguntasExamen.TabIndex = 4;
             this.buttonPreguntasExamen.Text = "Ver preguntas";
             this.buttonPreguntasExamen.UseVisualStyleBackColor = true;
+            this.buttonPreguntasExamen.Click += new System.EventHandler(this.ButtonPreguntasExamen_Click);
             // 
             // dataGridViewExamenes
             // 
@@ -199,15 +188,6 @@
             this.buttonCerrarSesion.UseVisualStyleBackColor = true;
             this.buttonCerrarSesion.Click += new System.EventHandler(this.ButtonCerrarSesion_Click);
             // 
-            // buttonCalificaciones
-            // 
-            this.buttonCalificaciones.Location = new System.Drawing.Point(181, 6);
-            this.buttonCalificaciones.Name = "buttonCalificaciones";
-            this.buttonCalificaciones.Size = new System.Drawing.Size(99, 23);
-            this.buttonCalificaciones.TabIndex = 6;
-            this.buttonCalificaciones.Text = "Ver calificaciones";
-            this.buttonCalificaciones.UseVisualStyleBackColor = true;
-            // 
             // InicioProfesor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,24 +195,18 @@
             this.ClientSize = new System.Drawing.Size(592, 317);
             this.Controls.Add(this.buttonCerrarSesion);
             this.Controls.Add(this.tabControlProfesor);
-            this.Controls.Add(this.fillByToolStrip);
             this.Name = "InicioProfesor";
             this.Text = "Profesor inicio";
-            this.fillByToolStrip.ResumeLayout(false);
-            this.fillByToolStrip.PerformLayout();
             this.tabPageExamenes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamenes)).EndInit();
             this.tabPageCursos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCursos)).EndInit();
             this.tabControlProfesor.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ToolStrip fillByToolStrip;
-        private System.Windows.Forms.ToolStripButton fillByToolStripButton;
         private System.Windows.Forms.TabPage tabPageExamenes;
         private System.Windows.Forms.TabPage tabPageCursos;
         private System.Windows.Forms.Button buttonPreguntasCurso;
