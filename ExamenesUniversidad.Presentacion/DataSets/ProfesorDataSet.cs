@@ -53,30 +53,26 @@ namespace ExamenesUniversidad.Presentacion.DataSets
             return lista;
         }
 
-        public static IList<PreguntaExamenDTO> ListarPreguntasExamen(string codigo)
+        public static IList<PreguntaCursoDTO> ListarPreguntasCursoPorExamen(string codigoExamen)
         {
-            var examenId = new ExamenDAO().ObtenerIdPorCodigo(codigo);
+            int cursoId = new ExamenDAO().ObtenerIdCursoPorCodigo(codigoExamen);
 
-            var query = new ExamenPreguntaDAO()
+            var query = new PreguntaDAO()
                 .Listar()
-                .Include(x => x.Pregunta)
-                .Include(x => x.Examen)
-                .Include(x => x.Examen.Curso)
-                .Where(x => x.ExamenId == examenId)
-                .OrderBy(x => x.NumeroPregunta);
+                .Include(x => x.Curso)
+                .Where(x => x.Curso.Id == cursoId);
 
-            var lista = query.Select(x => new PreguntaExamenDTO
+            var lista = query.Select(x => new PreguntaCursoDTO
             {
-                NombreCurso = x.Examen.Curso.Nombre,
-                NumeroPregunta = x.NumeroPregunta,
-                Consecutivo = x.Pregunta.Consecutivo,
-                Enunciado = x.Pregunta.Enunciado,
-                Respuesta1 = x.Pregunta.Respuesta1,
-                Respuesta2 = x.Pregunta.Respuesta2,
-                Respuesta3 = x.Pregunta.Respuesta3,
-                Respuesta4 = x.Pregunta.Respuesta4,
-                Respuesta5 = x.Pregunta.Respuesta5,
-                RespuestaCorrecta = x.Pregunta.RespuestaCorrecta
+                NombreCurso = x.Curso.Nombre,
+                Consecutivo = x.Consecutivo,
+                Enunciado = x.Enunciado,
+                Respuesta1 = x.Respuesta1,
+                Respuesta2 = x.Respuesta2,
+                Respuesta3 = x.Respuesta3,
+                Respuesta4 = x.Respuesta4,
+                Respuesta5 = x.Respuesta5,
+                RespuestaCorrecta = x.RespuestaCorrecta
             }).ToList();
 
             return lista;

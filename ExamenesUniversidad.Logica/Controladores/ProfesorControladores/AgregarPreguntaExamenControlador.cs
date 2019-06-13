@@ -1,4 +1,5 @@
-﻿using ExamenesUniversidad.Logica.DAOs;
+﻿using ExamenesUniversidad.Datos.Entidades;
+using ExamenesUniversidad.Logica.DAOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,30 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
     {
         private readonly IExamenPreguntaDAO _examenPreguntaDAO;
         private readonly IExamenDAO _examenDAO;
+        private readonly IPreguntaDAO _preguntaDAO;
+
+        public ExamenPregunta NuevaPreguntaExamen { get; set; }
 
         public AgregarPreguntaExamenControlador()
         {
             _examenPreguntaDAO = new ExamenPreguntaDAO();
             _examenDAO = new ExamenDAO();
+            _preguntaDAO = new PreguntaDAO();
+            NuevaPreguntaExamen = new ExamenPregunta();
         }
 
         public bool ExisteExamen(string codigo)
         {
             return _examenDAO.ExisteExamen(codigo);
+        }
+
+        public void AgregarPregunta(string codigoExamen, string codigoPregunta)
+        {
+            int examenId = _examenDAO.ObtenerIdPorCodigo(codigoExamen);
+            int preguntaId = _preguntaDAO.ObtenerIdPorCodigo(codigoPregunta);
+
+            _examenPreguntaDAO.Ingresar(NuevaPreguntaExamen);
+            NuevaPreguntaExamen = new ExamenPregunta();
         }
     }
 }

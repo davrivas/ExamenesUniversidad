@@ -17,7 +17,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
     {
         private string _codigoExamen;
         private readonly AgregarPreguntaExamenControlador _controlador;
-        private IList<PreguntaExamenDTO> _preguntas;
+        private IList<PreguntaCursoDTO> _preguntas;
 
         public AgregarPreguntaExamen()
         {
@@ -45,8 +45,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
                     ReiniciarCampos();
                 }
 
-                //debe ser preguntas relacionadas del curso pero relacionar el codigo del examen
-                _preguntas = ProfesorDataSet.ListarPreguntasExamen(textBoxExamen.Text);
+                _preguntas = ProfesorDataSet.ListarPreguntasCursoPorExamen(textBoxExamen.Text);
                 dataGridViewPreguntas.DataSource = _preguntas;
             }
             else
@@ -69,9 +68,11 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             if (!string.IsNullOrWhiteSpace(textBoxPregunta.Text))
             {
-                if (_preguntas.Any(x => x.Consecutivo == textBoxPregunta.Text))
+                if (_preguntas.Any(x => x.Consecutivo == _codigoExamen))
                 {
-                    MessageBox.Show("Si");
+                    _controlador.AgregarPregunta(_codigoExamen, textBoxPregunta.Text);
+                    MessageBox.Show("Pregunta agregada al examen");
+                    Program.InicioProfesor.ActualizarExamenes();
                 }
                 else
                 {

@@ -11,6 +11,7 @@ namespace ExamenesUniversidad.Logica.DAOs
         bool ExisteExamen(string codigo);
         Examen ObtenerPorCodigo(string codigo);
         int ObtenerIdPorCodigo(string codigo);
+        int ObtenerIdCursoPorCodigo(string codigo);
     }
 
     public class ExamenDAO : DAO<Examen>, IExamenDAO
@@ -37,6 +38,25 @@ namespace ExamenesUniversidad.Logica.DAOs
             {
                 ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
                 return false;
+            }
+        }
+
+        public int ObtenerIdCursoPorCodigo(string codigo)
+        {
+            try
+            {
+                var cursoId = Listar()
+                    .Include(x => x.Curso)
+                    .Where(x => x.Codigo == codigo)
+                    .Select(x => x.Curso.Id)
+                    .FirstOrDefault();
+
+                return cursoId;
+            }
+            catch (Exception ex)
+            {
+                ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
+                return 0;
             }
         }
 
