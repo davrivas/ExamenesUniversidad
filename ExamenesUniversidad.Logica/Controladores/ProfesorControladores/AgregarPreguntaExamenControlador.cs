@@ -21,7 +21,6 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
             _examenPreguntaDAO = new ExamenPreguntaDAO();
             _examenDAO = new ExamenDAO();
             _preguntaDAO = new PreguntaDAO();
-            NuevaPreguntaExamen = new ExamenPregunta();
         }
 
         public bool ExisteExamen(string codigo)
@@ -33,7 +32,17 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
         {
             int examenId = _examenDAO.ObtenerIdPorCodigo(codigoExamen);
             int preguntaId = _preguntaDAO.ObtenerIdPorCodigo(codigoPregunta);
+            int cantidadPreguntas = _examenPreguntaDAO
+                .Listar()
+                .Where(x => x.ExamenId == examenId)
+                .Count();
 
+            NuevaPreguntaExamen = new ExamenPregunta
+            {
+                NumeroPregunta = cantidadPreguntas + 1,
+                ExamenId = examenId,
+                PreguntaId = preguntaId
+            };
             _examenPreguntaDAO.Ingresar(NuevaPreguntaExamen);
             NuevaPreguntaExamen = new ExamenPregunta();
         }

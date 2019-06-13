@@ -68,7 +68,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             if (!string.IsNullOrWhiteSpace(textBoxPregunta.Text))
             {
-                if (_preguntas.Any(x => x.Consecutivo == _codigoExamen))
+                if (_preguntas.Any(x => x.Consecutivo == textBoxPregunta.Text))
                 {
                     _controlador.AgregarPregunta(_codigoExamen, textBoxPregunta.Text);
                     MessageBox.Show("Pregunta agregada al examen");
