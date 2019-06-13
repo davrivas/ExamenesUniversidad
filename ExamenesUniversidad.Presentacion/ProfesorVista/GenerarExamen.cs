@@ -84,7 +84,8 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
                             _controlador.ExamenNuevo.ProfesorId = Sesion.ProfesorId;
                             _controlador.GenerarExamen(Convert.ToInt32(maskedTextBoxCantidad.Text));
                             MessageBox.Show("Examen generado con éxito");
-                            //Close();
+                            Program.InicioProfesor.ActualizarExamenes();
+                            Close();
                         }
                         else
                         {

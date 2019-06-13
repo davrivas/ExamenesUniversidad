@@ -44,9 +44,9 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
             } while (_examenDAO.ExisteExamen(codigoExamen));
 
             ExamenNuevo.Codigo = codigoExamen;
-            //_examenDAO.Ingresar(ExamenNuevo);
+            _examenDAO.Ingresar(ExamenNuevo);
 
-            var preguntas = _examenDAO.Listar()
+            var preguntas = _preguntaDAO.Listar()
                 .Where(x => x.CursoId == CursoAsociado.Id)
                 .OrderBy(x => Guid.NewGuid())
                 .Take(cantidadPreguntas)
@@ -62,7 +62,7 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
                     ExamenId = examenId,
                     PreguntaId = preguntas[i].Id
                 };
-                //_examenPreguntaDAO.Ingresar(examenPregunta);
+                _examenPreguntaDAO.Ingresar(examenPregunta);
             }
 
             ExamenNuevo = new Examen();
