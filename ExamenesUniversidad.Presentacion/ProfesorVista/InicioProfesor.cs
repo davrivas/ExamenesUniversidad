@@ -66,7 +66,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
         private void ButtonAgregarPregunta_Click(object sender, EventArgs e)
         {
-            // agregar pregunta
+            new AgregarPreguntaExamen().Show();
         }
     }
 }
