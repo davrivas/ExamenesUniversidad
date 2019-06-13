@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.panelPreguntas = new System.Windows.Forms.Panel();
-            this.panelRespuestas = new System.Windows.Forms.Panel();
             this.labelPreguntas = new System.Windows.Forms.Label();
+            this.panelRespuestas = new System.Windows.Forms.Panel();
+            this.buttonRealizarExamen = new System.Windows.Forms.Button();
             this.panelPreguntas.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,29 +45,39 @@
             this.panelPreguntas.Size = new System.Drawing.Size(431, 425);
             this.panelPreguntas.TabIndex = 0;
             // 
+            // labelPreguntas
+            // 
+            this.labelPreguntas.AutoSize = true;
+            this.labelPreguntas.Location = new System.Drawing.Point(16, 14);
+            this.labelPreguntas.Name = "labelPreguntas";
+            this.labelPreguntas.Size = new System.Drawing.Size(0, 13);
+            this.labelPreguntas.TabIndex = 0;
+            // 
             // panelRespuestas
             // 
             this.panelRespuestas.AutoScroll = true;
             this.panelRespuestas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelRespuestas.Location = new System.Drawing.Point(450, 13);
             this.panelRespuestas.Name = "panelRespuestas";
-            this.panelRespuestas.Size = new System.Drawing.Size(238, 425);
+            this.panelRespuestas.Size = new System.Drawing.Size(238, 396);
             this.panelRespuestas.TabIndex = 1;
             // 
-            // labelPreguntas
+            // buttonRealizarExamen
             // 
-            this.labelPreguntas.AutoSize = true;
-            this.labelPreguntas.Location = new System.Drawing.Point(16, 14);
-            this.labelPreguntas.Name = "labelPreguntas";
-            this.labelPreguntas.Size = new System.Drawing.Size(55, 13);
-            this.labelPreguntas.TabIndex = 0;
-            this.labelPreguntas.Text = "Preguntas";
+            this.buttonRealizarExamen.Location = new System.Drawing.Point(521, 415);
+            this.buttonRealizarExamen.Name = "buttonRealizarExamen";
+            this.buttonRealizarExamen.Size = new System.Drawing.Size(100, 23);
+            this.buttonRealizarExamen.TabIndex = 2;
+            this.buttonRealizarExamen.Text = "Realizar examen";
+            this.buttonRealizarExamen.UseVisualStyleBackColor = true;
+            this.buttonRealizarExamen.Click += new System.EventHandler(this.ButtonRealizarExamen_Click);
             // 
             // RealizarExamen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 450);
+            this.Controls.Add(this.buttonRealizarExamen);
             this.Controls.Add(this.panelRespuestas);
             this.Controls.Add(this.panelPreguntas);
             this.Name = "RealizarExamen";
@@ -82,5 +93,6 @@
         private System.Windows.Forms.Panel panelPreguntas;
         private System.Windows.Forms.Panel panelRespuestas;
         private System.Windows.Forms.Label labelPreguntas;
+        private System.Windows.Forms.Button buttonRealizarExamen;
     }
 }

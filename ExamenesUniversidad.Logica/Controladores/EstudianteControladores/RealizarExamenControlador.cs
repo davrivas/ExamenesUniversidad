@@ -15,12 +15,14 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
 
         public Examen ExamenSeleccionado { get; private set; }
         public string TextoPregunta { get; private set; }
+        public int CantidadPreguntas { get; private set; }
 
         public RealizarExamenControlador(string codigo)
         {
             _examenDAO = new ExamenDAO();
             _preguntaDAO = new PreguntaDAO();
             ExamenSeleccionado = _examenDAO.ObtenerPorCodigo(codigo);
+            CantidadPreguntas = ExamenSeleccionado.ExamenPreguntas.Count;
             TextoPregunta = ObtenerTextoPregunta();
         }
 
