@@ -1,4 +1,5 @@
 ﻿using ExamenesUniversidad.Logica.Controladores.ProfesorControladores;
+using ExamenesUniversidad.Logica.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,8 +20,8 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             InitializeComponent();
             _controlador = new GenerarExamenControlador();
-            dateTimePickerInicio.MinDate = DateTime.Now;
-            dateTimePickerFin.MinDate = DateTime.Now;
+            dateTimePickerInicio.MinDate = DateTime.Today;
+            dateTimePickerFin.MinDate = DateTime.Today;
         }
 
         private void ButtonBuscar_Click(object sender, EventArgs e)
@@ -59,6 +60,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
             {
                 buttonGenerar.Enabled = false;
                 maskedTextBoxCantidad.Enabled = true;
+                maskedTextBoxCantidad.Text = "";
                 dateTimePickerInicio.Enabled = false;
                 dateTimePickerFin.Enabled = false;
                 labelCantidadPreguntas.Text = "";
@@ -67,7 +69,43 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
         private void ButtonGenerar_Click(object sender, EventArgs e)
         {
-            //revisar
+            if (!string.IsNullOrWhiteSpace(maskedTextBoxCantidad.Text))
+            {
+                if (Convert.ToInt32(maskedTextBoxCantidad.Text) >= 1 && Convert.ToInt32(maskedTextBoxCantidad.Text) <= _controlador.CursoAsociado.Preguntas.Count)
+                {
+                    if (dateTimePickerInicio.Value != dateTimePickerFin.Value)
+                    {
+                        if (dateTimePickerInicio.Value < dateTimePickerFin.Value)
+                        {
+                            _controlador.ExamenNuevo.Abierto = true; // no sé
+                            _controlador.ExamenNuevo.FechaInicio = dateTimePickerInicio.Value;
+                            _controlador.ExamenNuevo.FechaFin = dateTimePickerFin.Value;
+                            _controlador.ExamenNuevo.CursoId = _controlador.CursoAsociado.Id;
+                            _controlador.ExamenNuevo.ProfesorId = Sesion.ProfesorId;
+                            _controlador.GenerarExamen(Convert.ToInt32(maskedTextBoxCantidad.Text));
+                            MessageBox.Show("Examen generado con éxito");
+                            //Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("La fecha final debe ser después del inicio", "Error");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Las fechas no deben de ser iguales", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Debe digitar un número entre 1 y {_controlador.CursoAsociado.Preguntas.Count.ToString()}", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe digitar un número de preguntas", "Error");
+            }
+            
         }
     }
 }
