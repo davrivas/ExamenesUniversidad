@@ -1,4 +1,5 @@
 ﻿using ExamenesUniversidad.Logica.Controladores.ProfesorControladores;
+using ExamenesUniversidad.Logica.Utilidades;
 using ExamenesUniversidad.Presentacion.DataSets;
 using System;
 using System.Collections.Generic;
@@ -20,8 +21,8 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         {
             InitializeComponent();
             _controlador = new CrearExamenVacioControlador();
-            dateTimePickerInicio.MinDate = DateTime.Now;
-            dateTimePickerFin.MinDate = DateTime.Now;
+            dateTimePickerInicio.MinDate = DateTime.Today;
+            dateTimePickerFin.MinDate = DateTime.Today;
         }
 
         private void ButtonBuscar_Click(object sender, EventArgs e)
@@ -32,9 +33,9 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
                 if (_controlador.CursoAsociado != null)
                 {
-                    if (!buttonGenerarEscoger.Enabled)
+                    if (!buttonCrear.Enabled)
                     {
-                        buttonGenerarEscoger.Enabled = true;
+                        buttonCrear.Enabled = true;
                         dateTimePickerInicio.Enabled = true;
                         dateTimePickerFin.Enabled = true;
                     }
@@ -54,11 +55,34 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
         private void ReiniciarCampos()
         {
-            if (buttonGenerarEscoger.Enabled)
+            if (buttonCrear.Enabled)
             {
-                buttonGenerarEscoger.Enabled = false;
+                buttonCrear.Enabled = false;
                 dateTimePickerInicio.Enabled = false;
                 dateTimePickerFin.Enabled = false;
+            }
+        }
+
+        private void ButtonCrear_Click(object sender, EventArgs e)
+        {
+            if (dateTimePickerInicio.Value != dateTimePickerFin.Value)
+            {
+                if (dateTimePickerInicio.Value < dateTimePickerFin.Value)
+                {
+                    _controlador.ExamenNuevo.Abierto = true; // no sé
+                    _controlador.ExamenNuevo.FechaInicio = dateTimePickerInicio.Value;
+                    _controlador.ExamenNuevo.FechaFin = dateTimePickerFin.Value;
+                    _controlador.ExamenNuevo.CursoId = _controlador.CursoAsociado.Id;
+                    _controlador.ExamenNuevo.ProfesorId = Sesion.ProfesorId;
+                    _controlador.AgregarExamen();
+                    MessageBox.Show("Examen generado con éxito");
+                    Program.InicioProfesor.ActualizarExamenes();
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show("La fecha final debe ser después del inicio", "Error");
+                }
             }
         }
     }

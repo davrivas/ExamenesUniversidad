@@ -1,5 +1,6 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
 using ExamenesUniversidad.Logica.DAOs;
+using ExamenesUniversidad.Logica.Utilidades;
 
 namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
 {
@@ -26,6 +27,14 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
 
         public void AgregarExamen()
         {
+            string codigoExamen;
+
+            do
+            {
+                codigoExamen = StringUtilidades.GenerarCodigo();
+            } while (_examenDAO.ExisteExamen(codigoExamen));
+
+            ExamenNuevo.Codigo = codigoExamen;
             _examenDAO.Ingresar(ExamenNuevo);
             ExamenNuevo = new Examen();
         }

@@ -31,7 +31,7 @@
             this.labelCodigoCurso = new System.Windows.Forms.Label();
             this.textBoxCodigoCurso = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
-            this.buttonGenerarEscoger = new System.Windows.Forms.Button();
+            this.buttonCrear = new System.Windows.Forms.Button();
             this.dateTimePickerInicio = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,15 +64,16 @@
             this.buttonBuscar.UseVisualStyleBackColor = true;
             this.buttonBuscar.Click += new System.EventHandler(this.ButtonBuscar_Click);
             // 
-            // buttonGenerarEscoger
+            // buttonCrear
             // 
-            this.buttonGenerarEscoger.Enabled = false;
-            this.buttonGenerarEscoger.Location = new System.Drawing.Point(196, 94);
-            this.buttonGenerarEscoger.Name = "buttonGenerarEscoger";
-            this.buttonGenerarEscoger.Size = new System.Drawing.Size(75, 23);
-            this.buttonGenerarEscoger.TabIndex = 2;
-            this.buttonGenerarEscoger.Text = "Generar";
-            this.buttonGenerarEscoger.UseVisualStyleBackColor = true;
+            this.buttonCrear.Enabled = false;
+            this.buttonCrear.Location = new System.Drawing.Point(196, 94);
+            this.buttonCrear.Name = "buttonCrear";
+            this.buttonCrear.Size = new System.Drawing.Size(75, 23);
+            this.buttonCrear.TabIndex = 2;
+            this.buttonCrear.Text = "Crear";
+            this.buttonCrear.UseVisualStyleBackColor = true;
+            this.buttonCrear.Click += new System.EventHandler(this.ButtonCrear_Click);
             // 
             // dateTimePickerInicio
             // 
@@ -115,7 +116,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 133);
-            this.Controls.Add(this.buttonGenerarEscoger);
+            this.Controls.Add(this.buttonCrear);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePickerFin);
             this.Controls.Add(this.label1);
@@ -139,6 +140,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePickerFin;
-        private System.Windows.Forms.Button buttonGenerarEscoger;
+        private System.Windows.Forms.Button buttonCrear;
     }
 }
