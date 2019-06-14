@@ -5,8 +5,7 @@ namespace ExamenesUniversidad.Datos.DbContexts
 {
     public class ExamenesUniversidadContext : DbContext
     {
-        // esto puede cambiar
-        private const string CONNECTION_STRING = @"Data Source=.;Initial Catalog=ExamenesUniversidad;Integrated Security=True";
+        private const string CONNECTION_STRING = @"Data Source=DESKTOP-0S26F42\SQLEXPRESS;Initial Catalog=ExamenesUniversidad;Integrated Security=True";
 
         public ExamenesUniversidadContext() : base(CONNECTION_STRING)
         {
