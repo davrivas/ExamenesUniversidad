@@ -1,7 +1,6 @@
 ﻿using ExamenesUniversidad.Logica.Controladores.EstudianteControladores;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,20 +13,21 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
     public partial class RealizarExamen : Form
     {
         private readonly RealizarExamenControlador _controlador;
+        private readonly IList<Label> _labels;
+        private readonly IList<ComboBox> _comboBoxes;
 
         public RealizarExamen(RealizarExamenControlador controlador)
         {
             InitializeComponent();
             _controlador = controlador;
             labelPreguntas.Text = _controlador.TextoPregunta;
+            _labels = new List<Label>();
+            _comboBoxes = new List<ComboBox>();
             GenerarPreguntas();
         }
 
         private void GenerarPreguntas()
         {
-            var labels = new List<Label>();
-            var comboBoxes = new List<ComboBox>();
-
             for (int i = 0; i < _controlador.CantidadPreguntas; i++)
             {
                 var label = new Label
@@ -41,7 +41,7 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
                 {
                     FormattingEnabled = true,
                     Name = $"comboBox{i + 1}",
-                    Size = new Size(121, 21),
+                    Size = new Size(100, 21),
                     DataSource = new object[] { 1, 2, 3, 4, 5 }
                 };
 
@@ -52,18 +52,18 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
                 }
                 else
                 {
-                    var labelAnterior = labels[i - 1];
+                    var labelAnterior = _labels[i - 1];
                     var sumaAnterior = labelAnterior.Location.Y + 27;
                     label.Location = new Point(13, sumaAnterior);
                     comboBox.Location = new Point(102, sumaAnterior);
                 }
 
-                labels.Add(label);
-                comboBoxes.Add(comboBox);
+                _labels.Add(label);
+                _comboBoxes.Add(comboBox);
             }
 
-            labels.ForEach(x => panelRespuestas.Controls.Add(x));
-            comboBoxes.ForEach(x => panelRespuestas.Controls.Add(x));
+            _labels.ToList().ForEach(x => panelRespuestas.Controls.Add(x));
+            _comboBoxes.ToList().ForEach(x => panelRespuestas.Controls.Add(x));
         }
 
         private void ButtonRealizarExamen_Click(object sender, EventArgs e)
@@ -73,7 +73,11 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
             if (salir == DialogResult.No)
                 return;
 
-            MessageBox.Show("Realizó el examen");
+            var respuestas = _comboBoxes.Select(x => (int)x.SelectedValue).ToList();
+            _controlador.RealizarExamen(respuestas);
+            MessageBox.Show("Realizó el examen con éxito");
+            //Program.InicioEstudiante.ActualizarExamenes();
+            //Close();
         }
     }
 }

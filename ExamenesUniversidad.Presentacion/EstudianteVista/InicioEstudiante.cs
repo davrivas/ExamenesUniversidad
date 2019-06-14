@@ -23,7 +23,7 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
             ActualizarExamenes();
         }
 
-        private void ActualizarExamenes()
+        public void ActualizarExamenes()
         {
             dataGridViewExamenes.DataSource = EstudianteDataSet.GetExamenes();
         }

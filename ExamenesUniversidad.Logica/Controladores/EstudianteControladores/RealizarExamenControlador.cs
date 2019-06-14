@@ -1,5 +1,6 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
 using ExamenesUniversidad.Logica.DAOs;
+using ExamenesUniversidad.Logica.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,9 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
 {
     public class RealizarExamenControlador
     {
+        private readonly IEstudianteRespuestaDAO _estudianteRespuestaDAO;
         private readonly IExamenDAO _examenDAO;
-        private readonly IPreguntaDAO _preguntaDAO;
+        private readonly IExamenPreguntaDAO _examenPreguntaDAO;
 
         public Examen ExamenSeleccionado { get; private set; }
         public string TextoPregunta { get; private set; }
@@ -19,8 +21,9 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
 
         public RealizarExamenControlador(string codigo)
         {
+            _estudianteRespuestaDAO = new EstudianteRespuestaDAO();
             _examenDAO = new ExamenDAO();
-            _preguntaDAO = new PreguntaDAO();
+            _examenPreguntaDAO = new ExamenPreguntaDAO();
             ExamenSeleccionado = _examenDAO.ObtenerPorCodigo(codigo);
             CantidadPreguntas = ExamenSeleccionado.ExamenPreguntas.Count;
             TextoPregunta = ObtenerTextoPregunta();
@@ -29,8 +32,9 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
         private string ObtenerTextoPregunta()
         {
             string textoPregunta = "";
+            var preguntas = ExamenSeleccionado.ExamenPreguntas.OrderBy(x => x.NumeroPregunta).ToList();
 
-            foreach (var pregunta in ExamenSeleccionado.ExamenPreguntas.OrderBy(x => x.NumeroPregunta))
+            foreach (var pregunta in preguntas)
             {
                 textoPregunta += $"Pregunta {pregunta.NumeroPregunta.ToString()}\n";
                 textoPregunta += $"{pregunta.Pregunta.Enunciado}\n";
@@ -42,6 +46,31 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
             }
 
             return textoPregunta;
+        }
+
+        public void RealizarExamen(IList<int> respuestas)
+        {
+            var examenPreguntas = ExamenSeleccionado.ExamenPreguntas.OrderBy(x => x.NumeroPregunta).ToList();
+
+            //prubeda
+            var respuestasTest = new List<EstudianteRespuesta>();
+
+            for (int i = 0; i < examenPreguntas.Count; i++)
+            {
+                int preguntaId = examenPreguntas[i].PreguntaId;
+                int respuesta = respuestas[i];
+                int examenPreguntaId = examenPreguntas[i].Id;
+
+                var respuestaEstudiante = new EstudianteRespuesta
+                {
+                    Respuesta = respuesta,
+                    EstudianteId = Sesion.EstudianteId,
+                    ExamenPreguntaId = examenPreguntaId
+                };
+                respuestasTest.Add(respuestaEstudiante);
+            }
+
+            Console.WriteLine(respuestasTest);
         }
     }
 }

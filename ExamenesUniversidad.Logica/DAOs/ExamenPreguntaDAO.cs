@@ -1,4 +1,5 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
+using ExamenesUniversidad.Logica.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
