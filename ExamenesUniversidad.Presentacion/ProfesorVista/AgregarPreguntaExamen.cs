@@ -19,49 +19,13 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
         private readonly AgregarPreguntaExamenControlador _controlador;
         private IList<PreguntaCursoDTO> _preguntas;
 
-        public AgregarPreguntaExamen()
+        public AgregarPreguntaExamen(string codigo)
         {
             InitializeComponent();
             _controlador = new AgregarPreguntaExamenControlador();
-        }
-
-        private void ButtonBuscar_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(textBoxExamen.Text))
-            {
-                if (_controlador.ExisteExamen(textBoxExamen.Text))
-                {
-                    if (!buttonAgregarPregunta.Enabled)
-                    {
-                        buttonAgregarPregunta.Enabled = true;
-                        textBoxPregunta.Enabled = true;
-                    }
-
-                    _codigoExamen = string.Copy(textBoxExamen.Text);
-                }
-                else
-                {
-                    MessageBox.Show($"El examen '{textBoxExamen.Text}' no existe", "Error");
-                    ReiniciarCampos();
-                }
-
-                _preguntas = ProfesorDataSet.ListarPreguntasCursoPorExamen(textBoxExamen.Text);
-                dataGridViewPreguntas.DataSource = _preguntas;
-            }
-            else
-            {
-                MessageBox.Show("Debe digitar el código del examen", "Error");
-                ReiniciarCampos();
-            }
-        }
-
-        private void ReiniciarCampos()
-        {
-            if (buttonAgregarPregunta.Enabled)
-            {
-                buttonAgregarPregunta.Enabled = false;
-                textBoxPregunta.Enabled = false;
-            }
+            _codigoExamen = codigo;
+            _preguntas = ProfesorDataSet.ListarPreguntasCursoPorExamen(_codigoExamen);
+            dataGridViewPreguntas.DataSource = _preguntas;
         }
 
         private void ButtonAgregarPregunta_Click(object sender, EventArgs e)
