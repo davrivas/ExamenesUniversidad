@@ -13,7 +13,6 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
     public partial class RealizarExamen : Form
     {
         private readonly RealizarExamenControlador _controlador;
-        private readonly IList<Label> _labels;
         private readonly IList<ComboBox> _comboBoxes;
 
         public RealizarExamen(RealizarExamenControlador controlador)
@@ -21,13 +20,14 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
             InitializeComponent();
             _controlador = controlador;
             labelPreguntas.Text = _controlador.TextoPregunta;
-            _labels = new List<Label>();
             _comboBoxes = new List<ComboBox>();
             GenerarPreguntas();
         }
 
         private void GenerarPreguntas()
         {
+            var labels = new List<Label>();
+
             for (int i = 0; i < _controlador.CantidadPreguntas; i++)
             {
                 var label = new Label
@@ -40,7 +40,7 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
                 var comboBox = new ComboBox
                 {
                     FormattingEnabled = true,
-                    Name = $"comboBox{i + 1}",
+                    Name = $"comboBoxRespuesta{i + 1}",
                     Size = new Size(100, 21),
                     DataSource = new object[] { 1, 2, 3, 4, 5 }
                 };
@@ -52,17 +52,17 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
                 }
                 else
                 {
-                    var labelAnterior = _labels[i - 1];
+                    var labelAnterior = labels[i - 1];
                     var sumaAnterior = labelAnterior.Location.Y + 27;
                     label.Location = new Point(13, sumaAnterior);
                     comboBox.Location = new Point(102, sumaAnterior);
                 }
 
-                _labels.Add(label);
+                labels.Add(label);
                 _comboBoxes.Add(comboBox);
             }
 
-            _labels.ToList().ForEach(x => panelRespuestas.Controls.Add(x));
+            labels.ToList().ForEach(x => panelRespuestas.Controls.Add(x));
             _comboBoxes.ToList().ForEach(x => panelRespuestas.Controls.Add(x));
         }
 

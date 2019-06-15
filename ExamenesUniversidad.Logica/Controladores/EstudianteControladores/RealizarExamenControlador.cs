@@ -14,6 +14,7 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
         private readonly IEstudianteRespuestaDAO _estudianteRespuestaDAO;
         private readonly IExamenDAO _examenDAO;
         private readonly IExamenPreguntaDAO _examenPreguntaDAO;
+        private readonly IList<ExamenPregunta> _examenPreguntas;
 
         public Examen ExamenSeleccionado { get; private set; }
         public string TextoPregunta { get; private set; }
@@ -26,15 +27,15 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
             _examenPreguntaDAO = new ExamenPreguntaDAO();
             ExamenSeleccionado = _examenDAO.ObtenerPorCodigo(codigo);
             CantidadPreguntas = ExamenSeleccionado.ExamenPreguntas.Count;
+            _examenPreguntas = ExamenSeleccionado.ExamenPreguntas.OrderBy(x => x.NumeroPregunta).ToList();
             TextoPregunta = ObtenerTextoPregunta();
         }
 
         private string ObtenerTextoPregunta()
         {
             string textoPregunta = "";
-            var preguntas = ExamenSeleccionado.ExamenPreguntas.OrderBy(x => x.NumeroPregunta).ToList();
 
-            foreach (var pregunta in preguntas)
+            foreach (var pregunta in _examenPreguntas)
             {
                 textoPregunta += $"Pregunta {pregunta.NumeroPregunta.ToString()}\n";
                 textoPregunta += $"{pregunta.Pregunta.Enunciado}\n";
@@ -48,29 +49,24 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
             return textoPregunta;
         }
 
-        public void RealizarExamen(IList<int> respuestas)
+        public void RealizarExamen(IList<int> respuestas) // debo mencionar que el examen debe estar hecho o no
         {
-            var examenPreguntas = ExamenSeleccionado.ExamenPreguntas.OrderBy(x => x.NumeroPregunta).ToList();
-
-            //prubeda
-            var respuestasTest = new List<EstudianteRespuesta>();
-
-            for (int i = 0; i < examenPreguntas.Count; i++)
+            for (int i = 0; i < _examenPreguntas.Count; i++)
             {
-                int preguntaId = examenPreguntas[i].PreguntaId;
+                var pregunta = _examenPreguntas[i].Pregunta;
                 int respuesta = respuestas[i];
-                int examenPreguntaId = examenPreguntas[i].Id;
+                int examenPreguntaId = _examenPreguntas[i].Id;
 
                 var respuestaEstudiante = new EstudianteRespuesta
                 {
                     Respuesta = respuesta,
+                    Correcta = respuesta == pregunta.RespuestaCorrecta ? true : false,
                     EstudianteId = Sesion.EstudianteId,
                     ExamenPreguntaId = examenPreguntaId
                 };
-                respuestasTest.Add(respuestaEstudiante);
-            }
 
-            Console.WriteLine(respuestasTest);
+                _estudianteRespuestaDAO.Ingresar(respuestaEstudiante);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ namespace ExamenesUniversidad.Datos.Entidades
     public class EstudianteRespuesta : EntidadBase
     {
         public int Respuesta { get; set; }
+        public bool Correcta { get; set; }
 
         public int EstudianteId { get; set; }
         public Estudiante Estudiante { get; set; }

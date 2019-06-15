@@ -19,9 +19,9 @@ namespace ExamenesUniversidad.Presentacion
             //InicioForm = new Inicio();
             //Application.Run(InicioForm);
             Logica.Utilidades.Sesion.EstudianteId = 2;
-            //InicioEstudiante = new InicioEstudiante();
-            //Application.Run(InicioEstudiante);
-            Application.Run(new RealizarExamen(new Logica.Controladores.EstudianteControladores.RealizarExamenControlador("f4tg5")));
+            InicioEstudiante = new InicioEstudiante();
+            Application.Run(InicioEstudiante);
+            //Application.Run(new RealizarExamen(new Logica.Controladores.EstudianteControladores.RealizarExamenControlador("f4tg5")));
         }
     }
 }
