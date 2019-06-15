@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Presentacion.EstudianteVista
@@ -75,9 +73,11 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
 
             var respuestas = _comboBoxes.Select(x => (int)x.SelectedValue).ToList();
             _controlador.RealizarExamen(respuestas);
+
+            Program.InicioEstudiante.ActualizarExamenes();
             MessageBox.Show("Realizó el examen con éxito");
-            //Program.InicioEstudiante.ActualizarExamenes();
-            //Close();
+            
+            Close();
         }
     }
 }

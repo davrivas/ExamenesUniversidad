@@ -26,9 +26,8 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 {
                     Realizado = estudianteRespuestaDAO.Listar()
                     .Include(y => y.ExamenPregunta)
-                    .Where(y => y.ExamenPregunta.ExamenId == x.Id
-                    && y.EstudianteId == Sesion.EstudianteId)
-                    .Count() > 0 ? "Si" : "No",
+                    .Where(y => y.ExamenPregunta.ExamenId == x.Id && y.EstudianteId == Sesion.EstudianteId)
+                    .Count() > 0 ? "Sí" : "No",
                     Codigo = x.Codigo,
                     NumeroPreguntas = x.ExamenPreguntas.Count,
                     Abierto = x.Abierto ? "Sí" : "No",
@@ -37,7 +36,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                     CodigoCurso = x.Curso.Codigo,
                     NombreCurso = x.Curso.Nombre,
                     NombreProfesor = $"{x.Profesor.Nombres} {x.Profesor.Apellidos}"
-                }).OrderByDescending(x => x.Realizado)
+                }).OrderBy(x => x.Realizado)
                 .ThenBy(x => x.Abierto)
                 .ThenByDescending(x => x.FechaInicio)
                 .ThenByDescending(x => x.FechaFin)

@@ -1,17 +1,32 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
+using ExamenesUniversidad.Logica.Utilidades;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExamenesUniversidad.Logica.DAOs
 {
     public interface IEstudianteRespuestaDAO : IDAO<EstudianteRespuesta>
     {
+        EstudianteRespuesta ObtenerPorExamenPreguntaIdEstudiante(int examenPreguntaId, int estudianteId);
     }
 
     public class EstudianteRespuestaDAO : DAO<EstudianteRespuesta>, IEstudianteRespuestaDAO
     {
+        public EstudianteRespuesta ObtenerPorExamenPreguntaIdEstudiante(int examenPreguntaId, int estudianteId)
+        {
+            try
+            {
+                var estudianteRespuesta = Listar()
+                    .Where(x => x.ExamenPreguntaId == examenPreguntaId && x.EstudianteId == estudianteId)
+                    .FirstOrDefault();
+
+                return estudianteRespuesta;
+            }
+            catch (Exception ex)
+            {
+                ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
+                return null;
+            }
+        }
     }
 }

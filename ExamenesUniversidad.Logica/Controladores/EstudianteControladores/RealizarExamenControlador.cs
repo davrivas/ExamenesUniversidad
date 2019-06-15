@@ -1,11 +1,8 @@
 ﻿using ExamenesUniversidad.Datos.Entidades;
 using ExamenesUniversidad.Logica.DAOs;
 using ExamenesUniversidad.Logica.Utilidades;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
 {
@@ -13,7 +10,6 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
     {
         private readonly IEstudianteRespuestaDAO _estudianteRespuestaDAO;
         private readonly IExamenDAO _examenDAO;
-        private readonly IExamenPreguntaDAO _examenPreguntaDAO;
         private readonly IList<ExamenPregunta> _examenPreguntas;
 
         public Examen ExamenSeleccionado { get; private set; }
@@ -24,7 +20,6 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
         {
             _estudianteRespuestaDAO = new EstudianteRespuestaDAO();
             _examenDAO = new ExamenDAO();
-            _examenPreguntaDAO = new ExamenPreguntaDAO();
             ExamenSeleccionado = _examenDAO.ObtenerPorCodigo(codigo);
             CantidadPreguntas = ExamenSeleccionado.ExamenPreguntas.Count;
             _examenPreguntas = ExamenSeleccionado.ExamenPreguntas.OrderBy(x => x.NumeroPregunta).ToList();
@@ -49,23 +44,40 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
             return textoPregunta;
         }
 
-        public void RealizarExamen(IList<int> respuestas) // debo mencionar que el examen debe estar hecho o no
+        public void RealizarExamen(IList<int> respuestas)
         {
             for (int i = 0; i < _examenPreguntas.Count; i++)
             {
-                var pregunta = _examenPreguntas[i].Pregunta;
+                var examenPregunta = _examenPreguntas[i];
                 int respuesta = respuestas[i];
-                int examenPreguntaId = _examenPreguntas[i].Id;
 
-                var respuestaEstudiante = new EstudianteRespuesta
+                var respuestaEstudiante = _estudianteRespuestaDAO.ObtenerPorExamenPreguntaIdEstudiante(examenPregunta.Id, Sesion.EstudianteId);
+
+                if (respuestaEstudiante != null)
                 {
-                    Respuesta = respuesta,
-                    Correcta = respuesta == pregunta.RespuestaCorrecta ? true : false,
-                    EstudianteId = Sesion.EstudianteId,
-                    ExamenPreguntaId = examenPreguntaId
-                };
+                    var nuevaRespuestaEstudiante = new EstudianteRespuesta
+                    {
+                        Id = respuestaEstudiante.Id,
+                        Respuesta = respuesta,
+                        Correcta = respuesta == examenPregunta.Pregunta.RespuestaCorrecta ? true : false,
+                        EstudianteId = respuestaEstudiante.EstudianteId,
+                        ExamenPreguntaId = respuestaEstudiante.ExamenPreguntaId,
+                    };
 
-                _estudianteRespuestaDAO.Ingresar(respuestaEstudiante);
+                    _estudianteRespuestaDAO.Editar(respuestaEstudiante, nuevaRespuestaEstudiante);
+                }
+                else
+                {
+                    respuestaEstudiante = new EstudianteRespuesta
+                    {
+                        Respuesta = respuesta,
+                        Correcta = respuesta == examenPregunta.Pregunta.RespuestaCorrecta ? true : false,
+                        EstudianteId = Sesion.EstudianteId,
+                        ExamenPreguntaId = examenPregunta.Id
+                    };
+
+                    _estudianteRespuestaDAO.Ingresar(respuestaEstudiante);
+                }
             }
         }
     }

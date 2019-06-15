@@ -10,9 +10,9 @@ namespace ExamenesUniversidad.Logica.DAOs
 {
     public interface IDAO<T>
     {
-        void Ingresar(T obj);
-        void Editar(T obj);
-        void Eliminar(T obj);
+        void Ingresar(T registro);
+        void Editar(T antiguoRegistro, T nuevoRegistro);
+        void Eliminar(T registro);
         T BuscarPorId(int id);
         IQueryable<T> Listar();
     }
@@ -40,27 +40,11 @@ namespace ExamenesUniversidad.Logica.DAOs
             }
         }
 
-        public virtual void Editar(T obj)
+        public virtual void Editar(T antiguoRegistro, T nuevoRegistro)
         {
             try
             {
-                Context.Entry(obj).State = EntityState.Modified;
-                Context.Set<T>().Add(obj);
-                Context.SaveChanges();
-
-                MessageBox.Show("El registro fue actualizado satisfactoriamente");
-            }
-            catch (Exception ex)
-            {
-                ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
-            }
-        }
-
-        public virtual void Eliminar(T obj)
-        {
-            try
-            {
-                Context.Set<T>().Remove(obj);
+                Context.Entry(antiguoRegistro).CurrentValues.SetValues(nuevoRegistro);
                 Context.SaveChanges();
             }
             catch (Exception ex)
@@ -69,11 +53,24 @@ namespace ExamenesUniversidad.Logica.DAOs
             }
         }
 
-        public virtual void Ingresar(T obj)
+        public virtual void Eliminar(T registro)
         {
             try
             {
-                Context.Set<T>().Add(obj);
+                Context.Set<T>().Remove(registro);
+                Context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ExcepcionUtilidades.DebugWriteLineMessageBoxShowExcepcion(ex);
+            }
+        }
+
+        public virtual void Ingresar(T registro)
+        {
+            try
+            {
+                Context.Set<T>().Add(registro);
                 Context.SaveChanges();
             }
             catch (Exception ex)
