@@ -16,17 +16,8 @@ namespace ExamenesUniversidad.Presentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //InicioForm = new Inicio();
-            //Application.Run(InicioForm);
-
-            Logica.Utilidades.Sesion.ProfesorId = 1;
-            InicioProfesor = new InicioProfesor();
-            Application.Run(InicioProfesor);
-
-            //Logica.Utilidades.Sesion.EstudianteId = 2;
-            //InicioEstudiante = new InicioEstudiante();
-            //Application.Run(InicioEstudiante);
-            //Application.Run(new RealizarExamen(new Logica.Controladores.EstudianteControladores.RealizarExamenControlador("f4tg5")));
+            InicioForm = new Inicio();
+            Application.Run(InicioForm);
         }
     }
 }

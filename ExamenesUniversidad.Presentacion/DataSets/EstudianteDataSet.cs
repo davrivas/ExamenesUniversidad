@@ -47,16 +47,46 @@ namespace ExamenesUniversidad.Presentacion.DataSets
 
         public static IList<EstudianteResultadoDTO> ListarResultados()
         {
-            var estudiantesRespuestas = new EstudianteRespuestaDAO()
+            var lista = new List<EstudianteResultadoDTO>();
+
+            var respuestas = new EstudianteRespuestaDAO()
                 .Listar()
                 .Include(x => x.Estudiante)
                 .Include(x => x.ExamenPregunta)
                 .Include(x => x.ExamenPregunta.Examen)
+                .Include(x => x.ExamenPregunta.Examen.Curso)
+                .Include(x => x.ExamenPregunta.Examen.Profesor)
                 .Where(x => x.EstudianteId == Sesion.EstudianteId);
 
-            Console.WriteLine("");
+            var agrupamiento = respuestas.GroupBy(x => x.ExamenPregunta.Examen).ToList();
 
-            return new List<EstudianteResultadoDTO>();
+            var profesorDAO = new ProfesorDAO();
+            var cursoDAO = new CursoDAO();
+
+            foreach (var examen in agrupamiento)
+            {
+                var profesor = profesorDAO.BuscarPorId(examen.Key.ProfesorId);
+                var curso = cursoDAO.BuscarPorId(examen.Key.CursoId);
+                var respuestasPorExamen = respuestas
+                    .Where(x => x.ExamenPregunta.ExamenId == examen.Key.Id);
+
+                var resultado = new EstudianteResultadoDTO
+                {
+                    CodigoExamen = examen.Key.Codigo,
+                    NombreCurso = curso.Nombre,
+                    NombreProfesor = $"{profesor.Nombres} {profesor.Apellidos}",
+                    CantidadBien = respuestasPorExamen.Count(x => x.Correcta),
+                    CantidadMal = respuestasPorExamen.Count(x => !x.Correcta),
+                    TotalPreguntas = respuestasPorExamen.Count()
+                };
+
+                lista.Add(resultado);
+            }
+
+            return lista
+                .OrderBy(x => x.NombreProfesor)
+                .ThenBy(x => x.NombreCurso)
+                .ToList();
         }
     }
 }

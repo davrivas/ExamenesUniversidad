@@ -1,13 +1,6 @@
 ﻿using ExamenesUniversidad.Logica.Controladores.EstudianteControladores;
 using ExamenesUniversidad.Presentacion.DataSets;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Presentacion.EstudianteVista
@@ -21,11 +14,17 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
             InitializeComponent();
             _controlador = new InicioEstudianteControlador();
             ActualizarExamenes();
+            ActualizarCalificaciones();
         }
 
         public void ActualizarExamenes()
         {
             dataGridViewExamenes.DataSource = EstudianteDataSet.GetExamenes();
+        }
+
+        private void ActualizarCalificaciones()
+        {
+            dataGridViewCalificaciones.DataSource = EstudianteDataSet.ListarResultados();
         }
 
         private void ButtonCerrarSesion_Click(object sender, EventArgs e)
@@ -67,6 +66,11 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
             {
                 MessageBox.Show("Digite el código del examen", "Error");
             }
+        }
+
+        private void ButtonRefrescarCalificaciones_Click(object sender, EventArgs e)
+        {
+            ActualizarCalificaciones();
         }
     }
 }

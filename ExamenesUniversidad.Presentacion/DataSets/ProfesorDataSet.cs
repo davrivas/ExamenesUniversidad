@@ -109,7 +109,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
         {
             var examen = new ExamenDAO().Listar()
                 .Include(x => x.Curso)
-                .Where(x => x.Codigo == codigoExamen)
+                .Where(x => x.Codigo == codigoExamen && x.ProfesorId == Sesion.ProfesorId)
                 .FirstOrDefault();
 
             var lista = new List<ExamenResultadoDTO>();
@@ -119,7 +119,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 .Include(x => x.Estudiante)
                 .Include(x => x.ExamenPregunta)
                 .Include(x => x.ExamenPregunta.Examen)
-                .Where(x => x.ExamenPregunta.Examen.Codigo == codigoExamen);
+                .Where(x => x.ExamenPregunta.Examen.Codigo == codigoExamen && x.ExamenPregunta.Examen.ProfesorId == Sesion.ProfesorId);
 
             var agrupamiento = estudiantesRespuestas.GroupBy(x => x.Estudiante).ToList();
 
