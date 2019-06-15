@@ -143,5 +143,44 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        private void ButtonExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string outputFile = @"C:\Users\davr\Desktop\CalificacionesEstudiante.csv";
+
+                using (var streamWriter = new StreamWriter(outputFile))
+                {
+                    string encabezado = $"Codigo examen" +
+                        $";Nombre curso" +
+                        $";Nombre profesor" +
+                        $";Cantidad bien" +
+                        $";Cantidad mal" +
+                        $";Total preguntas";
+                    streamWriter.WriteLine(encabezado);
+
+                    foreach (var resultado in _resultados)
+                    {
+                        string fila = $"{resultado.CodigoExamen}" +
+                            $";{resultado.NombreCurso}" +
+                            $";{resultado.NombreProfesor}" +
+                            $";{resultado.CantidadBien.ToString()}" +
+                            $";{resultado.CantidadMal.ToString()}" +
+                            $";{resultado.TotalPreguntas.ToString()}";
+                        streamWriter.WriteLine(fila);
+                    }
+
+                    streamWriter.Close();
+                }
+
+                MessageBox.Show("Excel creado con éxito en " + outputFile);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
     }
 }

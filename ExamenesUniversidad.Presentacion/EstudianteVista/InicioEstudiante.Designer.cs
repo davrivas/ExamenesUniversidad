@@ -177,6 +177,7 @@
             this.buttonExcel.TabIndex = 6;
             this.buttonExcel.Text = "Excel";
             this.buttonExcel.UseVisualStyleBackColor = true;
+            this.buttonExcel.Click += new System.EventHandler(this.ButtonExcel_Click);
             // 
             // InicioEstudiante
             // 
