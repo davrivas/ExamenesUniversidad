@@ -37,8 +37,10 @@
             this.tabControlEstudiante = new System.Windows.Forms.TabControl();
             this.tabPageExamenes = new System.Windows.Forms.TabPage();
             this.tabPageCalificaciones = new System.Windows.Forms.TabPage();
-            this.dataGridViewCalificaciones = new System.Windows.Forms.DataGridView();
             this.buttonRefrescarCalificaciones = new System.Windows.Forms.Button();
+            this.dataGridViewCalificaciones = new System.Windows.Forms.DataGridView();
+            this.buttonPDF = new System.Windows.Forms.Button();
+            this.buttonExcel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExamenes)).BeginInit();
             this.tabControlEstudiante.SuspendLayout();
             this.tabPageExamenes.SuspendLayout();
@@ -127,6 +129,8 @@
             // 
             // tabPageCalificaciones
             // 
+            this.tabPageCalificaciones.Controls.Add(this.buttonExcel);
+            this.tabPageCalificaciones.Controls.Add(this.buttonPDF);
             this.tabPageCalificaciones.Controls.Add(this.buttonRefrescarCalificaciones);
             this.tabPageCalificaciones.Controls.Add(this.dataGridViewCalificaciones);
             this.tabPageCalificaciones.Location = new System.Drawing.Point(4, 22);
@@ -137,6 +141,16 @@
             this.tabPageCalificaciones.Text = "Calificaciones";
             this.tabPageCalificaciones.UseVisualStyleBackColor = true;
             // 
+            // buttonRefrescarCalificaciones
+            // 
+            this.buttonRefrescarCalificaciones.Location = new System.Drawing.Point(559, 6);
+            this.buttonRefrescarCalificaciones.Name = "buttonRefrescarCalificaciones";
+            this.buttonRefrescarCalificaciones.Size = new System.Drawing.Size(98, 23);
+            this.buttonRefrescarCalificaciones.TabIndex = 4;
+            this.buttonRefrescarCalificaciones.Text = "Refrescar lista";
+            this.buttonRefrescarCalificaciones.UseVisualStyleBackColor = true;
+            this.buttonRefrescarCalificaciones.Click += new System.EventHandler(this.ButtonRefrescarCalificaciones_Click);
+            // 
             // dataGridViewCalificaciones
             // 
             this.dataGridViewCalificaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -145,15 +159,24 @@
             this.dataGridViewCalificaciones.Size = new System.Drawing.Size(663, 310);
             this.dataGridViewCalificaciones.TabIndex = 0;
             // 
-            // buttonRefrescarCalificaciones
+            // buttonPDF
             // 
-            this.buttonRefrescarCalificaciones.Location = new System.Drawing.Point(6, 6);
-            this.buttonRefrescarCalificaciones.Name = "buttonRefrescarCalificaciones";
-            this.buttonRefrescarCalificaciones.Size = new System.Drawing.Size(98, 23);
-            this.buttonRefrescarCalificaciones.TabIndex = 4;
-            this.buttonRefrescarCalificaciones.Text = "Refrescar lista";
-            this.buttonRefrescarCalificaciones.UseVisualStyleBackColor = true;
-            this.buttonRefrescarCalificaciones.Click += new System.EventHandler(this.ButtonRefrescarCalificaciones_Click);
+            this.buttonPDF.Location = new System.Drawing.Point(7, 7);
+            this.buttonPDF.Name = "buttonPDF";
+            this.buttonPDF.Size = new System.Drawing.Size(75, 23);
+            this.buttonPDF.TabIndex = 5;
+            this.buttonPDF.Text = "PDF";
+            this.buttonPDF.UseVisualStyleBackColor = true;
+            this.buttonPDF.Click += new System.EventHandler(this.ButtonPDF_Click);
+            // 
+            // buttonExcel
+            // 
+            this.buttonExcel.Location = new System.Drawing.Point(88, 7);
+            this.buttonExcel.Name = "buttonExcel";
+            this.buttonExcel.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcel.TabIndex = 6;
+            this.buttonExcel.Text = "Excel";
+            this.buttonExcel.UseVisualStyleBackColor = true;
             // 
             // InicioEstudiante
             // 
@@ -187,5 +210,7 @@
         private System.Windows.Forms.TabPage tabPageCalificaciones;
         private System.Windows.Forms.DataGridView dataGridViewCalificaciones;
         private System.Windows.Forms.Button buttonRefrescarCalificaciones;
+        private System.Windows.Forms.Button buttonExcel;
+        private System.Windows.Forms.Button buttonPDF;
     }
 }
