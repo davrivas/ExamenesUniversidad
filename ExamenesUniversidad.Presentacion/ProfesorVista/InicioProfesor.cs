@@ -66,7 +66,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
         private void ButtonAgregarPregunta_Click(object sender, EventArgs e)
         {
-            if (dataGridViewExamenes.SelectedRows.Count > 0)
+            if (dataGridViewExamenes.SelectedRows.Count == 1)
             {
                 var fila = dataGridViewExamenes.SelectedRows[0];
                 string codigo = fila.Cells["Codigo"].Value.ToString();
