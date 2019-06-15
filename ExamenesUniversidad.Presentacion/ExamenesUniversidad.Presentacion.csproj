@@ -91,6 +91,12 @@
     <Compile Include="ProfesorVista\AgregarPreguntaExamen.Designer.cs">
       <DependentUpon>AgregarPreguntaExamen.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProfesorVista\CalificacionesExamen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProfesorVista\CalificacionesExamen.Designer.cs">
+      <DependentUpon>CalificacionesExamen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProfesorVista\CrearExamenVacio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProfesorVista\AgregarPreguntaExamen.resx">
       <DependentUpon>AgregarPreguntaExamen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProfesorVista\CalificacionesExamen.resx">
+      <DependentUpon>CalificacionesExamen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfesorVista\CrearExamenVacio.resx">
       <DependentUpon>CrearExamenVacio.cs</DependentUpon>

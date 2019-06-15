@@ -12,6 +12,8 @@ namespace ExamenesUniversidad.Datos.DTOs.ProfesorDTOs
         public string NombreCurso { get; set; }
         public string NombreEstudiante { get; set; }
         public int NumeroCarnet { get; set; }
-        public string Resultado { get; set; }
+        public int CantidadBien { get; set; }
+        public int CantidadMal { get; set; }
+        public int TotalPreguntas { get; set; }
     }
 }

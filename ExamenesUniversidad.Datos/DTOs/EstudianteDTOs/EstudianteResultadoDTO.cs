@@ -11,6 +11,8 @@ namespace ExamenesUniversidad.Datos.DTOs.EstudianteDTOs
         public string CodigoExamen { get; set; }
         public string NombreCurso { get; set; }
         public string NombreProfesor { get; set; }
-        public string Resultado { get; set; }
+        public int CantidadBien { get; set; }
+        public int CantidadMal { get; set; }
+        public int TotalPreguntas { get; set; }
     }
 }

@@ -104,5 +104,46 @@ namespace ExamenesUniversidad.Presentacion.DataSets
 
             return lista;
         }
+
+        public static IList<ExamenResultadoDTO> ListarResultadosPorExamen(string codigoExamen)
+        {
+            var examen = new ExamenDAO().Listar()
+                .Include(x => x.Curso)
+                .Where(x => x.Codigo == codigoExamen)
+                .FirstOrDefault();
+
+            var lista = new List<ExamenResultadoDTO>();
+
+            var estudiantesRespuestas = new EstudianteRespuestaDAO()
+                .Listar()
+                .Include(x => x.Estudiante)
+                .Include(x => x.ExamenPregunta)
+                .Include(x => x.ExamenPregunta.Examen)
+                .Where(x => x.ExamenPregunta.Examen.Codigo == codigoExamen);
+
+            var agrupamiento = estudiantesRespuestas.GroupBy(x => x.Estudiante).ToList();
+
+            var examenRespuestaDAO = new EstudianteRespuestaDAO();
+
+            foreach (var estudiante in agrupamiento)
+            {
+                var respuestas = estudiantesRespuestas
+                    .Where(x => x.EstudianteId == estudiante.Key.Id);
+
+                var resultado = new ExamenResultadoDTO
+                {
+                    CodigoExamen = codigoExamen,
+                    NombreCurso = examen.Curso.Nombre,
+                    NombreEstudiante = $"{estudiante.Key.Nombres} {estudiante.Key.Apellidos}",
+                    NumeroCarnet = estudiante.Key.NumeroCarnet,
+                    CantidadBien = respuestas.Count(x => x.Correcta),
+                    CantidadMal = respuestas.Count(x => !x.Correcta),
+                    TotalPreguntas = respuestas.Count()
+                };
+                lista.Add(resultado);
+            }
+
+            return lista.OrderBy(x => x.NombreEstudiante).ToList();
+        }
     }
 }

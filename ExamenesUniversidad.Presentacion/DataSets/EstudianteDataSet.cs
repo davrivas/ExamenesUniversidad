@@ -44,5 +44,19 @@ namespace ExamenesUniversidad.Presentacion.DataSets
 
             return lista;
         }
+
+        public static IList<EstudianteResultadoDTO> ListarResultados()
+        {
+            var estudiantesRespuestas = new EstudianteRespuestaDAO()
+                .Listar()
+                .Include(x => x.Estudiante)
+                .Include(x => x.ExamenPregunta)
+                .Include(x => x.ExamenPregunta.Examen)
+                .Where(x => x.EstudianteId == Sesion.EstudianteId);
+
+            Console.WriteLine("");
+
+            return new List<EstudianteResultadoDTO>();
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
         private void ButtonCalificaciones_Click(object sender, EventArgs e)
         {
-            // formulario calificaciones
+            new CalificacionesExamen().Show();
         }
 
         private void ButtonGenerarExamen_Click(object sender, EventArgs e)
