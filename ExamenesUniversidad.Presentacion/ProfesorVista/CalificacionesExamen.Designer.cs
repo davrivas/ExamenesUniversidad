@@ -32,6 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxCodigoExamen = new System.Windows.Forms.TextBox();
             this.dataGridViewCalificaciones = new System.Windows.Forms.DataGridView();
+            this.buttonExcel = new System.Windows.Forms.Button();
+            this.buttonPDF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalificaciones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,11 +71,33 @@
             this.dataGridViewCalificaciones.Size = new System.Drawing.Size(679, 271);
             this.dataGridViewCalificaciones.TabIndex = 3;
             // 
+            // buttonExcel
+            // 
+            this.buttonExcel.Location = new System.Drawing.Point(623, 12);
+            this.buttonExcel.Name = "buttonExcel";
+            this.buttonExcel.Size = new System.Drawing.Size(75, 23);
+            this.buttonExcel.TabIndex = 4;
+            this.buttonExcel.Text = "Excel";
+            this.buttonExcel.UseVisualStyleBackColor = true;
+            this.buttonExcel.Click += new System.EventHandler(this.ButtonExcel_Click);
+            // 
+            // buttonPDF
+            // 
+            this.buttonPDF.Location = new System.Drawing.Point(542, 12);
+            this.buttonPDF.Name = "buttonPDF";
+            this.buttonPDF.Size = new System.Drawing.Size(75, 23);
+            this.buttonPDF.TabIndex = 5;
+            this.buttonPDF.Text = "PDF";
+            this.buttonPDF.UseVisualStyleBackColor = true;
+            this.buttonPDF.Click += new System.EventHandler(this.ButtonPDF_Click);
+            // 
             // CalificacionesExamen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 334);
+            this.Controls.Add(this.buttonPDF);
+            this.Controls.Add(this.buttonExcel);
             this.Controls.Add(this.dataGridViewCalificaciones);
             this.Controls.Add(this.textBoxCodigoExamen);
             this.Controls.Add(this.label1);
@@ -92,5 +116,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxCodigoExamen;
         private System.Windows.Forms.DataGridView dataGridViewCalificaciones;
+        private System.Windows.Forms.Button buttonExcel;
+        private System.Windows.Forms.Button buttonPDF;
     }
 }
