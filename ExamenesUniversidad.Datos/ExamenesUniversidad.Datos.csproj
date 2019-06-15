@@ -51,9 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbContexts\ExamenesUniversidadContext.cs" />
+    <Compile Include="DTOs\EstudianteDTOs\EstudianteResultadoDTO.cs" />
     <Compile Include="DTOs\EstudianteDTOs\ExamenEstudianteDTO.cs" />
     <Compile Include="DTOs\ProfesorDTOs\CursoProfesorDTO.cs" />
     <Compile Include="DTOs\ProfesorDTOs\ExamenProfesorDTO.cs" />
+    <Compile Include="DTOs\ProfesorDTOs\ExamenResultadoDTO.cs" />
     <Compile Include="DTOs\ProfesorDTOs\PreguntaCursoDTO.cs" />
     <Compile Include="DTOs\ProfesorDTOs\PreguntaExamenDTO.cs" />
     <Compile Include="Entidades\Curso.cs" />
