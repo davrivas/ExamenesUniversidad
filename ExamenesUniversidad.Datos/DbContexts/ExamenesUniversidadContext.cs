@@ -1,14 +1,14 @@
-﻿using ExamenesUniversidad.Datos.Entidades;
+﻿using System.Configuration;
+using ExamenesUniversidad.Datos.Entidades;
 using System.Data.Entity;
 
 namespace ExamenesUniversidad.Datos.DbContexts
 {
     public class ExamenesUniversidadContext : DbContext
     {
-        // esto puede cambiar
-        private const string CONNECTION_STRING = @"Data Source=DESKTOP-0S26F42\SQLEXPRESS;Initial Catalog=ExamenesUniversidad;Integrated Security=True";
+        private static readonly string ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
 
-        public ExamenesUniversidadContext() : base(CONNECTION_STRING)
+        public ExamenesUniversidadContext() : base(ConnectionString)
         {
         }
 
