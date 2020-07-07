@@ -3,6 +3,7 @@ using ExamenesUniversidad.Logica.Extensiones;
 using ExamenesUniversidad.Presentacion.EstudianteVista;
 using ExamenesUniversidad.Presentacion.ProfesorVista;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Presentacion
@@ -10,15 +11,19 @@ namespace ExamenesUniversidad.Presentacion
     public partial class Inicio : Form
     {
         private readonly InicioControlador _controlador;
+        private readonly IEnumerable<Control> _controlesInicioSesion;
 
         public Inicio()
         {
             InitializeComponent();
             _controlador = new InicioControlador();
+            _controlesInicioSesion = new Control[] { comboBoxRol, textBoxUsuario, textBoxClave, buttonIniciar };
         }
 
         private void ButtonIniciar_Click(object sender, EventArgs e)
         {
+            CambiarEstadoCampos(_controlesInicioSesion, false);
+
             if (!string.IsNullOrWhiteSpace(textBoxUsuario.Text)
                 && !string.IsNullOrWhiteSpace(textBoxClave.Text))
             {
@@ -32,20 +37,20 @@ namespace ExamenesUniversidad.Presentacion
                         case "Profesor":
                             if (_controlador.IniciarProfesor())
                             {
-                                BorrarTodosLosCampos();
                                 MessageBox.Show("Bienvenido profesor");
                                 Program.InicioProfesor = new InicioProfesor();
                                 Program.InicioProfesor.Show();
+                                BorrarTodosLosCampos();
                                 Program.InicioForm.Hide();
                             }
                             break;
                         case "Estudiante":
                             if (_controlador.IniciarEstudiante())
                             {
-                                BorrarTodosLosCampos();
                                 MessageBox.Show("Bienvenido estudiante");
                                 Program.InicioEstudiante = new InicioEstudiante();
                                 Program.InicioEstudiante.Show();
+                                BorrarTodosLosCampos();
                                 Program.InicioForm.Hide();
                             }
                             break;
@@ -63,6 +68,8 @@ namespace ExamenesUniversidad.Presentacion
             {
                 MessageBox.Show("Digite todos los campos", "Error");
             }
+
+            CambiarEstadoCampos(_controlesInicioSesion, true);
         }
 
         private void ButtonRegistrar_Click(object sender, EventArgs e)
@@ -143,6 +150,14 @@ namespace ExamenesUniversidad.Presentacion
             else
             {
                 MessageBox.Show("Digite todos los campos", "Error");
+            }
+        }
+
+        public void CambiarEstadoCampos(IEnumerable<Control> controles, bool estado)
+        {
+            foreach (var control in controles)
+            {
+                control.Enabled = estado;
             }
         }
 
