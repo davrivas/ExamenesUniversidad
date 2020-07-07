@@ -1,12 +1,9 @@
 ﻿using ExamenesUniversidad.Datos.DTOs.EstudianteDTOs;
 using ExamenesUniversidad.Logica.DAOs;
 using ExamenesUniversidad.Logica.Utilidades;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExamenesUniversidad.Presentacion.DataSets
 {
@@ -26,8 +23,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 {
                     Realizado = estudianteRespuestaDAO.Listar()
                     .Include(y => y.ExamenPregunta)
-                    .Where(y => y.ExamenPregunta.ExamenId == x.Id && y.EstudianteId == Sesion.EstudianteId)
-                    .Count() > 0 ? "Sí" : "No",
+                    .Count(y => y.ExamenPregunta.ExamenId == x.Id && y.EstudianteId == Sesion.Estudiante.Id) > 0 ? "Sí" : "No",
                     Codigo = x.Codigo,
                     NumeroPreguntas = x.ExamenPreguntas.Count,
                     Abierto = x.Abierto ? "Sí" : "No",
@@ -56,7 +52,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 .Include(x => x.ExamenPregunta.Examen)
                 .Include(x => x.ExamenPregunta.Examen.Curso)
                 .Include(x => x.ExamenPregunta.Examen.Profesor)
-                .Where(x => x.EstudianteId == Sesion.EstudianteId);
+                .Where(x => x.EstudianteId == Sesion.Estudiante.Id);
 
             var agrupamiento = respuestas.GroupBy(x => x.ExamenPregunta.Examen).ToList();
 

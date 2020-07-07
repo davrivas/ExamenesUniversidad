@@ -1,13 +1,6 @@
 ﻿using ExamenesUniversidad.Logica.Controladores.ProfesorControladores;
 using ExamenesUniversidad.Logica.Utilidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Presentacion.ProfesorVista
@@ -81,7 +74,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
                             _controlador.ExamenNuevo.FechaInicio = dateTimePickerInicio.Value;
                             _controlador.ExamenNuevo.FechaFin = dateTimePickerFin.Value;
                             _controlador.ExamenNuevo.CursoId = _controlador.CursoAsociado.Id;
-                            _controlador.ExamenNuevo.ProfesorId = Sesion.ProfesorId;
+                            _controlador.ExamenNuevo.ProfesorId = Sesion.Profesor.Id;
                             _controlador.GenerarExamen(Convert.ToInt32(maskedTextBoxCantidad.Text));
                             MessageBox.Show("Examen generado con éxito");
                             Program.InicioProfesor.ActualizarExamenes();

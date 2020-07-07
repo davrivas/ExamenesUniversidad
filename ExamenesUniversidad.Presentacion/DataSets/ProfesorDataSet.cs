@@ -1,7 +1,6 @@
 ﻿using ExamenesUniversidad.Datos.DTOs.ProfesorDTOs;
 using ExamenesUniversidad.Logica.DAOs;
 using ExamenesUniversidad.Logica.Utilidades;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -82,7 +81,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
         {
             var lista = new ExamenDAO()
                 .Listar()
-                .Where(x => x.ProfesorId == Sesion.ProfesorId)
+                .Where(x => x.ProfesorId == Sesion.Profesor.Id)
                 .OrderBy(x => x.Abierto)
                 .ThenByDescending(x => x.FechaInicio)
                 .ThenByDescending(x => x.FechaFin)
@@ -109,8 +108,7 @@ namespace ExamenesUniversidad.Presentacion.DataSets
         {
             var examen = new ExamenDAO().Listar()
                 .Include(x => x.Curso)
-                .Where(x => x.Codigo == codigoExamen && x.ProfesorId == Sesion.ProfesorId)
-                .FirstOrDefault();
+                .FirstOrDefault(x => x.Codigo == codigoExamen && x.ProfesorId == Sesion.Profesor.Id);
 
             var lista = new List<ExamenResultadoDTO>();
 
@@ -119,11 +117,9 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 .Include(x => x.Estudiante)
                 .Include(x => x.ExamenPregunta)
                 .Include(x => x.ExamenPregunta.Examen)
-                .Where(x => x.ExamenPregunta.Examen.Codigo == codigoExamen && x.ExamenPregunta.Examen.ProfesorId == Sesion.ProfesorId);
+                .Where(x => x.ExamenPregunta.Examen.Codigo == codigoExamen && x.ExamenPregunta.Examen.ProfesorId == Sesion.Profesor.Id);
 
             var agrupamiento = estudiantesRespuestas.GroupBy(x => x.Estudiante).ToList();
-
-            var examenRespuestaDAO = new EstudianteRespuestaDAO();
 
             foreach (var estudiante in agrupamiento)
             {

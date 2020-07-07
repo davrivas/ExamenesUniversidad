@@ -16,20 +16,12 @@ namespace ExamenesUniversidad.Logica.DAOs
 
     public class ExamenDAO : DAO<Examen>, IExamenDAO
     {
-        private IPreguntaDAO _preguntaDAO;
-
-        public ExamenDAO() : base()
-        {
-            _preguntaDAO = new PreguntaDAO();
-        }
-
         public bool ExisteExamen(string codigo)
         {
             try
             {
                 var examen = Listar()
-                    .Where(x => x.Codigo == codigo)
-                    .FirstOrDefault();
+                    .FirstOrDefault(x => x.Codigo == codigo);
                 bool validacion = examen != null;
 
                 return validacion;
@@ -85,8 +77,8 @@ namespace ExamenesUniversidad.Logica.DAOs
                 var examen = Listar()
                     .Where(x => x.Codigo == codigo)
                     .Include(x => x.ExamenPreguntas)
+                    .Include("ExamenPreguntas.Pregunta")
                     .FirstOrDefault();
-                examen.ExamenPreguntas.ToList().ForEach(x => x.Pregunta = _preguntaDAO.BuscarPorId(x.PreguntaId));
 
                 return examen;
             }

@@ -19,14 +19,13 @@ namespace ExamenesUniversidad.Logica.DAOs
             try
             {
                 var profesor = Listar()
-                    .Where(x => x.NombreUsuario == usuario && x.Clave == clave)
-                    .FirstOrDefault();
+                    .FirstOrDefault(x => x.NombreUsuario == usuario && x.Clave == clave);
                 bool validacion = profesor != null;
 
                 if (!validacion)
                     MessageBox.Show($"No se encontró al profesor '{usuario}'", "Error");
                 else
-                    Sesion.ProfesorId = profesor.Id;
+                    Sesion.Profesor = profesor;
 
                 return validacion;
             }
@@ -42,8 +41,7 @@ namespace ExamenesUniversidad.Logica.DAOs
             try
             {
                 var profesor = Listar()
-                    .Where(x => x.NombreUsuario == usuario)
-                    .FirstOrDefault();
+                    .FirstOrDefault(x => x.NombreUsuario == usuario);
                 bool validacion = profesor != null;
 
                 return validacion;

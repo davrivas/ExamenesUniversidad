@@ -1,11 +1,11 @@
 ﻿using ExamenesUniversidad.Datos.DbContexts;
+using ExamenesUniversidad.Datos.Entidades;
 
 namespace ExamenesUniversidad.Logica.Utilidades
 {
     public static class Sesion
     {
-        public static int EstudianteId { get; set; }
-        public static int ProfesorId { get; set; }
-        public static int CursoCodigo { get; set; }
+        public static Estudiante Estudiante { get; set; }
+        public static Profesor Profesor { get; set; }
     }
 }

@@ -17,8 +17,7 @@ namespace ExamenesUniversidad.Logica.DAOs
             try
             {
                 var estudianteRespuesta = Listar()
-                    .Where(x => x.ExamenPreguntaId == examenPreguntaId && x.EstudianteId == estudianteId)
-                    .FirstOrDefault();
+                    .FirstOrDefault(x => x.ExamenPreguntaId == examenPreguntaId && x.EstudianteId == estudianteId);
 
                 return estudianteRespuesta;
             }

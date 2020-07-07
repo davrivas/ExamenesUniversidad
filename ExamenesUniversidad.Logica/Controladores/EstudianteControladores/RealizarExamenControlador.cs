@@ -51,7 +51,7 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
                 var examenPregunta = _examenPreguntas[i];
                 int respuesta = respuestas[i];
 
-                var respuestaEstudiante = _estudianteRespuestaDAO.ObtenerPorExamenPreguntaIdEstudiante(examenPregunta.Id, Sesion.EstudianteId);
+                var respuestaEstudiante = _estudianteRespuestaDAO.ObtenerPorExamenPreguntaIdEstudiante(examenPregunta.Id, Sesion.Estudiante.Id);
 
                 if (respuestaEstudiante != null)
                 {
@@ -72,7 +72,7 @@ namespace ExamenesUniversidad.Logica.Controladores.EstudianteControladores
                     {
                         Respuesta = respuesta,
                         Correcta = respuesta == examenPregunta.Pregunta.RespuestaCorrecta ? true : false,
-                        EstudianteId = Sesion.EstudianteId,
+                        EstudianteId = Sesion.Estudiante.Id,
                         ExamenPreguntaId = examenPregunta.Id
                     };
 

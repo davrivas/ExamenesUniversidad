@@ -87,6 +87,7 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
             try
             {
                 var dialogoGuardar = new SaveFileDialog();
+                dialogoGuardar.FileName = $"Reporte PDF {Sesion.Estudiante.Nombres} {Sesion.Estudiante.Apellidos} - {DateTime.Now:yyyy/MM/dd HH.mm.ss}";
                 dialogoGuardar.Filter = "PDF (*.pdf)|*.pdf";
                 dialogoGuardar.FilterIndex = 1;
                 dialogoGuardar.RestoreDirectory = true;
@@ -145,6 +146,7 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
             try
             {
                 var dialogoGuardar = new SaveFileDialog();
+                dialogoGuardar.FileName = $"Reporte Excel {Sesion.Estudiante.Nombres} {Sesion.Estudiante.Apellidos} - {DateTime.Now:yyyy/MM/dd HH.mm.ss}";
                 dialogoGuardar.Filter = "CSV (*.csv)|*.csv";
                 dialogoGuardar.FilterIndex = 1;
                 dialogoGuardar.RestoreDirectory = true;
