@@ -5,8 +5,10 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using ExamenesUniversidad.Logica.Utilidades;
 
 namespace ExamenesUniversidad.Presentacion.EstudianteVista
 {
@@ -84,13 +86,18 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
         {
             try
             {
-                string outputFile = @"C:\Users\davr\Desktop\CalificacionesEstudiante.pdf";
+                var dialogoGuardar = new SaveFileDialog();
+                dialogoGuardar.Filter = "PDF (*.pdf)|*.pdf";
+                dialogoGuardar.FilterIndex = 1;
+                dialogoGuardar.RestoreDirectory = true;
 
-                using (var fileStream = new FileStream(outputFile, FileMode.Create, FileAccess.Write, FileShare.None))
+                if (dialogoGuardar.ShowDialog() == DialogResult.OK)
                 {
-                    using (var document = new Document(PageSize.A4))
+                    string rutaDeArchivo = dialogoGuardar.FileName;
+
+                    using (var fileStream = new FileStream(rutaDeArchivo, FileMode.Create, FileAccess.Write, FileShare.None))
                     {
-                        using (var writer = PdfWriter.GetInstance(document, fileStream))
+                        using (var document = new Document(PageSize.A4))
                         {
                             document.Open();
 
@@ -119,12 +126,12 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
 
                             document.Close();
                         }
+
+                        fileStream.Close();
                     }
 
-                    fileStream.Close();
+                    MessageBox.Show("Reporte hecho en " + rutaDeArchivo);
                 }
-
-                MessageBox.Show("Reporte hecho en " + outputFile);
             }
             catch (Exception ex)
             {
@@ -137,33 +144,43 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
         {
             try
             {
-                string outputFile = @"C:\Users\davr\Desktop\CalificacionesEstudiante.csv";
+                var dialogoGuardar = new SaveFileDialog();
+                dialogoGuardar.Filter = "CSV (*.csv)|*.csv";
+                dialogoGuardar.FilterIndex = 1;
+                dialogoGuardar.RestoreDirectory = true;
 
-                using (var streamWriter = new StreamWriter(outputFile))
+                if (dialogoGuardar.ShowDialog() == DialogResult.OK)
                 {
-                    string encabezado = $"Codigo examen" +
-                        $";Nombre curso" +
-                        $";Nombre profesor" +
-                        $";Cantidad bien" +
-                        $";Cantidad mal" +
-                        $";Total preguntas";
-                    streamWriter.WriteLine(encabezado);
+                    string rutaDeArchivo = dialogoGuardar.FileName;
 
-                    foreach (var resultado in _resultados)
+                    using (var streamWriter = new StreamWriter(rutaDeArchivo))
                     {
-                        string fila = $"{resultado.CodigoExamen}" +
-                            $";{resultado.NombreCurso}" +
-                            $";{resultado.NombreProfesor}" +
-                            $";{resultado.CantidadBien.ToString()}" +
-                            $";{resultado.CantidadMal.ToString()}" +
-                            $";{resultado.TotalPreguntas.ToString()}";
-                        streamWriter.WriteLine(fila);
+                        string separador = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
+
+                        string encabezado = "Codigo examen" +
+                            $"{separador}Nombre curso" +
+                            $"{separador}Nombre profesor" +
+                            $"{separador}Cantidad bien" +
+                            $"{separador}Cantidad mal" +
+                            $"{separador}Total preguntas";
+                        streamWriter.WriteLine(encabezado);
+
+                        foreach (var resultado in _resultados)
+                        {
+                            string fila = $"{resultado.CodigoExamen}" +
+                                $"{separador}{resultado.NombreCurso}" +
+                                $"{separador}{resultado.NombreProfesor}" +
+                                $"{separador}{resultado.CantidadBien}" +
+                                $"{separador}{resultado.CantidadMal}" +
+                                $"{separador}{resultado.TotalPreguntas}";
+                            streamWriter.WriteLine(fila);
+                        }
+
+                        streamWriter.Close();
                     }
 
-                    streamWriter.Close();
+                    MessageBox.Show("Excel creado con éxito en " + rutaDeArchivo);
                 }
-
-                MessageBox.Show("Excel creado con éxito en " + outputFile);
             }
             catch (Exception ex)
             {
