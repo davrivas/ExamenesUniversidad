@@ -5,81 +5,100 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace ExamenesUniversidad.Presentacion.DataSets
+namespace ExamenesUniversidad.Logica.DataSets
 {
-    public static class ProfesorDataSet
+    public interface IProfesorDataSet
     {
-        public static IList<CursoProfesorDTO> ListarCursos()
+        IList<CursoProfesorDTO> ListarCursos();
+        IList<PreguntaCursoDTO> ListarPreguntasCurso(string codigo);
+        IList<PreguntaCursoDTO> ListarPreguntasCursoPorExamen(string codigoExamen);
+        IList<ExamenProfesorDTO> ListarExamenes();
+        IList<ExamenResultadoDTO> ListarResultadosPorExamen(string codigoExamen);
+    }
+
+    public class ProfesorDataSet : IProfesorDataSet
+    {
+        private readonly ICursoDAO _cursoDAO;
+        private readonly IEstudianteRespuestaDAO _estudianteRespuestaDAO;
+        private readonly IExamenDAO _examenDao;
+        private readonly IPreguntaDAO _preguntaDAO;
+
+        public ProfesorDataSet()
         {
-            var query = new CursoDAO()
+            _cursoDAO = new CursoDAO();
+            _estudianteRespuestaDAO = new EstudianteRespuestaDAO();
+            _examenDao = new ExamenDAO();
+            _preguntaDAO = new PreguntaDAO();
+        }
+
+        public IList<CursoProfesorDTO> ListarCursos()
+        {
+            var lista = _cursoDAO
                 .Listar()
                 .OrderBy(x => x.Nombre)
                 .Include(x => x.Examenes)
                 .Include(x => x.Preguntas)
-                .AsQueryable();
-
-            var lista = query.Select(x => new CursoProfesorDTO
-            {
-                Codigo = x.Codigo,
-                Nombre = x.Nombre,
-                CantidadPreguntas = x.Preguntas.Count,
-                CantidadExamenes = x.Examenes.Count
-            }).ToList();
+                .Select(x => new CursoProfesorDTO
+                {
+                    Codigo = x.Codigo,
+                    Nombre = x.Nombre,
+                    CantidadPreguntas = x.Preguntas.Count,
+                    CantidadExamenes = x.Examenes.Count
+                }).ToList();
 
             return lista;
         }
 
-        public static IList<PreguntaCursoDTO> ListarPreguntasCurso(string codigo)
+        public IList<PreguntaCursoDTO> ListarPreguntasCurso(string codigo)
         {
-            var query = new PreguntaDAO()
+            var lista = _preguntaDAO
                 .Listar()
                 .Include(x => x.Curso)
-                .Where(x => x.Curso.Codigo == codigo);
-
-            var lista = query.Select(x => new PreguntaCursoDTO
-            {
-                NombreCurso = x.Curso.Nombre,
-                Consecutivo = x.Consecutivo,
-                Enunciado = x.Enunciado,
-                Respuesta1 = x.Respuesta1,
-                Respuesta2 = x.Respuesta2,
-                Respuesta3 = x.Respuesta3,
-                Respuesta4 = x.Respuesta4,
-                Respuesta5 = x.Respuesta5,
-                RespuestaCorrecta = x.RespuestaCorrecta
-            }).ToList();
+                .Where(x => x.Curso.Codigo == codigo)
+                .Select(x => new PreguntaCursoDTO
+                {
+                    NombreCurso = x.Curso.Nombre,
+                    Consecutivo = x.Consecutivo,
+                    Enunciado = x.Enunciado,
+                    Respuesta1 = x.Respuesta1,
+                    Respuesta2 = x.Respuesta2,
+                    Respuesta3 = x.Respuesta3,
+                    Respuesta4 = x.Respuesta4,
+                    Respuesta5 = x.Respuesta5,
+                    RespuestaCorrecta = x.RespuestaCorrecta
+                }).ToList();
 
             return lista;
         }
 
-        public static IList<PreguntaCursoDTO> ListarPreguntasCursoPorExamen(string codigoExamen)
+        public IList<PreguntaCursoDTO> ListarPreguntasCursoPorExamen(string codigoExamen)
         {
-            int cursoId = new ExamenDAO().ObtenerIdCursoPorCodigo(codigoExamen);
+            int cursoId = _examenDao
+                .ObtenerIdCursoPorCodigo(codigoExamen);
 
-            var query = new PreguntaDAO()
+            var lista = _preguntaDAO
                 .Listar()
                 .Include(x => x.Curso)
-                .Where(x => x.Curso.Id == cursoId);
-
-            var lista = query.Select(x => new PreguntaCursoDTO
-            {
-                NombreCurso = x.Curso.Nombre,
-                Consecutivo = x.Consecutivo,
-                Enunciado = x.Enunciado,
-                Respuesta1 = x.Respuesta1,
-                Respuesta2 = x.Respuesta2,
-                Respuesta3 = x.Respuesta3,
-                Respuesta4 = x.Respuesta4,
-                Respuesta5 = x.Respuesta5,
-                RespuestaCorrecta = x.RespuestaCorrecta
-            }).ToList();
+                .Where(x => x.Curso.Id == cursoId)
+                .Select(x => new PreguntaCursoDTO
+                {
+                    NombreCurso = x.Curso.Nombre,
+                    Consecutivo = x.Consecutivo,
+                    Enunciado = x.Enunciado,
+                    Respuesta1 = x.Respuesta1,
+                    Respuesta2 = x.Respuesta2,
+                    Respuesta3 = x.Respuesta3,
+                    Respuesta4 = x.Respuesta4,
+                    Respuesta5 = x.Respuesta5,
+                    RespuestaCorrecta = x.RespuestaCorrecta
+                }).ToList();
 
             return lista;
         }
 
-        public static IList<ExamenProfesorDTO> ListarExamenes()
+        public IList<ExamenProfesorDTO> ListarExamenes()
         {
-            var lista = new ExamenDAO()
+            var lista = _examenDao
                 .Listar()
                 .Where(x => x.ProfesorId == Sesion.Profesor.Id)
                 .OrderBy(x => x.Abierto)
@@ -104,15 +123,16 @@ namespace ExamenesUniversidad.Presentacion.DataSets
             return lista;
         }
 
-        public static IList<ExamenResultadoDTO> ListarResultadosPorExamen(string codigoExamen)
+        public IList<ExamenResultadoDTO> ListarResultadosPorExamen(string codigoExamen)
         {
-            var examen = new ExamenDAO().Listar()
+            var examen = _examenDao
+                .Listar()
                 .Include(x => x.Curso)
                 .FirstOrDefault(x => x.Codigo == codigoExamen && x.ProfesorId == Sesion.Profesor.Id);
 
             var lista = new List<ExamenResultadoDTO>();
 
-            var estudiantesRespuestas = new EstudianteRespuestaDAO()
+            var estudiantesRespuestas = _estudianteRespuestaDAO
                 .Listar()
                 .Include(x => x.Estudiante)
                 .Include(x => x.ExamenPregunta)

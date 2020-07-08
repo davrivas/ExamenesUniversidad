@@ -59,8 +59,11 @@
     <Compile Include="Controladores\ProfesorControladores\AgregarCursoControlador.cs" />
     <Compile Include="Controladores\ProfesorControladores\AgregarPreguntaCursoControlador.cs" />
     <Compile Include="Controladores\ProfesorControladores\AgregarPreguntaExamenControlador.cs" />
+    <Compile Include="Controladores\ProfesorControladores\CalificacionesExamenControlador.cs" />
     <Compile Include="Controladores\ProfesorControladores\CrearExamenVacioControlador.cs" />
     <Compile Include="Controladores\ProfesorControladores\GenerarExamenControlador.cs" />
+    <Compile Include="Controladores\ProfesorControladores\InicioProfesorControlador.cs" />
+    <Compile Include="Controladores\ProfesorControladores\VerPreguntasCursoControlador.cs" />
     <Compile Include="DAOs\CursoDAO.cs" />
     <Compile Include="DAOs\DAO.cs" />
     <Compile Include="DAOs\EstudianteDAO.cs" />
@@ -69,6 +72,8 @@
     <Compile Include="DAOs\ExamenPreguntaDAO.cs" />
     <Compile Include="DAOs\PreguntaDAO.cs" />
     <Compile Include="DAOs\ProfesorDAO.cs" />
+    <Compile Include="DataSets\EstudianteDataSet.cs" />
+    <Compile Include="DataSets\ProfesorDataSet.cs" />
     <Compile Include="Extensiones\StringExtensiones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\ExcepcionUtilidades.cs" />

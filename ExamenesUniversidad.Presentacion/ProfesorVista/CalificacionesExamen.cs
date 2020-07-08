@@ -1,42 +1,39 @@
 ﻿using ExamenesUniversidad.Datos.DTOs.ProfesorDTOs;
-using ExamenesUniversidad.Presentacion.DataSets;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using ExamenesUniversidad.Logica.Controladores.ProfesorControladores;
+using ExamenesUniversidad.Logica.Utilidades;
 
 namespace ExamenesUniversidad.Presentacion.ProfesorVista
 {
     public partial class CalificacionesExamen : Form
     {
+        private string _codigoExamen;
+        private readonly CalificacionesExamenControlador _controlador;
         private IList<ExamenResultadoDTO> _resultadosPorExamen;
 
         public CalificacionesExamen()
         {
             InitializeComponent();
+            _controlador = new CalificacionesExamenControlador();
             _resultadosPorExamen = new List<ExamenResultadoDTO>();
         }
 
         private void ButtonBuscar_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(textBoxCodigoExamen.Text))
+            if (string.IsNullOrWhiteSpace(textBoxCodigoExamen.Text))
             {
-                _resultadosPorExamen = ProfesorDataSet.ListarResultadosPorExamen(textBoxCodigoExamen.Text);
-                
-            }
-            else
-            {
-                _resultadosPorExamen = new List<ExamenResultadoDTO>();
+                MessageBox.Show("Debe ingresar un código");
+                return;
             }
 
+            _codigoExamen = string.Copy(textBoxCodigoExamen.Text);
+            _resultadosPorExamen = _controlador.ListarResultadosPorExamen(_codigoExamen);
             dataGridViewCalificaciones.DataSource = _resultadosPorExamen;
         }
 
@@ -56,13 +53,19 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
             try
             {
-                string outputFile = @"C:\Users\davr\Desktop\CalificacionesPorExamen.pdf";
+                var dialogoGuardar = new SaveFileDialog();
+                dialogoGuardar.FileName = $"Reporte PDF Resultados Examen {_codigoExamen} - {DateTime.Now:yyyy/MM/dd HH.mm.ss}";
+                dialogoGuardar.Filter = "PDF (*.pdf)|*.pdf";
+                dialogoGuardar.FilterIndex = 1;
+                dialogoGuardar.RestoreDirectory = true;
 
-                using (var fileStream = new FileStream(outputFile, FileMode.Create, FileAccess.Write, FileShare.None))
+                if (dialogoGuardar.ShowDialog() == DialogResult.OK)
                 {
-                    using (var document = new Document(PageSize.A4))
+                    string rutaArchivo = dialogoGuardar.FileName;
+                    
+                    using (var fileStream = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write, FileShare.None))
                     {
-                        using (var writer = PdfWriter.GetInstance(document, fileStream))
+                        using (var document = new Document(PageSize.A4))
                         {
                             document.Open();
 
@@ -93,12 +96,12 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
                             document.Close();
                         }
+
+                        fileStream.Close();
                     }
 
-                    fileStream.Close();
+                    MessageBox.Show("Reporte hecho en " + rutaArchivo);
                 }
-
-                MessageBox.Show("Reporte hecho en " + outputFile);
             }
             catch (Exception ex)
             {
@@ -123,35 +126,46 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
 
             try
             {
-                string outputFile = @"C:\Users\davr\Desktop\CalificacionesPorExamen.csv";
+                var dialogoGuardar = new SaveFileDialog();
+                dialogoGuardar.FileName = $"Reporte Excel {_codigoExamen} - {DateTime.Now:yyyy/MM/dd HH.mm.ss}";
+                dialogoGuardar.Filter = "CSV (*.csv)|*.csv";
+                dialogoGuardar.FilterIndex = 1;
+                dialogoGuardar.RestoreDirectory = true;
 
-                using (var streamWriter = new StreamWriter(outputFile))
+                if (dialogoGuardar.ShowDialog() == DialogResult.OK)
                 {
-                    string encabezado = $"Codigo examen" +
-                        $";Nombre curso" +
-                        $";Nombre estudiante" +
-                        $";Numero carnet" +
-                        $";Cantidad bien" +
-                        $";Cantidad mal" +
-                        $";Total preguntas";
-                    streamWriter.WriteLine(encabezado);
+                    string rutaArchivo = dialogoGuardar.FileName;
 
-                    foreach (var resultado in _resultadosPorExamen)
+                    using (var streamWriter = new StreamWriter(rutaArchivo))
                     {
-                        string fila = $"{resultado.CodigoExamen}" +
-                            $";{resultado.NombreCurso}" +
-                            $";{resultado.NombreEstudiante}" +
-                            $";{resultado.NumeroCarnet.ToString()}" +
-                            $";{resultado.CantidadBien.ToString()}" +
-                            $";{resultado.CantidadMal.ToString()}" +
-                            $";{resultado.TotalPreguntas.ToString()}";
-                        streamWriter.WriteLine(fila);
+                        string separador = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
+
+                        string encabezado = "Codigo examen" +
+                                            $"{separador}Nombre curso" +
+                                            $"{separador}Nombre estudiante" +
+                                            $"{separador}Numero carnet" +
+                                            $"{separador}Cantidad bien" +
+                                            $"{separador}Cantidad mal" +
+                                            $"{separador}Total preguntas";
+                        streamWriter.WriteLine(encabezado);
+
+                        foreach (var resultado in _resultadosPorExamen)
+                        {
+                            string fila = $"{resultado.CodigoExamen}" +
+                                          $"{separador}{resultado.NombreCurso}" +
+                                          $"{separador}{resultado.NombreEstudiante}" +
+                                          $"{separador}{resultado.NumeroCarnet}" +
+                                          $"{separador}{resultado.CantidadBien}" +
+                                          $"{separador}{resultado.CantidadMal}" +
+                                          $"{separador}{resultado.TotalPreguntas}";
+                            streamWriter.WriteLine(fila);
+                        }
+
+                        streamWriter.Close();
                     }
 
-                    streamWriter.Close();
+                    MessageBox.Show("Excel creado con éxito en " + rutaArchivo);
                 }
-
-                MessageBox.Show("Excel creado con éxito en " + outputFile);
             }
             catch (Exception ex)
             {

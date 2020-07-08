@@ -1,14 +1,8 @@
 ﻿using ExamenesUniversidad.Datos.DTOs.ProfesorDTOs;
 using ExamenesUniversidad.Logica.Controladores.ProfesorControladores;
-using ExamenesUniversidad.Presentacion.DataSets;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ExamenesUniversidad.Presentacion.ProfesorVista
@@ -24,7 +18,7 @@ namespace ExamenesUniversidad.Presentacion.ProfesorVista
             InitializeComponent();
             _controlador = new AgregarPreguntaExamenControlador();
             _codigoExamen = codigo;
-            _preguntas = ProfesorDataSet.ListarPreguntasCursoPorExamen(_codigoExamen);
+            _preguntas = _controlador.ListarPreguntasCursoPorExamen(_codigoExamen);
             dataGridViewPreguntas.DataSource = _preguntas;
         }
 

@@ -5,15 +5,32 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace ExamenesUniversidad.Presentacion.DataSets
+namespace ExamenesUniversidad.Logica.DataSets
 {
-    public static class EstudianteDataSet
+    public interface IEstudianteDataSet
     {
-        public static IList<ExamenEstudianteDTO> GetExamenes()
-        {
-            var estudianteRespuestaDAO = new EstudianteRespuestaDAO();
+        IList<ExamenEstudianteDTO> GetExamenes();
+        IList<EstudianteResultadoDTO> ListarResultados();
+    }
 
-            var lista = new ExamenDAO()
+    public class EstudianteDataSet : IEstudianteDataSet
+    {
+        private readonly ICursoDAO _cursoDAO;
+        private readonly IEstudianteRespuestaDAO _estudianteRespuestaDAO;
+        private readonly IExamenDAO _examenDAO;
+        private readonly IProfesorDAO _profesorDAO;
+
+        public EstudianteDataSet()
+        {
+            _cursoDAO = new CursoDAO();
+            _estudianteRespuestaDAO = new EstudianteRespuestaDAO();
+            _examenDAO = new ExamenDAO();
+            _profesorDAO = new ProfesorDAO();
+        }
+
+        public IList<ExamenEstudianteDTO> GetExamenes()
+        {
+            var lista = _examenDAO
                 .Listar()
                 .Include(x => x.Profesor)
                 .Include(x => x.Curso)
@@ -21,9 +38,9 @@ namespace ExamenesUniversidad.Presentacion.DataSets
                 .ToList()
                 .Select(x => new ExamenEstudianteDTO
                 {
-                    Realizado = estudianteRespuestaDAO.Listar()
-                    .Include(y => y.ExamenPregunta)
-                    .Count(y => y.ExamenPregunta.ExamenId == x.Id && y.EstudianteId == Sesion.Estudiante.Id) > 0 ? "Sí" : "No",
+                    Realizado = _estudianteRespuestaDAO.Listar()
+                        .Include(y => y.ExamenPregunta)
+                        .Count(y => y.ExamenPregunta.ExamenId == x.Id && y.EstudianteId == Sesion.Estudiante.Id) > 0 ? "Sí" : "No",
                     Codigo = x.Codigo,
                     NumeroPreguntas = x.ExamenPreguntas.Count,
                     Abierto = x.Abierto ? "Sí" : "No",
@@ -41,11 +58,11 @@ namespace ExamenesUniversidad.Presentacion.DataSets
             return lista;
         }
 
-        public static IList<EstudianteResultadoDTO> ListarResultados()
+        public IList<EstudianteResultadoDTO> ListarResultados()
         {
             var lista = new List<EstudianteResultadoDTO>();
 
-            var respuestas = new EstudianteRespuestaDAO()
+            var respuestas = _estudianteRespuestaDAO
                 .Listar()
                 .Include(x => x.Estudiante)
                 .Include(x => x.ExamenPregunta)
@@ -56,13 +73,10 @@ namespace ExamenesUniversidad.Presentacion.DataSets
 
             var agrupamiento = respuestas.GroupBy(x => x.ExamenPregunta.Examen).ToList();
 
-            var profesorDAO = new ProfesorDAO();
-            var cursoDAO = new CursoDAO();
-
             foreach (var examen in agrupamiento)
             {
-                var profesor = profesorDAO.BuscarPorId(examen.Key.ProfesorId);
-                var curso = cursoDAO.BuscarPorId(examen.Key.CursoId);
+                var profesor = _profesorDAO.BuscarPorId(examen.Key.ProfesorId);
+                var curso = _cursoDAO.BuscarPorId(examen.Key.CursoId);
                 var respuestasPorExamen = respuestas
                     .Where(x => x.ExamenPregunta.ExamenId == examen.Key.Id);
 

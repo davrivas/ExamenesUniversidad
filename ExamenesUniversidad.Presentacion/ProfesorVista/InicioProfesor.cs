@@ -1,26 +1,29 @@
-﻿using ExamenesUniversidad.Presentacion.DataSets;
-using System;
+﻿using System;
 using System.Windows.Forms;
+using ExamenesUniversidad.Logica.Controladores.ProfesorControladores;
 
 namespace ExamenesUniversidad.Presentacion.ProfesorVista
 {
     public partial class InicioProfesor : Form
     {
+        private readonly InicioProfesorControlador _controlador;
+
         public InicioProfesor()
         {
             InitializeComponent();
+            _controlador = new InicioProfesorControlador();
             ActualizarCursos();
             ActualizarExamenes();
         }
 
         public void ActualizarCursos()
         {
-            dataGridViewCursos.DataSource = ProfesorDataSet.ListarCursos();
+            dataGridViewCursos.DataSource = _controlador.ListarCursos();
         }
 
         public void ActualizarExamenes()
         {
-            dataGridViewExamenes.DataSource = ProfesorDataSet.ListarExamenes();
+            dataGridViewExamenes.DataSource = _controlador.ListarExamenes();
         }
 
         private void ButtonAgregarCurso_Click(object sender, EventArgs e)

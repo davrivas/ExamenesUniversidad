@@ -2,9 +2,12 @@
 using ExamenesUniversidad.Logica.DAOs;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExamenesUniversidad.Datos.DTOs.ProfesorDTOs;
+using ExamenesUniversidad.Logica.DataSets;
 
 namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
 {
@@ -13,6 +16,7 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
         private readonly IExamenPreguntaDAO _examenPreguntaDAO;
         private readonly IExamenDAO _examenDAO;
         private readonly IPreguntaDAO _preguntaDAO;
+        private readonly IProfesorDataSet _profesorDataSet;
 
         public ExamenPregunta NuevaPreguntaExamen { get; set; }
 
@@ -21,6 +25,7 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
             _examenPreguntaDAO = new ExamenPreguntaDAO();
             _examenDAO = new ExamenDAO();
             _preguntaDAO = new PreguntaDAO();
+            _profesorDataSet = new ProfesorDataSet();
         }
 
         public bool ExisteExamen(string codigo)
@@ -45,6 +50,11 @@ namespace ExamenesUniversidad.Logica.Controladores.ProfesorControladores
             };
             _examenPreguntaDAO.Ingresar(NuevaPreguntaExamen);
             NuevaPreguntaExamen = new ExamenPregunta();
+        }
+
+        public IList<PreguntaCursoDTO> ListarPreguntasCursoPorExamen(string codigoExamen)
+        {
+            return _profesorDataSet.ListarPreguntasCursoPorExamen(codigoExamen);
         }
     }
 }

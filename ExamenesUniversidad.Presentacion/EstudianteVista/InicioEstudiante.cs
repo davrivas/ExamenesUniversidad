@@ -1,6 +1,5 @@
 ﻿using ExamenesUniversidad.Datos.DTOs.EstudianteDTOs;
 using ExamenesUniversidad.Logica.Controladores.EstudianteControladores;
-using ExamenesUniversidad.Presentacion.DataSets;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
@@ -27,12 +26,12 @@ namespace ExamenesUniversidad.Presentacion.EstudianteVista
 
         public void ActualizarExamenes()
         {
-            dataGridViewExamenes.DataSource = EstudianteDataSet.GetExamenes();
+            dataGridViewExamenes.DataSource = _controlador.GetExamenes();
         }
 
         private void ActualizarCalificaciones()
         {
-            _resultados = EstudianteDataSet.ListarResultados();
+            _resultados = _controlador.ListarResultados();
             dataGridViewCalificaciones.DataSource = _resultados;
         }
 
